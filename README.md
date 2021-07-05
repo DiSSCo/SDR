@@ -5,6 +5,8 @@ Ben and Laurence are transfering the next steps from the Minimum Viable Product 
 
 We are using GitHub's simple Project Trello boards to track [Publications and Outputs](https://github.com/DiSSCo/SDR/projects/2) and development of the [MVP](https://github.com/DiSSCo/SDR/projects/1).
 
+We have a separate repo for [SDR datasets](https://github.com/DiSSCo/sdr-datasets)
+
 ## Communication channels and key documents:
 
    **Rolling Google Doc for our [regular meeting notes & minutes](https://docs.google.com/document/d/1iYDDnXsDy34HSTFqjIbJeYXe0J4bHp-8VZHzOVTY8Yw)**
