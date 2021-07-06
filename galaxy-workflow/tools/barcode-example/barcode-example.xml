@@ -1,0 +1,37 @@
+<tool id="sdr_barcode" name="Barcode reader" version="0.0.1">
+    <description>for each open digital specimen</description>
+    <requirements> </requirements>
+    <code file="tool_utils.py"/>
+
+    <command><![CDATA[
+        python '$__tool_directory__/barcode.py' '$open_ds' '$url'
+    ]]></command>    
+
+    <!-- How to do inputs: Additional params with dot notation paths??? -->
+
+    <inputs>
+        <param name="open_ds" type="data" format="json" />
+        <param name="url" type="text" dynamic_options="get_opends_value('url')"/>
+     </inputs>
+
+    <outputs>
+        <!-- This isn't going to work - variable names -->
+        <data format="json" name="open_ds" />
+    </outputs>
+
+    <tests>
+        <test>
+            <param name="open_ds" value="open-ds-test.json" />
+            <output name="open_ds" file="open-ds-test-output.json" ftype="json" lines_diff="2" />
+        </test>
+    </tests>
+
+    <help>
+
+        This tool reads a barcode from a specimen object.
+
+    </help>
+    <citations>
+      
+    </citations>
+</tool>
