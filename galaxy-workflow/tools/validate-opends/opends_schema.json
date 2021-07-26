@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "authoritative": {
+      "type": "object",
+      "properties": {
+        "physicalSpecimenId": {
+          "type": "string"
+        },
+        "institution": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "materialType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "physicalSpecimenId",
+        "institution",
+        "materialType"
+      ]
+    },
+    "images": {
+      "type": "object",
+      "properties": {
+        "availableImages": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "license": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "source",
+                "license"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "availableImages"
+      ]
+    },
+    "higher_classification": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "authoritative",
+    "images",
+    "higher_classification"
+  ]
+}

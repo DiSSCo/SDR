@@ -1,5 +1,6 @@
 require 'json'
 require 'optparse'
+require 'json-schema'
 
 def valid_json?(json)
   JSON.parse(json)
@@ -17,9 +18,13 @@ OptionParser.new do |opts|
 end.parse!
 
 #first check that we have valid JSON
-json = File.open(options[:open_ds]).read
+json = File.read(options[:open_ds])
+valid = valid_json?(json)
 
+#now check against schema
+schema = File.read("opends_schema.json")
+if(valid) then
+  valid = JSON::Validator.validate(schema, json)
+end
 
-
-
-puts valid_json?(json)
+puts valid
