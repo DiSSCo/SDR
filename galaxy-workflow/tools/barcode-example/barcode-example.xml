@@ -1,29 +1,41 @@
 <tool id="sdr_barcode" name="Barcode reader" version="0.0.1">
     <description>for each open digital specimen</description>
-    <requirements> </requirements>
-    <code file="tool_utils.py"/>
+    <requirements>
+        <!-- <requirement type="package" version="0.1.18">json</requirement> -->
+    </requirements>
+
+    <code file="opends_utils.py"/>
+
+    <!-- <macros>
+        <import>opends_macros.xml</import>
+    <macros>   -->
+
+    <macros>
+    <xml name="param" token_name="" token_property="">
+        <param name="opends_@NAME@" type="hidden" value="@PROPERTY@" />
+    </xml>
+    </macros>
 
     <command><![CDATA[
-        python '$__tool_directory__/barcode.py' '$open_ds' '$url'
+        python '$__tool_directory__/barcode.py' '$opends'
     ]]></command>    
 
-    <!-- How to do inputs: Additional params with dot notation paths??? -->
-
     <inputs>
-        <param name="open_ds" type="data" format="json" />
-        <param name="url" type="text" dynamic_options="get_opends_value('url')"/>
+        <param name="opends" type="data" format="json" label="Open Digital specimen object" />
+        <expand macro="param" name="locality" property="$.verbatim.locality" />
+        <expand macro="param" name="coordinates" property="$.verbatim.coordinates" />
      </inputs>
 
     <outputs>
         <!-- This isn't going to work - variable names -->
-        <data format="json" name="open_ds" />
+        <data format="json" name="opends" />
     </outputs>
 
     <tests>
         <test>
-            <param name="open_ds" value="open-ds-test.json" />
-            <output name="open_ds" file="open-ds-test-output.json" ftype="json" lines_diff="2" />
-        </test>
+            <param name="opends" value="open-ds.json" />
+            <output name="opends" file="open-ds.json" ftype="json" lines_diff="2" />
+        </test>      
     </tests>
 
     <help>
