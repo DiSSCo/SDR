@@ -3,37 +3,41 @@ require 'optparse' #TODO - implement options parser to make args optional
 
 options = {}
 OptionParser.new do |opts|
-  opts.on("-cn", "--[catalog_number", "Catalog number") do |cn|
-    options[:catalog_number] = cn
+  opts.on("--require catalog_number", "Catalog number") do |catalog_number|
+    options[:catalog_number] = catalog_number
   end
-    opts.on("-il", "--[image_license", "Image license") do |il|
-    options[:image_license] = cn
+    opts.on("--image_license", "Image license") do |image_license|
+    options[:image_license] = image_license
   end
-    opts.on("-iu", "--[image_uri", "Image URI") do |iu|
-    options[:image_uri] = iu
+=begin
+    opts.on("--image_uri", "Image URI") do |image_uri|
+    options[:image_uri] = image_uri
   end
-    opts.on("-ot", "--[object_type", "Object Type") do |ot|
+    opts.on("--object_type", "Object Type") do |ot|
     options[:object_type] = ot
   end
-    opts.on("-rh", "--[rights_holder", "Rights Holder") do |rh|
+    opts.on("--rights_holder", "Rights Holder") do |rh|
     options[:rights_holder] = rh
   end
-    opts.on("-riu", "--[registered_institution_url", "Registered Institution URL number") do |riu|
+    opts.on("--registered_institution_url", "Registered Institution URL number") do |riu|
     options[:registered_institution_url] = riu
   end
-    opts.on("-hc", "--[higher_classification", "Higher Classification") do |hc|
+    opts.on("--higher_classification", "Higher Classification") do |hc|
     options[:higher_classification] = hc
   end
-    opts.on("-pn", "--[person_name", "Person Name") do |pn|
+    opts.on("--person_name", "Person Name") do |pn|
     options[:person_name] = pn
   end
-    opts.on("-pi", "--[person_identifier", "Person Identifier") do |pi|
+    opts.on("--person_identifier", "Person Identifier") do |pi|
     options[:person_identifier] = i
   end
-    opts.on("-o", "--[output", "Output") do |o|
+    opts.on("--output", "Output") do |o|
     options[:output] = o
   end
+=end
 end.parse!
+
+raise OptionParser::MissingArgument if options[:host].nil?
 
 #catalog_number = 'MNHN-IM-2013-8488'
 #image_license = 'CC BY 4.0'

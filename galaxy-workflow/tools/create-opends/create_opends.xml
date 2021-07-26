@@ -1,6 +1,6 @@
 <tool id="sdr_create_sdo" name="Create specimen data object" version="0.1.0">
   <description>Create a specimen data object for de novo digitisation</description>
-  <command>rb '${__tool_directory__}/sdr_create_sdo.rb' 
+  <command>ruby '${__tool_directory__}/sdr_create_sdo.rb' 
 		-cn $catalog_number 
 		-il $image_license
 		-iu $image_uri
