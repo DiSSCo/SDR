@@ -1,21 +1,21 @@
 <tool id="sdr_create_sdo" name="Create specimen data object" version="0.1.0">
   <description>Create a specimen data object for de novo digitisation</description>
   <command>ruby '${__tool_directory__}/sdr_create_sdo.rb' 
-		-cn $catalog_number 
-		-il $image_license
-		-iu $image_uri
-		-ot $object_type
-		-rh $rights_holder
-		-ru $registered_institution_url
-		-hc $higher_classification
-		-pn $person_name
-		-pi $person_identifier
-		-o $output
+		-catalog_number $catalog_number
+		-image_license $image_license
+		-image_uri $image_uri
+		-object_type $object_type
+		-rights_holder $rights_holder
+		-registered_institution_url $registered_institution_url
+		-higher_classification $higher_classification
+		-person_name $person_name
+		-person_identifier $person_identifier
+		-output $output
   </command>
   <inputs>
     <param format="txt" name="catalog_number" type="data" label="Catalog number"/>
 	<param format="txt" name="image_license" type="data" label="Image license"/>
-	<param format="txt" name="image_URI" type="data" label="Image URI"/>
+	<param format="txt" name="image_uri" type="data" label="Image URI"/>
 	<param format="txt" name="object_type" type="data" label="Object type"/>
 	<param format="txt" name="rights_holder" type="data" label="Rights holder"/>
 	<param format="txt" name="registered_institution_url" type="data" label="Registered institution URL"/>

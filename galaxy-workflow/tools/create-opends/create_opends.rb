@@ -3,13 +3,12 @@ require 'optparse' #TODO - implement options parser to make args optional
 
 options = {}
 OptionParser.new do |opts|
-  opts.on("--require catalog_number", "Catalog number") do |catalog_number|
+  opts.on("--catalog_number", "Catalog number") do |catalog_number|
     options[:catalog_number] = catalog_number
   end
     opts.on("--image_license", "Image license") do |image_license|
     options[:image_license] = image_license
   end
-=begin
     opts.on("--image_uri", "Image URI") do |image_uri|
     options[:image_uri] = image_uri
   end
@@ -34,10 +33,24 @@ OptionParser.new do |opts|
     opts.on("--output", "Output") do |o|
     options[:output] = o
   end
-=end
+
 end.parse!
 
-raise OptionParser::MissingArgument if options[:host].nil?
+#Add reqd args here
+raise OptionParser::MissingArgument if options[:image_uri].nil?
+
+
+
+open_DS = Hash.new
+
+open_DS[:authoritative] = { :physicalSpecimenId => options[:catalog_number], :institution => [options[:rights_holder], options[:registered_institution_url]], :materialType => options[:object_type] }
+open_DS[:images] = { :availableImages => [{:source => options[:image_uri], :license => options[:image_license] }] }
+open_DS[:higher_classification] = options[:higher_classification]
+open_DS[:person_name] = options[:person_name] 
+open_DS[:person_identifier] = options[:person_identifier]
+
+puts open_DS.to_json
+
 
 #catalog_number = 'MNHN-IM-2013-8488'
 #image_license = 'CC BY 4.0'
@@ -48,13 +61,3 @@ raise OptionParser::MissingArgument if options[:host].nil?
 #higher_classification = 'Gastropoda'
 #person_name = 'Laurence Livermore'
 #person_identifier = 'LL123'
-
-open_DS = Hash.new
-
-open_DS[:authoritative] = { :physicalSpecimenId => options[:catalog_number], :institution => [options[:rights_holder], options[:registered_institution_url]], :materialType => options[:object_type] }
-open_DS[:images] = { :availableImages => [{:source => options[:image_uri], :license => options[:image_license] }] }
-open_DS[:higher_classification] = options[:higher_classification]
-open_DS[:person_name] = options[:person_name] 
-open_DS[:person_identifier] = options[:person_identifier]
-
-open_DS.to_json
