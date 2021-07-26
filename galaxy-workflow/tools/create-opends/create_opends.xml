@@ -1,16 +1,16 @@
 <tool id="sdr_create_sdo" name="Create specimen data object" version="0.1.0">
   <description>Create a specimen data object for de novo digitisation</description>
-  <command>ruby create_opends.rb'
-		-catalog_number $catalog_number
-		-image_license $image_license
-		-image_uri $image_uri
-		-object_type $object_type
-		-rights_holder $rights_holder
-		-registered_institution_url $registered_institution_url
-		-higher_classification $higher_classification
-		-person_name $person_name
-		-person_identifier $person_identifier
-		-output $output
+  <command>ruby create_opends.rb
+		--catalog_number $catalog_number
+		--image_license $image_license
+		--image_uri $image_uri
+		--object_type $object_type
+		--rights_holder $rights_holder
+		--registered_institution_url $registered_institution_url
+		--higher_classification $higher_classification
+		--person_name $person_name
+		--person_identifier $person_identifier
+		--output $output
   </command>
   <inputs>
     <param format="txt" name="catalog_number" type="data" label="Catalog number"/>
