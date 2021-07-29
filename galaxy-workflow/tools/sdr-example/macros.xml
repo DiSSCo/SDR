@@ -1,0 +1,19 @@
+<macros>
+
+    <xml name="requirements">
+        <requirements>
+            <requirement type="package" version="0.1.18">json</requirement>
+            <requirement type="package" version="1.5.3">jsonpath-ng</requirement>  
+            <yield/>
+        </requirements>
+    </xml>
+
+    <xml name="opends_property" token_name="" token_property="">            
+        <param name="opends.@NAME@" type="hidden" value="@PROPERTY@" />
+    </xml>
+
+    <!-- <xml name="command">
+
+    </xml> -->
+
+</macros>

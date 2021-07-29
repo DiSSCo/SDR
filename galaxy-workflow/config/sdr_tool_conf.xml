@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<toolbox monitor="true" tool_path="../tools">
+  <section id="sdr" name="SDR">
+    <!-- <tool file="toolExample.xml" /> -->
+    <tool file="sdr-example/sdr-example.xml" />
+ </section>
+</toolbox>

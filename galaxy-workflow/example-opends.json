@@ -1,0 +1,16 @@
+{
+  "id": "20.5000.1025/64ae0cf0dacb7bd20ba5",
+  "authoritative": {
+    "physicalSpecimenId": "MNHN-IM-2013-8488",
+    "institution": ["MNHN", "https://ror.org/03wkt5x30"],
+    "materialType": "Alcohol, 95%"
+  },
+  "images": {
+      "availableImages": [{
+              "source": "http://mediaphoto.mnhn.fr/media/1427463506459UAeHPJw9jXoET1sF",
+              "license": "CC BY 4.0"
+          }
+      ]
+  },
+  "higher_classification": "Gastropoda"
+}
