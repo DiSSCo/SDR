@@ -1,3 +1,6 @@
+galaxy
 galaxy-workflow/.venv
 galaxy-workflow/venv
 galaxy-workflow/galaxy
+.DS_Store
+NOTES.md
