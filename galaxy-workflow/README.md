@@ -25,7 +25,7 @@ Will take the openDS property at ```$.images.availableImages[0].source```:
 {
   "images": {
       "availableImages": [{
-              "source": 'VALUE',
+              "source": VALUE,
           }
       ]
   },
@@ -51,6 +51,8 @@ Each SDR tool will need to:
     def __main__(opends_json, output_file, image):
         ...
 ```
+
+See https://github.com/DiSSCo/SDR/blob/main/galaxy-workflow/tools/sdr-example/main.py
 
 
 The cloned [sdr-example](https://github.com/DiSSCo/SDR/tree/galaxy-workflow/galaxy-workflow/tools/sdr-example) tool will then be updated with new OpenDS properties and ```main.py```, ready for running in the SDR workflow.
