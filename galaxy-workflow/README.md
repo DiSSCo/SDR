@@ -6,7 +6,7 @@
 
 Each tool has as input an OpenDS JSON object, updates the OpenDS JSON object, and outputs a modified OpenDS object.
 
-A working example is provided - [sdr-example](https://github.com/DiSSCo/SDR/tree/galaxy-workflow/galaxy-workflow/tools/sdr-example)
+A working example is provided [sdr-example](https://github.com/DiSSCo/SDR/tree/galaxy-workflow/galaxy-workflow/tools/sdr-example), to be cloned for each tool in the SDR prototype.
 
 The tool validates the OpenDS object against the OpenDS schema, as defined in the environment variable SDR_OPENDS_SCHEMA.
 
@@ -25,7 +25,7 @@ Will take the openDS property at ```$.images.availableImages[0].source```:
 {
   "images": {
       "availableImages": [{
-              "source": VALUE,
+              "source": 'VALUE',
           }
       ]
   },
@@ -53,7 +53,7 @@ Each SDR tool will need to:
 ```
 
 
-The [sdr-example](https://github.com/DiSSCo/SDR/tree/galaxy-workflow/galaxy-workflow/tools/sdr-example) tool will then be cloned, and updated with the OpenDS properties and ```main.py```, ready for run in the SDR workflow.
+The cloned [sdr-example](https://github.com/DiSSCo/SDR/tree/galaxy-workflow/galaxy-workflow/tools/sdr-example) tool will then be updated with new OpenDS properties and ```main.py```, ready for running in the SDR workflow.
 
 
 
