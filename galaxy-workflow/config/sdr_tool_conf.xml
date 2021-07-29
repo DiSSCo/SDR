@@ -2,6 +2,6 @@
 <toolbox monitor="true" tool_path="../tools">
   <section id="sdr" name="SDR">
     <!-- <tool file="toolExample.xml" /> -->
-    <tool file="barcode-example/barcode-example.xml" />
+    <tool file="sdr-example/sdr-example.xml" />
  </section>
 </toolbox>
