@@ -25,7 +25,7 @@
 
     <section id="sdr" name="SDR" version="">
 
-        <tool id="sdr_barcode" />
+        <tool id="sdr_example" />
 
     </section>
 
