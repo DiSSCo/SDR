@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<job_conf>
+    <destinations default="docker_local">
+       <destination id="local" runner="local"/>
+       <destination id="docker_local" runner="local">
+         <param id="docker_enabled">true</param>
+       </destination>
+    </destinations>
+
+</job_conf>

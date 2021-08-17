@@ -1,0 +1,45 @@
+<tool id="sdr_docker" name="SDR Docker" version="0.0.1">
+
+    <description>Example Dockerised tool</description>
+
+    <macros>
+        <import>macros.xml</import>
+    </macros>    
+
+    <code file="code.py"/>
+    
+    <requirements>
+        <container type="docker">busybox:latest</container>
+    </requirements>
+
+    <command>
+
+    </command> 
+
+    <inputs>
+
+        <param name="input" type="data" format="json" label="Open Digital specimen object" />
+        <expand macro="opends_property" name="image" property="$.images.availableImages[0].source" />
+
+     </inputs>
+
+    <outputs>
+        <data format="json" name="output" />
+    </outputs>
+
+    <tests>
+        <test>
+            <param name="opends" value="open-ds.json" />
+            <output name="opends" file="open-ds.json" ftype="json" lines_diff="2" />
+        </test>      
+    </tests>
+
+    <help>
+
+        This tool is an example SDR tool using Docker
+
+    </help>
+    <citations>
+      
+    </citations>
+</tool>
