@@ -1,6 +1,6 @@
 <tool id="sdr_validate_sdo" name="Validate specimen data object" version="0.1.0">
   <description>Validate a specimen data object</description>
-  <command>ruby validate_opends.rb
+  <command>rb '${__tool_directory__}/validate_opends.rb
 		--opends $opends
   </command>
   <inputs>
