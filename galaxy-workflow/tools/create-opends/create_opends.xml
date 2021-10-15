@@ -5,7 +5,7 @@
     <param format="text" name="catalog_number" type="text" label="Catalog number"/>
 	<param format="text" name="image_license" type="text" label="Image license"/>
 	<param format="text" name="image_URI" type="text" label="Image URI"/>
-	<param format="text" name="object_type" type="text" label="Object type">
+	<param format="text" name="object_type" type="select" label="Object type">
 		<option value="Pinned insect">Pinned insect</option>
 		<option value="Microscope slide">Microscope slide</option>
 		<option value="Herbarium sheet">Herbarium sheet</option>
