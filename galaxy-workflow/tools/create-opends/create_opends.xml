@@ -5,7 +5,11 @@
     <param format="txt" name="catalog_number" type="data" label="Catalog number"/>
 	<param format="txt" name="image_license" type="data" label="Image license"/>
 	<param format="txt" name="image_URI" type="data" label="Image URI"/>
-	<param format="txt" name="object_type" type="data" label="Object type"/>
+	<param format="txt" name="object_type" type="data" label="Object type">
+		<option value="Pinned insect">Pinned insect</option>
+		<option value="Microscope slide">Microscope slide</option>
+		<option value="Herbarium sheet">Herbarium sheet</option>
+	</param>
 	<param format="txt" name="rights_holder" type="data" label="Rights holder"/>
 	<param format="txt" name="registered_institution_url" type="data" label="Registered institution URL"/>
 	<param format="txt" name="higher_classification" type="data" label="Higher classification"/>
