@@ -1,22 +1,60 @@
 require 'json'
-require 'optparse' #TODO - implement options parser to make args optional
+require 'optparse'
 
-catalog_number = 'MNHN-IM-2013-8488'
-image_license = 'CC BY 4.0'
-image_URI = 'http://mediaphoto.mnhn.fr/media/1427463506459UAeHPJw9jXoET1sF'
-object_type = 'Alcohol, 95%'
-rights_holder = 'MNHN'
-registered_institution_url = 'https://ror.org/03wkt5x30'
-higher_classification = 'Gastropoda'
-person_name = 'Laurence Livermore'
-person_identifier = 'LL123'
+options = {}
+OptionParser.new do |opts|
+  opts.on("--catalog_number=CATALOG_NUMBER", "Catalog number") do |catalog_number|
+    options[:catalog_number] = catalog_number
+  end
+    opts.on("--image_license=IMAGE_LICENSE", "Image license") do |image_license|
+    options[:image_license] = image_license
+  end
+    opts.on('--image_uri=IMAGE_URI', "Image URI") do |image_uri|
+    options[:image_uri] = image_uri
+  end
+    opts.on("--object_type=OBJECT_TYPE", "Object Type") do |object_type|
+    options[:object_type] = object_type
+  end
+    opts.on("--rights_holder=RIGHTS_HOLDER", "Rights Holder") do |rights_holder|
+    options[:rights_holder] = rights_holder
+  end
+    opts.on("--registered_institution_url=INSTITUTIONAL_URL", "Registered Institution URL number") do |registered_institution_url|
+    options[:registered_institution_url] = registered_institution_url
+  end
+    opts.on("--higher_classification=HIGHER_CLASSIFICATION", "Higher Classification") do |higher_classification|
+    options[:higher_classification] = higher_classification
+  end
+    opts.on("--person_name[=PERSON_NAME]", "Person Name") do |person_name|
+    options[:person_name] = person_name
+  end
+    opts.on("--person_identifier[=PERSON_IDENTIFIER]", "Person Identifier") do |person_identifier|
+    options[:person_identifier] = person_identifier
+  end
+    opts.on("--output[=OUTPUT]", "Output") do |output|
+    options[:output] = output
+  end
+end.parse!
 
 open_DS = Hash.new
 
-open_DS[:authoritative] = { :physicalSpecimenId => catalog_number, :institution => [rights_holder, registered_institution_url], :materialType => object_type }
-open_DS[:images] = { :availableImages => [{:source => image_URI, :license => image_license }] }
-open_DS[:higher_classification] = higher_classification
-open_DS[:person_name] = person_name 
-open_DS[:person_identifier] = person_identifier
+open_DS[:authoritative] =
+  { :physicalSpecimenId => options[:catalog_number],
+    :institution => [
+      options[:rights_holder],
+      options[:registered_institution_url]
+    ],
+    :materialType => options[:object_type] }
+open_DS[:images] = {
+  :availableImages => [{
+                         :source => options[:image_uri],
+                         :license => options[:image_license] }]
+}
+open_DS[:higher_classification] = options[:higher_classification]
+if(!options[:person_name].nil?)
+  open_DS[:person_name] = options[:person_name]
+end
+if(!options[:person_identifier].nil?)
+  open_DS[:person_identifier] = options[:person_identifier]
+end
 
-open_DS.to_json
+puts open_DS.to_json

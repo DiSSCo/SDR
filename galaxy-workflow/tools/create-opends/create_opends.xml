@@ -1,23 +1,27 @@
 <tool id="sdr_create_sdo" name="Create specimen data object" version="0.1.0">
   <description>Create a specimen data object for de novo digitisation</description>
-  <command>rb '${__tool_directory__}/sdr_create_sdo.rb' '$catalog_number' '$image_license' '$image_URI' '$object_type' '$rights_holder' '$registered_institution_url' '$higher_classification' '$person_name' '$person_identifier' '$output'</command>
+  <command>ruby create_opends.rb
+		--catalog_number $catalog_number
+		--image_license $image_license
+		--image_uri $image_uri
+		--object_type $object_type
+		--rights_holder $rights_holder
+		--registered_institution_url $registered_institution_url
+		--higher_classification $higher_classification
+		--person_name $person_name
+		--person_identifier $person_identifier
+		--output $output
+  </command>
   <inputs>
-    <param format="text" name="catalog_number" type="text" label="Catalog number"/>
-	<param format="text" name="image_license" type="select" label="Image license">
-		<option value="CC0">CC0</option>
-		<option value="CC BY">CC BY</option>
-	</param>
-	<param format="text" name="image_URI" type="text" label="Image URI"/>
-	<param format="text" name="object_type" type="select" label="Object type">
-		<option value="Pinned insect">Pinned insect</option>
-		<option value="Microscope slide">Microscope slide</option>
-		<option value="Herbarium sheet">Herbarium sheet</option>
-	</param>
-	<param format="text" name="rights_holder" type="text" label="Rights holder"/>
-	<param format="text" name="registered_institution_url" type="text" label="Registered institution URL"/>
-	<param format="text" name="higher_classification" type="text" label="Higher classification"/>
-	<param format="text" name="person_name" type="text" label="Person name"/>
-	<param format="text" name="person_identifier" type="text" label="Person identifier"/>
+    <param format="txt" name="catalog_number" type="data" label="Catalog number"/>
+	<param format="txt" name="image_license" type="data" label="Image license"/>
+	<param format="txt" name="image_uri" type="data" label="Image URI"/>
+	<param format="txt" name="object_type" type="data" label="Object type"/>
+	<param format="txt" name="rights_holder" type="data" label="Rights holder"/>
+	<param format="txt" name="registered_institution_url" type="data" label="Registered institution URL"/>
+	<param format="txt" name="higher_classification" type="data" label="Higher classification"/>
+	<param format="txt" name="person_name" type="data" label="Person name"/>
+	<param format="txt" name="person_identifier" type="data" label="Person identifier"/>
   </inputs>
   <outputs>
     <data format="json" name="output" />
