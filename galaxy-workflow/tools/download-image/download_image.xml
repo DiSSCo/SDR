@@ -1,0 +1,13 @@
+<tool id="download_image" name="Download image" version="0.1.0">
+  <description>Download an image for digitisation</description>
+  <command>rb '${__tool_directory__}/download_image.rb' '$image_uri' '$file_path' 
+    <param format="text" name="image_uri" type="text" label="Image URI"/>
+	<param format="text" name="file_path" type="select" label="File path"/>
+  </inputs>
+  <outputs>
+    <data format="text" name="output" />
+  </outputs>
+  <help>
+		Download an image to the local filesystem
+  </help>
+</tool>
