@@ -20,7 +20,7 @@ strEcho "Updating configuration"
 rm ~/galaxy/config/integrated_tool_panel.xml 
 
 #copy tool panel config files
-
+cp  ~/SDR/galaxy-workflow/config/tool_conf.xml ~/galaxy/config/tool_conf.xml
 
 #copy data type config files
 
