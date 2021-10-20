@@ -1,0 +1,1 @@
+cp -r ./galaxy-workflow/tools/* ~/galaxy/tools/sdr
