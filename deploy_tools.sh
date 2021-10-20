@@ -1,17 +1,26 @@
-#make sure repo is up to date
+function strEcho(){
+    local exp=$1;
+	echo "\033[1;32;41m${exp}\e[0m";
+}
+
+
+strEcho "Updating repository"
 git pull
 
-#stop the galaxy server
+strEcho "Stopping Galaxy server"
 sh ~/galaxy/run.sh --stop-daemon
 
-#copy the tool scripts
+strEcho "copying tool scripts"
 cp -r ~/SDR/galaxy-workflow/tools/* ~/galaxy/tools/sdr
 
-#remove generated config file
+#remove generated tool panel config file - this is regenerated at Galaxy boot time
+strEcho "Updating configuration"
 rm ~/galaxy/config/integrated_tool_panel.xml 
 
-#copy config files
+#copy tool panel config files
 
 
-#start the galaxy server
+#copy data type config files
+
+strEcho "Restarting Galaxy server"
 sh ~/galaxy/run.sh --daemon
