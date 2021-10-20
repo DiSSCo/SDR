@@ -9,5 +9,4 @@ concat_file_name = File.join(local_folder, file_name)
 
 File.write(concat_file_name, Net::HTTP.get(URI.parse(image_URI)))
 
-sleep(5000)
 concat_file_name
