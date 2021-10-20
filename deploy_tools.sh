@@ -13,7 +13,7 @@ strEcho "Stopping Galaxy server"
 sh ~/galaxy/run.sh --stop-daemon
 
 strEcho "Copying tool scripts"
-cp -r ~/SDR/galaxy-workflow/tools/* ~/galaxy/tools/sdr
+cp -rf ~/SDR/galaxy-workflow/tools/* ~/galaxy/tools/sdr
 
 #remove generated tool panel config file - this is regenerated at Galaxy boot time
 strEcho "Updating configuration"
