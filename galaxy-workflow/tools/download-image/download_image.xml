@@ -6,12 +6,12 @@
 	--local_folder $local_folder
   </command>
   <inputs>
-    <param format="txt" name="image_uri" type="txt" label="Image URI"/>
-	<param format="txt" name="file_name" type="txt" label="File name"/>
-    <param format="txt" name="local_folder" type="txt" label="Local folder"/>
+    <param format="text" name="image_uri" type="text" label="Image URI"/>
+	<param format="text" name="file_name" type="text" label="File name"/>
+    <param format="text" name="local_folder" type="text" label="Local folder"/>
   </inputs>
   <outputs>
-    <data format="txt" name="output" />
+    <data format="text" name="output" />
   </outputs>
   <help>
 		Download an image to the local filesystem
