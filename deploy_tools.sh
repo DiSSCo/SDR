@@ -12,6 +12,12 @@ git pull
 strEcho "Stopping Galaxy server"
 sh ~/galaxy/run.sh --stop-daemon
 
+strEcho "Backing up config and tool folders"
+TIMESTRING=$(date +%Y-%m-%d_%H:%M:%S)
+mkdir -p ~/galaxy/AUTO_DEPLOY_BACKUP/${TIMESTRING}
+cp -r ~/galaxy/config ~/galaxy/AUTO_DEPLOY_BACKUP/${TIMESTRING}
+cp -r ~/galaxy/tools ~/galaxy/AUTO_DEPLOY_BACKUP/${TIMESTRING}
+
 strEcho "Copying tool scripts"
 cp -rf ~/SDR/galaxy-workflow/tools/* ~/galaxy/tools/sdr
 
@@ -20,7 +26,7 @@ strEcho "Updating configuration"
 rm ~/galaxy/config/integrated_tool_panel.xml 
 
 #copy tool panel config files
-cp  ~/SDR/galaxy-workflow/config/tool_conf.xml ~/galaxy/config/tool_conf.xml
+cp -f ~/SDR/galaxy-workflow/config/tool_conf.xml ~/galaxy/config/tool_conf.xml
 
 #copy data type config files
 
