@@ -27,6 +27,8 @@
 
         <tool id="sdr_example" />
 
+        <tool id="sdr_docker" />
+
     </section>
 
     <section id="sdrTools" name="SDRTools" version="">
