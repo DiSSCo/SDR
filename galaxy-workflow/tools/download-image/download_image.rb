@@ -1,17 +1,16 @@
 require 'net/http'
 require 'optparse' 
+require 'securerandom'
 
 options = {}
 OptionParser.new do |opts|
   opts.on("--image_uri=IMAGEURI") do |image_uri|
     options[:image_uri] = image_uri
   end
-    opts.on("--file_name=FILENAME") do |file_name|
-    options[:file_name] = file_name
-  end
 end.parse!
 
 local_folder = '/home/paulb1/tempImages'
+file_name = "#{SecureRandom.uuid}.jpg"
 
 concat_file_name = File.join(local_folder, options[:file_name])
 

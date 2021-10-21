@@ -2,11 +2,9 @@
   <description>Download an image for digitisation</description>
   <command>ruby $__tool_directory__/download_image.rb 
 	--image_uri $image_uri 
-	--file_name $file_name
   </command>
   <inputs>
     <param format="txt" name="image_uri" type="txt" label="Image URI"/>
-	<param format="txt" name="file_name" type="txt" label="File name"/>
   </inputs>
   <outputs>
     <data format="txt" name="output" />
