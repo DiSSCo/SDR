@@ -4,10 +4,10 @@
 	--image_uri $image_uri 
   </command>
   <inputs>
-    <param format="txt" name="image_uri" label="Image URI"/>
+    <param format="text" name="image_uri" label="Image URI"/>
   </inputs>
   <outputs>
-    <data format="txt" name="output" />
+    <data format="text" name="output" />
   </outputs>
   <help>
 		Download an image to the local filesystem
