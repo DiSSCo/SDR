@@ -6,8 +6,6 @@
         <import>macros.xml</import>
     </macros>    
 
-    <code file="code.py"/>
-    
     <requirements>
         <container type="docker">busybox:latest</container>
     </requirements>

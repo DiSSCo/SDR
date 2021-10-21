@@ -6,7 +6,6 @@
         <import>macros.xml</import>
     </macros>    
 
-    <code file="code.py"/>
     <expand macro="requirements" />  
 
     <command>
