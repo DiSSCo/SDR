@@ -16,7 +16,6 @@ OptionParser.new do |opts|
   end
 
 end.parse!
-
 #first check that we have valid JSON
 json = File.read(options[:open_ds])
 valid = valid_json?(json)

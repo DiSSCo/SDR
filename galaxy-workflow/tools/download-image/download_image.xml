@@ -1,6 +1,6 @@
 <tool id="download_image" name="Download image" version="0.1.0">
   <description>Download an image for digitisation</description>
-  <command>ruby download_image.rb 
+  <command>ruby $__tool_directory__/download_image.rb 
 	--image_uri $image_uri 
 	--file_name $file_name
 	--local_folder $local_folder
