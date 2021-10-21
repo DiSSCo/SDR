@@ -12,7 +12,7 @@ end.parse!
 local_folder = '/home/paulb1/tempImages'
 file_name = "#{SecureRandom.uuid}.jpg"
 
-concat_file_name = File.join(local_folder, options[:file_name])
+concat_file_name = File.join(local_folder, file_name)
 
 File.write(concat_file_name, Net::HTTP.get(URI.parse(options[:image_uri])))
 
