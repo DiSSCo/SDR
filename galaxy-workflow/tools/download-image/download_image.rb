@@ -16,6 +16,6 @@ end.parse!
 
 concat_file_name = File.join(options[:local_folder], options[:file_name])
 
-#File.write(concat_file_name, Net::HTTP.get(URI.parse(options[:image_uri])))
+File.write(concat_file_name, Net::HTTP.get(URI.parse(options[:image_uri])))
 
 concat_file_name
