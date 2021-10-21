@@ -254,7 +254,7 @@ galaxy:
   # files.
   # The value of this option will be resolved with respect to
   # <config_dir>.
-  tool_config_file: sdr_tool_conf.xml, tool_conf.xml
+  tool_config_file: tool_conf.xml, sdr_tool_conf.xml
 
    # Tool config file for tools installed from the Galaxy Tool Shed. Must
   # be writable by Galaxy and generally should not be edited by hand. In
