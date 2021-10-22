@@ -4,7 +4,7 @@
 	--image_uri $image_uri 
   </command>
   <inputs>
-    <param format="text" name="image_uri" label="Image URI"/>
+    <param format="text" name="image_uri" type="text" label="Image URI"/>
   </inputs>
   <outputs>
     <data format="text" name="output" />
