@@ -5,7 +5,7 @@
   </command>
   <inputs>
     <param format="text" name="image_uri" type="text" label="Image URI"/>
-	<param format="text" name="opends" type="json" label="openDS"/>
+	<param format="json" name="opends" type="data" label="openDS"/>
   </inputs>
   <outputs>
     <data format="text" name="output" />
