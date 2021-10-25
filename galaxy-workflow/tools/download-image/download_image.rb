@@ -21,7 +21,7 @@ file_name = "#{SecureRandom.uuid}.#{ext}"
 
 concat_file_name = File.join(local_folder, file_name)
 
-File.write(concat_file_name, Net::HTTP.get(image_uri]))
+File.write(concat_file_name, Net::HTTP.get(image_uri))
 
 open_ds=JSON.parse(options[:open_ds])
 
