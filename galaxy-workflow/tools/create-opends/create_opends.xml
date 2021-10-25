@@ -18,7 +18,7 @@
 		<option value="CC0">CC0</option>
 		<option value="CC BY">CC BY</option>
 	</param>
-	<param format="text" name="image_URI" type="text" label="Image URI"/>
+	<param format="text" name="image_uri" type="text" label="Image URI"/>
 	<param format="text" name="object_type" type="select" label="Object type">
 		<option value="Pinned insect">Pinned insect</option>
 		<option value="Microscope slide">Microscope slide</option>
