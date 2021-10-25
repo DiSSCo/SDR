@@ -2,40 +2,35 @@ require 'net/http'
 require 'optparse' 
 require 'securerandom'
 require 'json'
-require 'exifr'
+require 'fastimage'
 
 options = {}
+
 OptionParser.new do |opts|
   opts.on("--opends=OPENDS") do |open_ds|
     options[:open_ds] = open_ds
   end
 end.parse!
 
+##### Get the OpenDS object
+open_ds = JSON.parse(File.read(options[:open_ds]))
 
+##### Create a file name
+image_uri = open_ds["images"]["availableImages"][0]["source"]
+ext = FastImage.type(image_uri).to_s #get file type by mime type
+file_name = "#{SecureRandom.uuid}.#{ext}" 
+File.write(file_name, Net::HTTP.get(URI.parse(image_uri)))
 
-open_ds=JSON.parse(options[:open_ds])
-image_uri = open_DS[:images][:availableImages][0][:source]
-ext = image_uri.split('.')[-1]
-local_folder = '/home/paulb1/tempImages'
-file_name = "#{SecureRandom.uuid}.#{ext}"
+##### Read file metadata
+size_array = FastImage.size(file_name)
+open_ds["payloads"] = Hash.new
+open_ds["payloads"]["filename"] = file_name
+open_ds["payloads"]["width"] = size_array[0]
+open_ds["payloads"]["height"] = size_array[1]
+open_ds["payloads"]["mediaType"] = "image/#{ext}"
+open_ds["payloads"]["size n"] = File.size(file_name)
 
-concat_file_name = File.join(local_folder, file_name)
-
-File.write(concat_file_name, Net::HTTP.get(image_uri]))
-
-open_ds=JSON.parse(options[:open_ds])
-
-#####read file metadata
-EXIFR::JPEG.new('IMG_6841.JPG').width                  
-
-
-#####create json payload
-open_DS[:images][:availableImages][0][:imageWidth] = EXIFR::JPEG.new('IMG_6841.JPG').width               
-
-
-
-#####put json payload into opends
+puts open_ds.to_json
 
 
 
-opends = options[:open_ds] + "text"

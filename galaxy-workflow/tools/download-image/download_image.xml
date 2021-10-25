@@ -1,15 +1,15 @@
 <tool id="download_image" name="Download image" version="0.1.0">
   <description>Download an image for digitisation</description>
   <command>ruby $__tool_directory__/download_image.rb 
-	'--opends' '$opends'
+	--opends $opends_in > $opends_out
   </command>
   <inputs>
-	<param format="json" name="opends" type="data" label="openDS"/>
+	<param format="json" name="opends_in" type="data" label="openDS"/>
   </inputs>
   <outputs>
-	<data format="json" name="openDS" />
+	<data format="json" name="opends_out" />
   </outputs>
   <help>
-		Download an image to the local filesystem
+	Download an image to the local filesystem and append file info to opends object
   </help>
 </tool>
