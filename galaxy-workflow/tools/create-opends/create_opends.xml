@@ -1,6 +1,6 @@
 <tool id="sdr_create_sdo" name="Create specimen data object" version="0.1.0">
   <description>Create a specimen data object for de novo digitisation</description>
-  <command>ruby create_opends.rb
+  <command>ruby $__tool_directory__/create_opends.rb
 		--catalog_number $catalog_number
 		--image_license $image_license
 		--image_uri $image_uri
