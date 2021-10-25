@@ -1,14 +1,12 @@
 <tool id="download_image" name="Download image" version="0.1.0">
   <description>Download an image for digitisation</description>
   <command>ruby $__tool_directory__/download_image.rb 
-	--image_uri $image_uri 
+	'--opends' '$opends'
   </command>
   <inputs>
-    <param format="text" name="image_uri" type="text" label="Image URI"/>
 	<param format="json" name="opends" type="data" label="openDS"/>
   </inputs>
   <outputs>
-    <data format="text" name="output" />
 	<data format="json" name="openDS" />
   </outputs>
   <help>
