@@ -11,13 +11,17 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-ext = options[:image_uri].split('.')[-1]
+
+
+open_ds=JSON.parse(options[:open_ds])
+image_uri = open_DS[:images][:availableImages][0][:source]
+ext = image_uri.split('.')[-1]
 local_folder = '/home/paulb1/tempImages'
 file_name = "#{SecureRandom.uuid}.#{ext}"
 
 concat_file_name = File.join(local_folder, file_name)
 
-File.write(concat_file_name, Net::HTTP.get(URI.parse(options[:image_uri])))
+File.write(concat_file_name, Net::HTTP.get(image_uri]))
 
 open_ds=JSON.parse(options[:open_ds])
 
