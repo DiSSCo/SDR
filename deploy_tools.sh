@@ -27,6 +27,7 @@ rm ~/galaxy/config/integrated_tool_panel.xml #remove generated tool panel config
 #copy tool panel config files
 cp -f ~/SDR/galaxy-workflow/config/tool_conf.xml ~/galaxy/config/tool_conf.xml
 cp -f ~/SDR/galaxy-workflow/config/sdr_tool_conf.xml ~/galaxy/config/sdr_tool_conf.xml
+cp -f ~/SDR/galaxy-workflow/config/job_conf.xml ~/galaxy/config/job_conf.xml
 cp -f ~/SDR/galaxy-workflow/config/local_env.sh ~/galaxy/config/local_env.sh
 cp -f ~/SDR/galaxy-workflow/config/opends-schema.json ~/galaxy/config/opends-schema.json
 
