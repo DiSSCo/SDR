@@ -11,7 +11,7 @@
          <param id="docker_volumes">$defaults,/Users/ben/Projects/NaturalHistoryMuseum/SpecimenDataRefinery/SDR/galaxy-workflow/samples/images:/images:ro</param>
 
          <param id="docker_sudo">false</param>
-         <param id="docker_run_extra_arguments">--entrypoint="" --env TEKLIA_MODEL_DECRYPTION_KEY=L_RX4-B9vP_5buha7nouAj8srxbIyHSKTXypkXTdTtw=</param>         
+         <param id="docker_run_extra_arguments">--entrypoint="" --env TEKLIA_MODEL_DECRYPTION_KEY=X</param>         
        </destination>
     </destinations>
 </job_conf>
