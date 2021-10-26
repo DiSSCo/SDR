@@ -15,15 +15,13 @@
     </requirements>
 
     <command>
-
-        worker-dla -i '$input' -o '$output' --image '/images/nhmuk-012539905.jpg'
-
+        worker-dla -i '$input' -o '$output' --image '/images/$filename'
     </command>
 
     <inputs>
 
         <param name="input" type="data" format="json" label="Open Digital specimen object" />
-        <expand macro="opends_property" name="image" property="$.images.availableImages[0].source" />
+        <expand macro="opends_property" name="filename" property="$.payloads.filename" />
 
      </inputs>
 
