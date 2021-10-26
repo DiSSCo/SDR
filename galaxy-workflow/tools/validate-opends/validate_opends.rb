@@ -21,7 +21,7 @@ json = File.read(options[:open_ds])
 valid = valid_json?(json)
 
 #now check against schema
-schema = File.read("opends_schema.json")
+schema = File.read("/home/paulb1/galaxy/tools/sdr/validate-opends/opends_schema.json")
 if(valid) then
   valid = JSON::Validator.validate(schema, json)
 end
