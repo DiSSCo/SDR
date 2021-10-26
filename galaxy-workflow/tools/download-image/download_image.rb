@@ -15,7 +15,7 @@ end.parse!
 open_ds = JSON.parse(File.read(options[:open_ds]))
 
 ##### Create a file name
-local_folder = '/home/paulb1/tempImages'
+local_folder = ENV["SDR_IMAGE_DOWNLOAD_DIRECTORY"]
 image_uri = open_ds["images"]["availableImages"][0]["source"]
 ext = FastImage.type(image_uri).to_s #get file type by mime type
 file_name = "#{SecureRandom.uuid}.#{ext}" 
@@ -26,7 +26,7 @@ File.write(concat_file_name, Net::HTTP.get(URI.parse(image_uri)))
 size_array = FastImage.size(concat_file_name)
 open_ds["payloads"] = Hash.new
 open_ds["payloads"]["name"] = 'original image'
-open_ds["payloads"]["filename"] = concat_file_name
+open_ds["payloads"]["filename"] = file_name
 open_ds["payloads"]["width"] = size_array[0]
 open_ds["payloads"]["height"] = size_array[1]
 open_ds["payloads"]["mediaType"] = "image/#{ext}"
