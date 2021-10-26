@@ -3,5 +3,6 @@
   <section id="sdr" name="SDR">
     <tool file="sdr-example/sdr-example.xml" />
     <tool file="sdr-docker/sdr-docker.xml"/>
+    <tool file="worker-dla/sdr.xml"/>
  </section>
 </toolbox>
