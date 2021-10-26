@@ -1,0 +1,37 @@
+<tool id="sdr_teklia_worker_dla" name="SDR Teklia worker-dla" version="0.1.5">
+
+    <description>Teklia Worker DLA for Synthesis+</description>
+
+    <code file="code.py"/>
+
+    <macros>
+        <xml name="opends_property" token_name="" token_property="">
+            <param name="opends.@NAME@" type="hidden" value="@PROPERTY@" />
+        </xml>
+    </macros>
+
+    <requirements>
+        <container type="docker">teklia/synthesis-worker-dla</container>
+    </requirements>
+
+    <command>
+        worker-dla -i '$input' -o '$output' --image '/images/$opends_properties["filename"]'
+    </command>
+
+    <inputs>
+
+        <param name="input" type="data" format="json" label="Open Digital specimen object" />
+        <expand macro="opends_property" name="filename" property="$.payloads.filename" />
+
+     </inputs>
+
+    <outputs>
+        <data format="txt" name="output" />
+    </outputs>
+
+    <help>This tool detects visual regions on an image using a Machine Learning model from Teklia</help>
+
+    <citations>
+
+    </citations>
+</tool>

@@ -1,10 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <toolbox monitor="true">
  <section name="SDR" id="sdr">
-    <tool file="sdr/create-opends/create_opends.xml" />
+  <tool file="sdr/create-opends/create_opends.xml" />
 	<tool file="sdr/validate-opends/validate_opends.xml" />
 	<tool file="sdr/download-image/download_image.xml" />
-    <tool file="sdr/sdr-example/sdr-example.xml" />
-    <tool file="sdr/sdr-docker/sdr-docker.xml"/>
+  <tool file="sdr/download-image/download_image.xml" />
+  
+  <tool file="sdr/teklia-dla/sdr.xml" />
+
  </section>
 </toolbox>

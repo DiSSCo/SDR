@@ -30,9 +30,6 @@ OptionParser.new do |opts|
     opts.on("--person_identifier[=PERSON_IDENTIFIER]", "Person Identifier") do |person_identifier|
     options[:person_identifier] = person_identifier
   end
-    opts.on("--output[=OUTPUT]", "Output") do |output|
-    options[:output] = output
-  end
 end.parse!
 
 open_DS = Hash.new

@@ -10,7 +10,7 @@
 		'--higher_classification' '$higher_classification'
 		'--person_name' '$person_name'
 		'--person_identifier' '$person_identifier'
-		'--output' '$output'
+		> '$output'
   </command>
   <inputs>
     <param format="text" name="catalog_number" type="text" label="Catalog number"/>

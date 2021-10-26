@@ -19,19 +19,125 @@
 
     </section>
 
-    <section id="sdr2" name="SDR2" version="">
+    <section id="send" name="Send Data" version="">
+
+        <tool id="send_to_cloud" />
+
+    </section>
+
+    <section id="collection_operations" name="Collection Operations" version="">
+
+        <tool id="__UNZIP_COLLECTION__" />
+
+        <tool id="__ZIP_COLLECTION__" />
+
+        <tool id="__FILTER_FAILED_DATASETS__" />
+
+        <tool id="__FLATTEN__" />
+
+        <tool id="__MERGE_COLLECTION__" />
+
+        <tool id="__RELABEL_FROM_FILE__" />
+
+        <tool id="__FILTER_FROM_FILE__" />
+
+        <tool id="__SORTLIST__" />
+
+        <tool id="__APPLY_RULES__" />
+
+    </section>
+
+    <section id="textutil" name="Text Manipulation" version="">
+
+        <tool id="addValue" />
+
+        <tool id="cat1" />
+
+        <tool id="Condense characters1" />
+
+        <tool id="Convert characters1" />
+
+        <tool id="mergeCols1" />
+
+        <tool id="createInterval" />
+
+        <tool id="Cut1" />
+
+        <tool id="ChangeCase" />
+
+        <tool id="Paste1" />
+
+        <tool id="Remove beginning1" />
+
+        <tool id="random_lines1" />
+
+        <tool id="Show beginning1" />
+
+        <tool id="Show tail1" />
+
+        <tool id="trimmer" />
+
+        <tool id="wc_gnu" />
+
+        <tool id="secure_hash_message_digest" />
+
+    </section>
+
+    <section id="filter" name="Filter and Sort" version="">
+
+        <tool id="Filter1" />
+
+        <tool id="sort1" />
+
+        <tool id="Grep1" />
+
+        <label id="gff" text="GFF" version="" />
+
+        <tool id="Extract_features1" />
+
+        <tool id="gff_filter_by_attribute" />
+
+        <tool id="gff_filter_by_feature_count" />
+
+        <tool id="gtf_filter_by_attribute_values_list" />
+
+    </section>
+
+    <section id="group" name="Join, Subtract and Group" version="">
+
+        <tool id="join1" />
+
+        <tool id="comp1" />
+
+        <tool id="Grouping1" />
+
+    </section>
+
+    <section id="stats" name="Statistics" version="">
+
+        <tool id="Summary_Statistics1" />
+
+        <tool id="Count1" />
+
+    </section>
+
+    <section id="plots" name="Graph/Display Data" version="">
+
+        <tool id="qual_stats_boxplot" />
+
+        <tool id="vcf_to_maf_customtrack1" />
 
     </section>
 
     <section id="sdr" name="SDR" version="">
 
-        <tool id="sdr_example" />
+        <tool id="sdr_create_sdo" />
 
-        <tool id="sdr_docker" />
+        <tool id="sdr_validate_sdo" />
 
-    </section>
+        <tool id="download_image" />
 
-    <section id="sdrTools" name="SDRTools" version="">
+        <tool id="sdr_teklia_worker_dla" />
 
     </section>
 
