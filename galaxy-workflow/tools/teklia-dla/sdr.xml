@@ -15,7 +15,7 @@
     </requirements>
 
     <command>
-        worker-dla -i '$input' -o '$output' --image '/images/$filename'
+        worker-dla -i '$input' -o '$output' --image '/images/$opends_properties["filename"]'
     </command>
 
     <inputs>
