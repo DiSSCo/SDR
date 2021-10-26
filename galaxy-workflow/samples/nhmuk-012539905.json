@@ -1,0 +1,20 @@
+{
+    "id": "20.5000.1025/64ae0cf0dacb7bd20ba5",
+    "typeName": "ODStype1802",
+    "authoritative": {
+      "midsLevel": 1,
+      "physicalSpecimenId": "NHMUK 012539905",
+      "institution": ["NHMUK", "https://ror.org/03wkt5x30"],
+      "materialType": "pinned-insect"
+    },
+    "images": {
+        "availableImages": [{
+            "source": "https://www.nhm.ac.uk/services/media-store/asset/c61701d96cffeb768c3ec07c8324b08abd24830b/contents/preview",
+                "license": "CC BY 4.0"
+            }
+        ]
+    }
+  }
+
+
+
