@@ -4,31 +4,31 @@ require 'optparse'
 options = {}
 OptionParser.new do |opts|
   opts.on("--catalog_number=CATALOG_NUMBER", "Catalog number") do |catalog_number|
-    options[:catalog_number] = catalog_number
+    options[:catalog_number] = catalog_number.strip
   end
     opts.on("--image_license=IMAGE_LICENSE", "Image license") do |image_license|
-    options[:image_license] = image_license
+    options[:image_license] = image_license.strip
   end
     opts.on('--image_uri=IMAGE_URI', "Image URI") do |image_uri|
-    options[:image_uri] = image_uri
+    options[:image_uri] = image_uri.strip
   end
     opts.on("--object_type=OBJECT_TYPE", "Object Type") do |object_type|
-    options[:object_type] = object_type
+    options[:object_type] = object_type.strip
   end
     opts.on("--rights_holder=RIGHTS_HOLDER", "Rights Holder") do |rights_holder|
-    options[:rights_holder] = rights_holder
+    options[:rights_holder] = rights_holder.strip
   end
     opts.on("--registered_institution_url=INSTITUTIONAL_URL", "Registered Institution URL number") do |registered_institution_url|
-    options[:registered_institution_url] = registered_institution_url
+    options[:registered_institution_url] = registered_institution_url.strip
   end
     opts.on("--higher_classification=HIGHER_CLASSIFICATION", "Higher Classification") do |higher_classification|
-    options[:higher_classification] = higher_classification
+    options[:higher_classification] = higher_classification.strip
   end
     opts.on("--person_name[=PERSON_NAME]", "Person Name") do |person_name|
-    options[:person_name] = person_name
+    options[:person_name] = person_name.strip
   end
     opts.on("--person_identifier[=PERSON_IDENTIFIER]", "Person Identifier") do |person_identifier|
-    options[:person_identifier] = person_identifier
+    options[:person_identifier] = person_identifier.strip
   end
 end.parse!
 
