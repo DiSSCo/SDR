@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/static/scripts/libs/jquery/jquery.js"></script>
+<script type="text/javascript" src="/static/jquery.min.js"></script>
 <style>
 	div.roi {
 		position:absolute;
