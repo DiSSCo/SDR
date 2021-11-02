@@ -18,22 +18,23 @@
 </style>
 hello world
 <h1>${sdo.name | h} | ${visualization_name}</h1>
-<img id="roiImage" src="" />
-<div id="container">
+<img id="roi-image" src="" />
+<div id="roi-container">
 </div>
 <script defer='defer'>
 	var rawUrl = '${h.url_for( controller="/datasets", action="index" )}';
 	var sdoId = '${trans.security.encode_id( sdo.id )}';
 	var dataUrl = rawUrl + '/' + sdoId + '/display?to_ext=json';
-	alert(dataUrl);
+	
 	$.ajax(dataUrl, {
 		        dataType    : 'text',
 		        success     : parseJson
 		    });
 	function parseJson( data ) {
-		alert(data);
+		
 
 	    var opends = JSON.parse(data);
+		$('img#roi-image').attr('src', opends['images']['availableImages'][0]['source']);
 	
 		opends['regions'].forEach(function(x, i){ 
 		var left = x['polygon'][0][0];
