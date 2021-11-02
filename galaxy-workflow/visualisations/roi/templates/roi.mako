@@ -16,8 +16,6 @@
 		  float:left;
 	}
 </style>
-hello world
-<h1>${sdo.name | h} | ${visualization_name}</h1>
 <img id="roi-image" src="" />
 <div id="roi-container">
 </div>
