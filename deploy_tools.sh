@@ -36,7 +36,7 @@ cp -f ~/SDR/galaxy-workflow/config/galaxy.yml ~/galaxy/config/galaxy.yml
 
 #copy visualisations
 strEcho "Updating visualisations"
-cp -rf ~/SDR/galaxy-workflow/visualisations/roi ~/galaxy/config/plugins/visualizations/roi
+cp -rf ~/SDR/galaxy-workflow/visualisations/roi ~/galaxy/config/plugins/visualizations
 
 #copy data type config files
 
