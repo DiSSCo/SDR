@@ -26,7 +26,7 @@
      </inputs>
 
     <outputs>
-        <data format="txt" name="output" />
+        <data format="json" name="output" />
     </outputs>
 
     <help>This tool detects visual regions on an image using a Machine Learning model from Teklia</help>
