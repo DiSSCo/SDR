@@ -1,0 +1,17 @@
+div.roi {
+	position:absolute;
+	border:3px solid red;
+}
+
+div.roi:hover {
+	border:3px solid yellow;
+}
+
+div span{
+	color:red;
+	font-size: 15px;
+	  padding: 10px;
+	  background-color:white;
+	  display:block;
+	  float:left;
+}
