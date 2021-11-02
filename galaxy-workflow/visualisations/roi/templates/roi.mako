@@ -25,13 +25,13 @@ hello world
 	var rawUrl = '${h.url_for( controller="/datasets", action="index" )}';
 	var sdoId = '${trans.security.encode_id( sdo.id )}';
 	var dataUrl = rawUrl + '/' + sdoId + '/display?to_ext=json';
-	alert(dataUrl]);
+	alert(dataUrl);
 	$.ajax(dataUrl, {
 		        dataType    : 'text',
 		        success     : parseJson
 		    });
 	function parseJson( data ) {
-		alert(data]);
+		alert(data);
 
 	    var opends = JSON.parse(data);
 	
