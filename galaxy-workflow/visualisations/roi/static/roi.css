@@ -7,7 +7,7 @@ div.roi:hover {
 	border:3px solid yellow;
 }
 
-div span{
+#roi-container div span{
 	color:red;
 	font-size: 15px;
 	  padding: 10px;
