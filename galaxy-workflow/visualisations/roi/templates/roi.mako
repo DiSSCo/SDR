@@ -32,9 +32,9 @@ hello world
 		    });
 	function parseJson( data ) {
 	
-	alert(data);
-	var opends = JSON.parse(data);
-	
+
+	    var opends = JSON.parse(data);
+	alert(opends['regions']);
 		opends['regions'].forEach(function(x, i){ 
 		var left = x['polygon'][0][0];
 		var top = x['polygon'][0][1];
