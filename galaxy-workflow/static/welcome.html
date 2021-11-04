@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style/base.css" type="text/css" />
+    </head>
+	<script>
+  function readSingleFile(evt) {
+    var f = evt.target.files[0]; 
+    if (f) {
+      var r = new FileReader();
+      r.onload = function(e) { 
+          var contents = e.target.result;
+          document.write("File Uploaded! <br />" + "name: " + f.name + "<br />" + "content: " + contents + "<br />" + "type: " + f.type + "<br />" + "size: " + f.size + " bytes <br />");
+
+          var lines = contents.split("\n"), output = [];
+          for (var i=0; i<lines.length; i++){
+            output.push("<tr><td>" + lines[i].split(",").join("</td><td>") + "</td></tr>");
+          }
+          output = "<table>" + output.join("") + "</table>";
+          document.write(output);
+     }
+      r.readAsText(f);
+      document.write(output);
+    } else { 
+      alert("Failed to load file");
+    }
+  }
+  document.getElementById('fileinput').addEventListener('change', readSingleFile);
+</script>
+    <body class="m-0">
+        <div class="py-4">
+            <div class="container">
+                <h2>Welcome to the <strong>Specimen Data Refinery</strong>, part of SYNTHESIS+</h2>
+                <form>
+      Upload some files?
+      <br/>
+      <input type="file" id="uploaded_data"/>
+      <br/>
+      <input type="submit" onmouseup="uploadConfirmation()"/>
+      <button type="button" onclick="displayData()">Display Data</button>
+    </form>
+            </div>
+            
+        </div>
+        
+    </body>
+</html>
