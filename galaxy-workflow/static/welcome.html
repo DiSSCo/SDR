@@ -4,7 +4,20 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="style/base.css" type="text/css" />
     </head>
-	<script>
+
+    <body class="m-0">
+        <div class="py-4">
+            <div class="container">
+                <h2>Welcome to the <strong>Specimen Data Refinery</strong>, part of SYNTHESIS+</h2>
+                <form>
+      Upload some files?
+      <br/>
+      <input type="file" id="fileinput"/>
+      <br/>
+      <input type="submit" onmouseup="uploadConfirmation()"/>
+      <button type="button" onclick="displayData()">Display Data</button>
+    </form>
+		<script>
   function readSingleFile(evt) {
     var f = evt.target.files[0]; 
     if (f) {
@@ -28,18 +41,6 @@
   }
   document.getElementById('fileinput').addEventListener('change', readSingleFile);
 </script>
-    <body class="m-0">
-        <div class="py-4">
-            <div class="container">
-                <h2>Welcome to the <strong>Specimen Data Refinery</strong>, part of SYNTHESIS+</h2>
-                <form>
-      Upload some files?
-      <br/>
-      <input type="file" id="fileinput"/>
-      <br/>
-      <input type="submit" onmouseup="uploadConfirmation()"/>
-      <button type="button" onclick="displayData()">Display Data</button>
-    </form>
             </div>
             
         </div>
