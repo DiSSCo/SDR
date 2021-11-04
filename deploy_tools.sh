@@ -40,7 +40,7 @@ cp -rf ~/SDR/galaxy-workflow/visualisations/roi ~/galaxy/config/plugins/visualiz
 
 #copy static content
 strEcho "Updating statics"
-cp -rf ~/SDR/galaxy-workflow/static ~/galaxy/static/
+cp -rf ~/SDR/galaxy-workflow/static/* ~/galaxy/static/
 
 #copy data type config files
 
