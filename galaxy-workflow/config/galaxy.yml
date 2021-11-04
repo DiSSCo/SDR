@@ -109,7 +109,7 @@ uwsgi:
 
 galaxy:
 
-  admin_users: paul.brack@manchester.ac.uk,l.livermore@nhm.ac.uk
+  admin_users: paul.brack@manchester.ac.uk,l.livermore@nhm.ac.uk, ben@benscott.co.uk
   require_login: true
   allow_user_creation: false
   allow_user_deletion: true
@@ -1538,7 +1538,7 @@ galaxy:
   # Admin section of the server, and will have access to create users,
   # groups, roles, libraries, and more.  For more information, see:
   # https://galaxyproject.org/admin/
-  admin_users: ben@benscott.co.uk
+
 
   # Force everyone to log in (disable anonymous access).
   #require_login: false
