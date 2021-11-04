@@ -15,38 +15,34 @@
 			        <br/>
 			        <input type="file" id="fileinput"/>
 				</form>
-				<div id="upload_results"></div>
+				<div id="upload_results1"></div>
+				<div id="upload_results2"></div>
 				<script>
 				    function readSingleFile(evt) {
-						console.log("event triggered");
 						var f = evt.target.files[0]; 
 						if (f) {
-							console.log("file found");
 							var r = new FileReader();
                             r.onload = function(e) { 
-								console.log("file loaded");
 								var contents = e.target.result;
-								console.log(contents);
-								document.write("File Uploaded! <br />" + "name: " + f.name + "<br />" + "type: " + f.type + "<br />" + "size: " + f.size + " bytes <br />");
-							
+								var success_text = "File Uploaded! <br />" + "name: " + f.name + "<br />" + "type: " + f.type + "<br />" + "size: " + f.size + " bytes <br />";
 								var lines = contents.split("\n"), output = [];
 								for (var i=0; i<lines.length; i++) {
 								    output.push("<tr><td>" + lines[i].split(",").join("</td><td>") + "</td></tr>");
 								}
 								output = "<table>" + output.join("") + "</table>";
-								console.log(output);
+
 						    }
 							r.readAsText(f);
+							document.getElementById('upload_results1').innerHTML(success_text);
+							document.getElementById('upload_results2').innerHTML(output);
 						} 
 						else { 
 						    alert("Failed to load file");
 					    }
 				    }
 			 	    document.getElementById('fileinput').addEventListener('change', readSingleFile);
-					console.log("script loaded");
-				</script>
-				
-				
+					
+				</script>			
             </div>
         </div>
     </body>
