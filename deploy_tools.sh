@@ -38,6 +38,10 @@ cp -f ~/SDR/galaxy-workflow/config/galaxy.yml ~/galaxy/config/galaxy.yml
 strEcho "Updating visualisations"
 cp -rf ~/SDR/galaxy-workflow/visualisations/roi ~/galaxy/config/plugins/visualizations
 
+#copy static content
+strEcho "Updating statics"
+cp -rf ~/SDR/galaxy-workflow/static ~/galaxy/static/
+
 #copy data type config files
 
 strEcho "Restarting Galaxy server"
