@@ -22,6 +22,8 @@
 						if (f) {
 							var r = new FileReader();
                             r.onload = function(e) { 
+							var r = new FileReader();
+							r.onload = function(e) { 
 								var contents = e.target.result;
 								document.write("File Uploaded! <br />" + "name: " + f.name + "<br />" + "type: " + f.type + "<br />" + "size: " + f.size + " bytes <br />");
 							
@@ -30,7 +32,7 @@
 								    output.push("<tr><td>" + lines[i].split(",").join("</td><td>") + "</td></tr>");
 								}
 								output = "<table>" + output.join("") + "</table>";
-								document.getElementById('upload_results').write(output);
+								document.getElementById('upload_results').innerHTML(output);
 						    }
 						} 
 						else { 
