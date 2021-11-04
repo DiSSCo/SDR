@@ -21,10 +21,11 @@
 				    function readSingleFile(evt) {
 						var f = evt.target.files[0]; 
 						if (f) {
+							var success_text = "";
 							var r = new FileReader();
                             r.onload = function(e) { 
 								var contents = e.target.result;
-								var success_text = "File Uploaded! <br />" + "name: " + f.name + "<br />" + "type: " + f.type + "<br />" + "size: " + f.size + " bytes <br />";
+								success_text = "File Uploaded! <br />" + "name: " + f.name + "<br />" + "type: " + f.type + "<br />" + "size: " + f.size + " bytes <br />";
 								var lines = contents.split("\n"), output = [];
 								for (var i=0; i<lines.length; i++) {
 								    output.push("<tr><td>" + lines[i].split(",").join("</td><td>") + "</td></tr>");
