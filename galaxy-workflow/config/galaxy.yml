@@ -1085,7 +1085,7 @@ galaxy:
   # proxy in front of Galaxy - please ensure this header remains intact
   # to protect your users.  Uncomment and leave empty to not set the
   # `X-Frame-Options` header.
-  #x_frame_options: SAMEORIGIN
+  x_frame_options: SAMEORIGIN
 
   # nginx can also handle file uploads (user-to-Galaxy) via
   # nginx_upload_module. Configuration for this is complex and explained
