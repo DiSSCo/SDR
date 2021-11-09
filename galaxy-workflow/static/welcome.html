@@ -164,6 +164,7 @@
 								}
 								output = "<table>" + output.join("") + "</table>";
 								document.getElementById('upload_results').innerHTML = success_text;
+								document.getElementById("upload_results").style.display = "block";
 								document.getElementById('upload_results2').innerHTML = output;
 						    }
 							r.readAsText(f);
@@ -193,7 +194,7 @@
 								
 								//create dropdown to choose history
 								
-															    var xmlHttp = new XMLHttpRequest();
+								var xmlHttp = new XMLHttpRequest();
 								xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/api/histories", false ); // false for synchronous request
 								xmlHttp.send( null );
 								var histories = JSON.parse(xmlHttp.responseText);
