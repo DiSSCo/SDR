@@ -196,7 +196,7 @@
 						xmlHttp.open( "GET", v, false ); // false for synchronous request
 						xmlHttp.send( null );
 						wf = JSON.parse(xmlHttp.responseText);
-						console.log(wf);
+						console.log(wf.inputs[0]);
 					
 					}
 					
