@@ -8,7 +8,7 @@
 
     <body class="m-0">
         <div class="py-4">
-            <div class="container">
+            <div class="container" id="welcome-container">
                 <h2>Welcome to the <strong>Specimen Data Refinery</strong>, part of SYNTHESIS+</h2>
 				<p>Insert some text about the project here</p>
 				<h3>Bulk upload</h3>
@@ -65,7 +65,23 @@
 							    var xmlHttp = new XMLHttpRequest();
 								xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/api/workflows", false ); // false for synchronous request
 								xmlHttp.send( null );
-								alert( xmlHttp.responseText );
+								var workflows = JSON.parse(xmlHttp.responseText);
+var select = document.createElement("select");
+    select.name = "Workflows";
+    select.id = "Workflows"
+workflows.forEach(function(element){
+								var option = document.createElement("option");
+									option.text = element["name"];
+									option.value = element["url"];
+									select.appendChild(option);
+								
+									}
+								);
+                 var label = document.createElement("label");
+    label.innerHTML = "Choose your workflow: "
+    label.htmlFor = "Workflows";
+ 
+    document.getElementById("welcome-container").appendChild(label).appendChild(select);
 							
 							
 							
