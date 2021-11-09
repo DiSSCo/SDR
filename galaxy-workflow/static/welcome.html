@@ -73,7 +73,9 @@
 				<p>Insert some text about the project here</p>
 				<h3>Bulk upload</h3>
 				<p>This form can be used to schedule multiple digitisations at once.</p>
-				<p>Currently this bulk upload feature only supports up to 10 images at a time.</p>
+				<p>Select a workflow here:</p>
+				<div id="wf-holder"></div>
+				
 				<p>Uploads must be in the following format:
 					<ul>
 						<li>Comma separated value file, containing the following columns
@@ -103,6 +105,28 @@
 				<div id="upload_buttons"></div>
 				<div id="upload_results3"></div>
 				<script>
+				
+				
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/api/workflows", false ); // false for synchronous request
+				xmlHttp.send( null );
+				var workflows = JSON.parse(xmlHttp.responseText);
+				var select = document.createElement("select");
+				select.name = "Workflows";
+				select.id = "Workflows"
+				workflows.forEach(function(element){
+				var option = document.createElement("option");
+					option.text = element["name"];
+					option.value = element["url"];
+					select.appendChild(option);
+					}
+				);
+				var label = document.createElement("label");
+				label.innerHTML = "Choose your workflow: "
+				label.htmlFor = "Workflows";
+
+				document.getElementById("wf-holder").appendChild(label).appendChild(select);
+				
 				var lines = "";
 				var index = 1;
 				var selectedWorkflow = "";
@@ -177,25 +201,7 @@
 							
 							//create dropdown to choose workflow
 							
-							    var xmlHttp = new XMLHttpRequest();
-								xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/api/workflows", false ); // false for synchronous request
-								xmlHttp.send( null );
-								var workflows = JSON.parse(xmlHttp.responseText);
-								var select = document.createElement("select");
-								select.name = "Workflows";
-								select.id = "Workflows"
-								workflows.forEach(function(element){
-								var option = document.createElement("option");
-									option.text = element["name"];
-									option.value = element["url"];
-									select.appendChild(option);
-									}
-								);
-								var label = document.createElement("label");
-								label.innerHTML = "Choose your workflow: "
-								label.htmlFor = "Workflows";
 
-								document.getElementById("welcome-container").appendChild(label).appendChild(select);
 								
 								
 								//create dropdown to choose history
