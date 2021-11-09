@@ -59,6 +59,22 @@
 								document.getElementById('upload_results2').innerHTML = output;
 						    }
 							r.readAsText(f);
+							
+							//create dropdown to choose workflow
+							
+							    var xmlHttp = new XMLHttpRequest();
+								xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/api/workflows", false ); // false for synchronous request
+								xmlHttp.send( null );
+								alert( xmlHttp.responseText );
+							
+							
+							
+							//var xhr = new XMLHttpRequest();
+							//xhr.open("POST", "https://sdr.nhm.ac.uk/api", true);
+							//xhr.setRequestHeader('Content-Type', 'application/json');
+							//xhr.send(JSON.stringify({
+							//	value: value
+							//}));
 						} 
 						else { 
 						    alert("Failed to load file");

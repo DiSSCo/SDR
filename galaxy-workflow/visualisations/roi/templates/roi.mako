@@ -43,7 +43,7 @@
 		console.log(name, left, top, width, height);
 		var div = $('<div class="roi"><span>test</span></div>').width(width).height(height).css({top: top, left: left});
 		$('#roi-container').append(div);
-		$(div).children().first().text(name)		
+		$(div).children().first().text(name);
 	});
 	}
 </script>
