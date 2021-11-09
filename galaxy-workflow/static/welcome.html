@@ -6,7 +6,12 @@
 			#welcome-container {
 				font-family: Sans-Serif;
 			}
-		
+			#upload_results {
+				height:200px;
+				overflow-y:scroll;
+				border: 2px solid #009879;
+				display:none;
+			}
 			#upload_results2 {
 				max-height:300px;
 				overflow-y:scroll;
@@ -15,7 +20,7 @@
 			}
 			
 			#upload_results3 {
-				height:100px;
+				height:200px;
 				overflow-y:scroll;
 				border: 2px solid #009879;
 				display:none;
@@ -86,8 +91,10 @@
 			        <br/>
 			        <input type="file" id="fileinput"/>
 				</form>
+				<div id="upload_results"></div>
 				<div id="upload_results1"></div>
 				<div id="upload_results2"></div>
+				<div id="upload_buttons"></div>
 				<div id="upload_results3"></div>
 				<script>
 				var lines = "";
@@ -125,6 +132,7 @@
 						logDiv.appendChild(span);
 						logDiv.innerHTML += "<br/>";
 						logDiv.scrollTop = logDiv.scrollHeight;
+						top.document.getElementById("history-refresh-button").click();
 						
 						if(index < lines.length)
 						{
@@ -138,8 +146,7 @@
 						selectedWorkflow = document.getElementById("Workflows").value;
 						index = 1;
 						start = new Date().getTime();
-						InvokeWorkflow(lines, 0);
-						
+						InvokeWorkflow();
 					}
 				
 				    function readSingleFile(evt) {
@@ -156,7 +163,7 @@
 								    output.push("<tr><td>" + lines[i].split(",").join("</td><td>") + "</td></tr>");
 								}
 								output = "<table>" + output.join("") + "</table>";
-								document.getElementById('upload_results1').innerHTML = success_text;
+								document.getElementById('upload_results').innerHTML = success_text;
 								document.getElementById('upload_results2').innerHTML = output;
 						    }
 							r.readAsText(f);
@@ -204,12 +211,12 @@
 								label1.innerHTML = "Choose your history: "
 								label1.htmlFor = "Histories";
 
-								document.getElementById("welcome-container").appendChild(label1).appendChild(select1);
+								document.getElementById("upload_buttons").appendChild(label1).appendChild(select1);
 								
 								let btn = document.createElement("button");
 								btn.innerHTML = "Run workflow";
 								btn.addEventListener('click', runWorkflows);
-								document.getElementById("welcome-container").appendChild(btn);
+								document.getElementById("upload_buttons").appendChild(btn);
 
 						} 
 						else { 
