@@ -88,7 +88,7 @@
 							document.getElementById("welcome-container").appendChild(span);
 									
 							var xhr = new XMLHttpRequest();
-							xhr.open("POST", selectedWorkflow + "/invocations", true);
+							xhr.open("POST", selectedWorkflow + "/invocations", false);
 							xhr.setRequestHeader('Content-Type', 'application/json');
 							xhr.send(JSON.stringify({
 								history: "hist_id=" + document.getElementById("Histories").value,
