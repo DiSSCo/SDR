@@ -105,6 +105,18 @@
 								},
 								inputs_by: 'name'
 							}));
+							
+							xhr.onload = function() {
+							    if (xhr.status != 200) { // analyze HTTP status of the response
+									var span = document.createElement("span");
+									span.innerHTML = "Successfully bmitted specimen " + specimen[0];
+									document.getElementById("welcome-container").appendChild(span);
+								} else { // show the result
+									var span = document.createElement("span");
+									span.innerHTML = "ERROR: failed to submit specimen " + specimen[0];
+									document.getElementById("welcome-container").appendChild(span);
+								}
+							};
 
 						}		
 						top.document.getElementById("history-refresh-button").click();
