@@ -91,11 +91,11 @@
 				<div id="upload_results3"></div>
 				<script>
 				var lines = "";
-				var index = 0;
+				var index = 1;
 				var selectedWorkflow = "";
 				
 					function logInvocations() {
-						index++;
+						
 						var specimen = lines[index].split(",");
 								
 						var span = document.createElement("span");
@@ -132,7 +132,11 @@
 								document.getElementById("upload_results3").appendChild(span);
 							}
 						};
-						setTimeout(logInvocations, 0);
+						if(index < lines.length)
+						{
+							index++;
+							setTimeout(logInvocations, 0);
+						)
 					}
 				
 					function runWorkflows(evt) {
@@ -140,7 +144,7 @@
 						selectedWorkflow = document.getElementById("Workflows").value;
 						index = 0;
 						logInvocations(lines, 0);
-						top.document.getElementById("history-refresh-button").click();
+						
 					}
 				
 				    function readSingleFile(evt) {
