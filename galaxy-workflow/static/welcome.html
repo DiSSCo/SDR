@@ -81,7 +81,7 @@
 						var selectedWorkflow = document.getElementById("Workflows").value;
 						
 						lines.forEach( function(line) { //ignore headers
-						    var specimen = line[i].split(",");
+						    var specimen = line.split(",");
 									
 							var span = document.createElement("span");
 							span.innerHTML = "Submitted specimen " + specimen[0];
