@@ -42,6 +42,19 @@
 				<div id="upload_results1"></div>
 				<div id="upload_results2"></div>
 				<script>
+				var lines = "";
+				
+					function runWorkflows(evt) {
+					alert(lines);
+					
+													//var xhr = new XMLHttpRequest();
+							//xhr.open("POST", "https://sdr.nhm.ac.uk/api", true);
+							//xhr.setRequestHeader('Content-Type', 'application/json');
+							//xhr.send(JSON.stringify({
+							//	value: value
+							//}));
+					}
+				
 				    function readSingleFile(evt) {
 						var f = evt.target.files[0]; 
 						if (f) {
@@ -50,7 +63,7 @@
                             r.onload = function(e) { 
 								var contents = e.target.result;
 								success_text = "File Uploaded! <br />" + "name: " + f.name + "<br />" + "type: " + f.type + "<br />" + "size: " + f.size + " bytes <br />";
-								var lines = contents.split("\n"), output = [];
+								lines = contents.split("\n"), output = [];
 								for (var i=0; i<lines.length; i++) {
 								    output.push("<tr><td>" + lines[i].split(",").join("</td><td>") + "</td></tr>");
 								}
@@ -66,34 +79,28 @@
 								xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/api/workflows", false ); // false for synchronous request
 								xmlHttp.send( null );
 								var workflows = JSON.parse(xmlHttp.responseText);
-var select = document.createElement("select");
-    select.name = "Workflows";
-    select.id = "Workflows"
-workflows.forEach(function(element){
+								var select = document.createElement("select");
+								select.name = "Workflows";
+								select.id = "Workflows"
+								workflows.forEach(function(element){
 								var option = document.createElement("option");
 									option.text = element["name"];
 									option.value = element["url"];
 									select.appendChild(option);
-								
 									}
 								);
-                 var label = document.createElement("label");
-    label.innerHTML = "Choose your workflow: "
-    label.htmlFor = "Workflows";
- 
-    document.getElementById("welcome-container").appendChild(label).appendChild(select);
+								var label = document.createElement("label");
+								label.innerHTML = "Choose your workflow: "
+								label.htmlFor = "Workflows";
+
+								document.getElementById("welcome-container").appendChild(label).appendChild(select);
+								let btn = document.createElement("button");
+								btn.innerHTML = "Run workflow";
+								btn.addEventListener('click', runWorkflows);
+								document.getElementById("welcome-container").appendChild(btn);
 							
-							let btn = document.createElement("button");
-btn.innerHTML = "Run workflow";
-document.getElementById("welcome-container").appendChild(btn);
 							
-							
-							//var xhr = new XMLHttpRequest();
-							//xhr.open("POST", "https://sdr.nhm.ac.uk/api", true);
-							//xhr.setRequestHeader('Content-Type', 'application/json');
-							//xhr.send(JSON.stringify({
-							//	value: value
-							//}));
+
 						} 
 						else { 
 						    alert("Failed to load file");
