@@ -15,17 +15,10 @@
 		
 			#upload_results2 table {
 				border-collapse: collapse;
-				margin: 25px 0;
 				font-size: 0.9em;
 				font-family: sans-serif;
 			}
 			
-			#upload_results2 table thead tr {
-				background-color: #009879;
-				color: #ffffff;
-				text-align: left;
-			}
-
 			#upload_results2 table th,
 			#upload_results2 table td {
 				padding: 12px 15px;
@@ -36,6 +29,12 @@
 
 			#upload_results2 table tbody tr:nth-of-type(even) {
 				background-color: #f3f3f3;
+			}	
+			
+			#upload_results2 table tbody tr:first-child {
+				background-color: #009879;
+				color: #ffffff;
+				text-align: left;
 			}	
 		</style>
     </head>
@@ -65,7 +64,6 @@
 						</li>
 						<li>CSV assumes headers and that all columns are present</li>
 					</ul>
-				
 				</p>
                 <form>
 			        Upload 
