@@ -32,7 +32,10 @@
 				background-color: #009879;
 								padding:12px 15px;
 			}
-			
+			#upload_buttons {
+			border: 2px solid #009879;
+				padding:12px 15px;
+			}
 			#upload_results3 span{
 				display:block;
 				color: #ffffff;
@@ -226,6 +229,7 @@
 								label1.htmlFor = "Histories";
 
 								document.getElementById("upload_buttons").appendChild(label1).appendChild(select1);
+								document.getElementById("upload_buttons").innerHTML += "<br/>";
 								
 								let btn = document.createElement("button");
 								btn.innerHTML = "Run workflow";
