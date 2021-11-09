@@ -99,6 +99,37 @@
 								label.htmlFor = "Workflows";
 
 								document.getElementById("welcome-container").appendChild(label).appendChild(select);
+								
+								
+								//create dropdown to choose history
+								
+															    var xmlHttp = new XMLHttpRequest();
+								xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/api/histories", false ); // false for synchronous request
+								xmlHttp.send( null );
+								var histories = JSON.parse(xmlHttp.responseText);
+								var select1 = document.createElement("select");
+								select1.name = "Histories";
+								select1.id = "Histories"
+								workflows.forEach(function(element){
+								var option = document.createElement("option");
+									option.text = element["name"];
+									option.value = element["url"];
+									select1.appendChild(option);
+									}
+								);
+								var label1 = document.createElement("label");
+								label1.innerHTML = "Choose your history: "
+								label1.htmlFor = "Histories";
+
+								document.getElementById("welcome-container").appendChild(label1).appendChild(select1);
+								
+								
+								
+								
+								
+								
+								
+								
 								let btn = document.createElement("button");
 								btn.innerHTML = "Run workflow";
 								btn.addEventListener('click', runWorkflows);
