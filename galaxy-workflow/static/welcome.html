@@ -94,21 +94,14 @@
 				var index = 1;
 				var selectedWorkflow = "";
 				
-					function logInvocations() {
+					function InvokeWorkflow() {
 						
 						var specimen = lines[index].split(",");
-								
-						var span = document.createElement("span");
-						span.innerHTML = "Submitting specimen " + specimen[0];
-						var logDiv = document.getElementById("upload_results3");
-						logDiv.appendChild(span);
-						var objDiv = document.getElementById("your_div");
-						logDiv.scrollTop = logDiv.scrollHeight;
-								
+		
 						var xhr = new XMLHttpRequest();
 						xhr.open("POST", selectedWorkflow + "/invocations", false);
 						xhr.setRequestHeader('Content-Type', 'application/json');
-						xhr.send(JSON.stringify({
+						var payload = JSON.stringify({
 							history: "hist_id=" + document.getElementById("Histories").value,
 							inputs : {
 								"Catalog number": specimen[0],
@@ -122,12 +115,20 @@
 								"Person identifier": specimen[8]
 							},
 							inputs_by: 'name'
-						}));
+						});
+						xhr.send(payload);
+						
+						var span = document.createElement("span");
+						span.innerHTML = "Submitting specimen " + specimen[0] + " with payload: " + payload;
+						var logDiv = document.getElementById("upload_results3");
+						logDiv.appendChild(span);
+						var objDiv = document.getElementById("your_div");
+						logDiv.scrollTop = logDiv.scrollHeight;
 						
 						if(index < lines.length)
 						{
 							index++;
-							setTimeout(logInvocations, 0);
+							setTimeout(InvokeWorkflow, 0);
 						}
 					}
 				
@@ -135,7 +136,7 @@
 						document.getElementById("upload_results3").style.display = "block";
 						selectedWorkflow = document.getElementById("Workflows").value;
 						index = 1;
-						logInvocations(lines, 0);
+						InvokeWorkflow(lines, 0);
 						
 					}
 				
