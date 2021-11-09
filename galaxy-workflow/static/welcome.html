@@ -93,6 +93,7 @@
 				var lines = "";
 				var index = 1;
 				var selectedWorkflow = "";
+				var start = "";
 				
 					function InvokeWorkflow() {
 						
@@ -119,7 +120,7 @@
 						xhr.send(payload);
 						
 						var span = document.createElement("span");
-						span.innerHTML = new Date() + ">> Submitting specimen " + specimen[0] + " with payload: " + payload;
+						span.innerHTML = (new Date().getTime() - start) + "ms > Submitting specimen " + specimen[0] + " with payload: " + payload;
 						var logDiv = document.getElementById("upload_results3");
 						logDiv.appendChild(span);
 						logDiv.innerHTML += "<br/>";
@@ -137,7 +138,7 @@
 						selectedWorkflow = document.getElementById("Workflows").value;
 						index = 1;
 						InvokeWorkflow(lines, 0);
-						
+						start = new Date().getTime();
 					}
 				
 				    function readSingleFile(evt) {
