@@ -135,11 +135,13 @@
 				label.htmlFor = "Workflows";
 
 				document.getElementById("wf-holder").appendChild(label).appendChild(select);
+				select.addEventListener('change', getWorkflowInputs);		
 				
 				var lines = "";
 				var index = 1;
 				var selectedWorkflow = "";
 				var start = "";
+				var wf = "";
 				
 					function InvokeWorkflow() {
 						
@@ -173,9 +175,9 @@
 						logDiv.scrollTop = logDiv.scrollHeight;
 						top.document.getElementById("history-refresh-button").click();
 						
+						index++;
 						if(index < lines.length - 1)
 						{
-							index++;
 							setTimeout(InvokeWorkflow, 0);
 						}
 					}
@@ -188,7 +190,17 @@
 						InvokeWorkflow();
 					}
 				
-				    function readSingleFile(evt) {
+				    function getWorkflowInputs(evt) {
+						var v = evt.target.value;
+						var xmlHttp = new XMLHttpRequest();
+						xmlHttp.open( "GET", v, false ); // false for synchronous request
+						xmlHttp.send( null );
+						wf = JSON.parse(xmlHttp.responseText);
+						console.log(wf);
+					
+					}
+					
+					function readSingleFile(evt) {
 						var f = evt.target.files[0]; 
 						if (f) {
 							document.getElementById("upload_results2").style.display = "block";
@@ -247,6 +259,7 @@
 					    }
 				    }
 			 	    document.getElementById('fileinput').addEventListener('change', readSingleFile);			
+					document.getElementById('fileinput').addEventListener('change', readSingleFile);			
 				</script>			
             </div>
         </div>
