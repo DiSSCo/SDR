@@ -197,7 +197,7 @@
 						xmlHttp.open( "GET", v, false ); // false for synchronous request
 						xmlHttp.send( null );
 						wf = JSON.parse(xmlHttp.responseText);
-						wf.inputs.forEach(function(element){
+						wf["inputs"].forEach(function(element){
 						var li = document.createElement("li");
 							li.innerHTML = element["name"];
 							document.getElementById('wf-inputs').appendChild(li);
