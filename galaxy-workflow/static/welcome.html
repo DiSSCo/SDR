@@ -137,8 +137,9 @@
 						document.getElementById("upload_results3").style.display = "block";
 						selectedWorkflow = document.getElementById("Workflows").value;
 						index = 1;
-						InvokeWorkflow(lines, 0);
 						start = new Date().getTime();
+						InvokeWorkflow(lines, 0);
+						
 					}
 				
 				    function readSingleFile(evt) {
