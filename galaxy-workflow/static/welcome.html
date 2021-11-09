@@ -125,7 +125,7 @@
 						    if (xhr.status != 200) { // analyze HTTP status of the response
 								var span = document.createElement("span");
 								span.innerHTML = "Successfully submitted specimen " + specimen[0];
-								document.getElementById("upload_results3").appendChild(span);
+								document.getElementById("upload_results3").innerHTML += "Successfully submitted specimen " + specimen[0] + "<br/>";
 							} else { // show the result
 								var span = document.createElement("span");
 								span.innerHTML = "ERROR: failed to submit specimen " + specimen[0];
