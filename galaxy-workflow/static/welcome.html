@@ -45,19 +45,26 @@
 				var lines = "";
 				
 					function runWorkflows(evt) {
-												
+						var selectedWorkflow = document.getElementById("Workflows").value;
 						
 						for (var i=1; i<lines.length; i++) { //ignore headers
 						    var specimen = lines[i].split(",");
-							console.log(specimen[0]);
+							console.log(specimen[0]); //id
+													
+							var xhr = new XMLHttpRequest();
+							xhr.open("POST", selectedWorkflow + "/invocations", false);
+							xhr.setRequestHeader('Content-Type', 'application/json');
+							xhr.send(JSON.stringify({
+								history: "hist_id=" + document.getElementById("Histories").value,
+								parameters : {
+									"Catalog number": specimen[0]
+								
+								
+								}
+							}));
 						}
 					
-													//var xhr = new XMLHttpRequest();
-							//xhr.open("POST", "https://sdr.nhm.ac.uk/api", true);
-							//xhr.setRequestHeader('Content-Type', 'application/json');
-							//xhr.send(JSON.stringify({
-							//	value: value
-							//}));
+													
 					}
 				
 				    function readSingleFile(evt) {
