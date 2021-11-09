@@ -136,7 +136,8 @@
 
 				document.getElementById("wf-holder").appendChild(label).appendChild(select);
 				select.addEventListener('change', getWorkflowInputs);		
-				select.change();
+				var event = new Event('change');
+				select.dispatchEvent(event);
 				
 				var lines = "";
 				var index = 1;
