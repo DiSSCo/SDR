@@ -56,8 +56,8 @@
 							xhr.setRequestHeader('Content-Type', 'application/json');
 							xhr.send(JSON.stringify({
 								history: "hist_id=" + document.getElementById("Histories").value,
-								ds_map : {
-									"Catalog number": specimen[0],
+								inputs : {
+									"Catalog number": specimen[0]
 //"Image license"
 //"Image URI"
 //"Object type"
@@ -68,7 +68,8 @@
 //"Person identifier"
 								
 								
-								}
+								},
+								inputs_by: 'name'
 							}));
 						}
 					
