@@ -100,7 +100,10 @@
 								
 						var span = document.createElement("span");
 						span.innerHTML = "Submitting specimen " + specimen[0];
-						document.getElementById("upload_results3").appendChild(span);
+						var logDiv = document.getElementById("upload_results3");
+						logDiv.appendChild(span);
+						var objDiv = document.getElementById("your_div");
+						logDiv.scrollTop = logDiv.scrollHeight;
 								
 						var xhr = new XMLHttpRequest();
 						xhr.open("POST", selectedWorkflow + "/invocations", false);
