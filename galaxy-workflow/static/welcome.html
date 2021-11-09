@@ -56,20 +56,25 @@
 							xhr.setRequestHeader('Content-Type', 'application/json');
 							xhr.send(JSON.stringify({
 								history: "hist_id=" + document.getElementById("Histories").value,
-								inputs : {
-									"Catalog number": specimen[0]
-//"Image license"
-//"Image URI"
-//"Object type"
-//"Rights holder"
-//"Institution URL"
-//"Higher classification"
-//"Person name"
-//"Person identifier"
-								
-								
-								},
-								inputs_by: 'name'
+								"steps": {
+									"0": {
+										"id": 0,
+										"type": "tool",
+										"tool_id": "sdr_create_sdo",
+										"tool_version": "0.1.0",
+										"annotation": null,
+										"tool_inputs": {
+											"catalog_number": "123",
+											"higher_classification": "",
+											"image_license": "CC0",
+											"image_uri": "",
+											"object_type": "Pinned insect",
+											"person_identifier": "",
+											"person_name": "",
+											"registered_institution_url": "",
+											"rights_holder": ""
+										}
+									}}
 							}));
 						}
 					
