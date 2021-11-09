@@ -48,10 +48,8 @@
 												
 						
 						for (var i=1; i<lines.length; i++) { //ignore headers
-						    var specimens = lines[i].split(",");
-							specimens.forEach(function(specimen){
-								console.log(specimen[0]); //id
-							});
+						    var specimen = lines[i].split(",");
+							console.log(specimen[0]);
 						}
 					
 													//var xhr = new XMLHttpRequest();
