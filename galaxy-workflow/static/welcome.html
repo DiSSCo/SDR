@@ -80,7 +80,7 @@
 					function runWorkflows(evt) {
 						var selectedWorkflow = document.getElementById("Workflows").value;
 						
-						lines.forEach(line) { //ignore headers
+						lines.forEach( function(line) { //ignore headers
 						    var specimen = line[i].split(",");
 									
 							var span = document.createElement("span");
@@ -118,7 +118,7 @@
 								}
 							};
 
-						}		
+						});	
 						top.document.getElementById("history-refresh-button").click();
 					}
 				
