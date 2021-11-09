@@ -108,9 +108,11 @@
 							
 							xhr.onload = function() {
 							    if (xhr.status != 200) { // analyze HTTP status of the response
-									var span = document.createElement("span");
-									span.innerHTML = "Successfully bmitted specimen " + specimen[0];
-									document.getElementById("welcome-container").appendChild(span);
+									setTimeout(function(){
+										var span = document.createElement("span");
+										span.innerHTML = "Successfully bmitted specimen " + specimen[0];
+										document.getElementById("welcome-container").appendChild(span);
+									}, 100);
 								} else { // show the result
 									var span = document.createElement("span");
 									span.innerHTML = "ERROR: failed to submit specimen " + specimen[0];
