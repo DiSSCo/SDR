@@ -11,6 +11,7 @@
 				max-height:300px;
 				overflow-y:scroll;
 				border: 2px solid #009879;
+				display:none;
 			}
 		
 			#upload_results2 table {
@@ -45,9 +46,9 @@
                 <h2>Welcome to the <strong>Specimen Data Refinery</strong>, part of SYNTHESIS+</h2>
 				<p>Insert some text about the project here</p>
 				<h3>Bulk upload</h3>
-				<p>This form can be used to schedule multiple digitisations at once</p>
-				<p>Currently this bulk upload feature only supports up to 10 imageses at once</p>
-				<p>Uploads must be in the following format
+				<p>This form can be used to schedule multiple digitisations at once.</p>
+				<p>Currently this bulk upload feature only supports up to 10 images at a time.</p>
+				<p>Uploads must be in the following format:
 					<ul>
 						<li>Comma separated value file, containing the following columns
 							<ul>
@@ -102,14 +103,13 @@
 								},
 								inputs_by: 'name'
 							}));
-						}
-					
-													
+						}		
 					}
 				
 				    function readSingleFile(evt) {
 						var f = evt.target.files[0]; 
 						if (f) {
+							document.getElementById("upload_results2").style.display = "block";
 							var success_text = "";
 							var r = new FileReader();
                             r.onload = function(e) { 
@@ -170,27 +170,17 @@
 
 								document.getElementById("welcome-container").appendChild(label1).appendChild(select1);
 								
-								
-								
-								
-								
-								
-								
-								
 								let btn = document.createElement("button");
 								btn.innerHTML = "Run workflow";
 								btn.addEventListener('click', runWorkflows);
 								document.getElementById("welcome-container").appendChild(btn);
-							
-							
 
 						} 
 						else { 
 						    alert("Failed to load file");
 					    }
 				    }
-			 	    document.getElementById('fileinput').addEventListener('change', readSingleFile);
-					
+			 	    document.getElementById('fileinput').addEventListener('change', readSingleFile);			
 				</script>			
             </div>
         </div>
