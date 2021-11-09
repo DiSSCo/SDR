@@ -99,8 +99,8 @@
 						var specimen = lines[index].split(",");
 								
 						var span = document.createElement("span");
-						span.innerHTML = "Submitted specimen " + specimen[0];
-						document.getElementById("welcome-container").appendChild(span);
+						span.innerHTML = "Submitting specimen " + specimen[0];
+						document.getElementById("upload_results3").appendChild(span);
 								
 						var xhr = new XMLHttpRequest();
 						xhr.open("POST", selectedWorkflow + "/invocations", false);
@@ -121,19 +121,7 @@
 							inputs_by: 'name'
 						}));
 						
-						xhr.onload = function() {
-						    if (xhr.status != 200) { // analyze HTTP status of the response
-								var span = document.createElement("span");
-								span.innerHTML = "Successfully submitted specimen " + specimen[0];
-								document.getElementById("upload_results3").innerHTML += "Successfully submitted specimen " + specimen[0] + "<br/>";
-							} else { // show the result
-								var span = document.createElement("span");
-								span.innerHTML = "ERROR: failed to submit specimen " + specimen[0];
-								document.getElementById("upload_results3").appendChild(span);
-							}
-						};
-						
-						if(index < lines.length - 1)
+						if(index < lines.length)
 						{
 							index++;
 							setTimeout(logInvocations, 0);
