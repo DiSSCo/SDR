@@ -191,12 +191,18 @@
 					}
 				
 				    function getWorkflowInputs(evt) {
+						document.getElementById('wf-inputs').innerHTML = "";
 						var v = evt.target.value;
 						var xmlHttp = new XMLHttpRequest();
 						xmlHttp.open( "GET", v, false ); // false for synchronous request
 						xmlHttp.send( null );
 						wf = JSON.parse(xmlHttp.responseText);
-						console.log(wf.inputs[0]);
+						wf.inputs.forEach(function(element){
+						var li = document.createElement("li");
+							li.innerHTML = element["name"];
+							document.getElementById('wf-inputs').appendChild(li);
+							}
+						);
 					
 					}
 					
