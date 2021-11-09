@@ -76,49 +76,53 @@
 				<div id="upload_results2"></div>
 				<script>
 				var lines = "";
+				var index = 0;
+				
+					function logInvocations() {
+						index++;
+						var specimen = lines[index].split(",");
+								
+						var span = document.createElement("span");
+						span.innerHTML = "Submitted specimen " + specimen[0];
+						document.getElementById("welcome-container").appendChild(span);
+								
+						var xhr = new XMLHttpRequest();
+						xhr.open("POST", selectedWorkflow + "/invocations", false);
+						xhr.setRequestHeader('Content-Type', 'application/json');
+						xhr.send(JSON.stringify({
+							history: "hist_id=" + document.getElementById("Histories").value,
+							inputs : {
+								"Catalog number": specimen[0],
+								"Image license": specimen[1],
+								"Image URI": specimen[2],
+								"Object type": specimen[3],
+								"Rights holder": specimen[4],
+								"Institution URL": specimen[5],
+								"Higher classification": specimen[6],
+								"Person name": specimen[7],
+								"Person identifier": specimen[8]
+							},
+							inputs_by: 'name'
+						}));
+						
+						xhr.onload = function() {
+						    if (xhr.status != 200) { // analyze HTTP status of the response
+								var span = document.createElement("span");
+								span.innerHTML = "Successfully bmitted specimen " + specimen[0];
+								document.getElementById("welcome-container").appendChild(span);
+							} else { // show the result
+								var span = document.createElement("span");
+								span.innerHTML = "ERROR: failed to submit specimen " + specimen[0];
+								document.getElementById("welcome-container").appendChild(span);
+							}
+						};
+						setTimeout(logInvocations, 1000);
+					}
 				
 					function runWorkflows(evt) {
 						var selectedWorkflow = document.getElementById("Workflows").value;
-						
-						lines.forEach( function(line) { //ignore headers
-						    var specimen = line.split(",");
-									
-							var span = document.createElement("span");
-							span.innerHTML = "Submitted specimen " + specimen[0];
-							document.getElementById("welcome-container").appendChild(span);
-									
-							var xhr = new XMLHttpRequest();
-							xhr.open("POST", selectedWorkflow + "/invocations", false);
-							xhr.setRequestHeader('Content-Type', 'application/json');
-							xhr.send(JSON.stringify({
-								history: "hist_id=" + document.getElementById("Histories").value,
-								inputs : {
-									"Catalog number": specimen[0],
-									"Image license": specimen[1],
-									"Image URI": specimen[2],
-									"Object type": specimen[3],
-									"Rights holder": specimen[4],
-									"Institution URL": specimen[5],
-									"Higher classification": specimen[6],
-									"Person name": specimen[7],
-									"Person identifier": specimen[8]
-								},
-								inputs_by: 'name'
-							}));
-							
-							xhr.onload = function() {
-							    if (xhr.status != 200) { // analyze HTTP status of the response
-									var span = document.createElement("span");
-									span.innerHTML = "Successfully bmitted specimen " + specimen[0];
-									document.getElementById("welcome-container").appendChild(span);
-								} else { // show the result
-									var span = document.createElement("span");
-									span.innerHTML = "ERROR: failed to submit specimen " + specimen[0];
-									document.getElementById("welcome-container").appendChild(span);
-								}
-							};
-
-						});	
+						index = 0;
+						logInvocations(lines, 0);
 						top.document.getElementById("history-refresh-button").click();
 					}
 				
