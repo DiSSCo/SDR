@@ -77,6 +77,7 @@
 				<script>
 				var lines = "";
 				var index = 0;
+				var selectedWorkflow = "";
 				
 					function logInvocations() {
 						index++;
@@ -120,7 +121,7 @@
 					}
 				
 					function runWorkflows(evt) {
-						var selectedWorkflow = document.getElementById("Workflows").value;
+						selectedWorkflow = document.getElementById("Workflows").value;
 						index = 0;
 						logInvocations(lines, 0);
 						top.document.getElementById("history-refresh-button").click();
