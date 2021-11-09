@@ -30,7 +30,7 @@
 								<li>Person identifier</li>
 							</ul>
 						</li>
-						<li>CSV may contain headers</li>
+						<li>CSV assumes headers and that all columns are present</li>
 					</ul>
 				
 				</p>
@@ -45,7 +45,14 @@
 				var lines = "";
 				
 					function runWorkflows(evt) {
-					alert(lines);
+												
+						
+						for (var i=1; i<lines.length; i++) { //ignore headers
+						    var specimens = lines[i].split(",");
+							specimens.forEach(function(specimen){
+								console.log(specimen[0]); //id
+							});
+						}
 					
 													//var xhr = new XMLHttpRequest();
 							//xhr.open("POST", "https://sdr.nhm.ac.uk/api", true);
