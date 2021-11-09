@@ -84,7 +84,7 @@
 							console.log(specimen[0]); //id
 													
 							var xhr = new XMLHttpRequest();
-							xhr.open("POST", selectedWorkflow + "/invocations", false);
+							xhr.open("POST", selectedWorkflow + "/invocations", true);
 							xhr.setRequestHeader('Content-Type', 'application/json');
 							xhr.send(JSON.stringify({
 								history: "hist_id=" + document.getElementById("Histories").value,
