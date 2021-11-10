@@ -1,10 +1,9 @@
 Catalog number,Image license,Image URI,Object type,Rights holder,Institution URL,Higher classification,Person name,Person identifier
 1084118,CC BY,https://raw.githubusercontent.com/DiSSCo/SDR/main/galaxy-workflow/samples/images/nhmuk-1084118.jpg,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
 1851836,CC BY,https://raw.githubusercontent.com/DiSSCo/SDR/main/galaxy-workflow/samples/images/nhmuk-1851836.jpg,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
-1253990,CC BY,https://raw.githubusercontent.com/DiSSCo/SDR/main/galaxy-workflow/samples/images/nhmuk-012539905.jpg,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
-12498561,CC BY,,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
-13386817,CC BY,,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
-13468215,CC BY,,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
-13376768,CC BY,,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
-13603705,CC BY,,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
-10810819,CC BY,,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
+1253990,CC BY,https://raw.githubusercontent.com/DiSSCo/SDR/main/galaxy-workflow/samples/images/nhmuk-012539905-small.jpg,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
+10265972,CC BY,,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
+10515412,CC BY,,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
+10519126,CC BY,,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
+10615522,CC BY,,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
+12495516,CC BY,,Pinned insect,NHM,http://nhm.ac.uk,Insecta,Test Person,ABC123
