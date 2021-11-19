@@ -9,14 +9,13 @@
 
     <command><![CDATA[
 	JQ_BIN=`which jq` &&
-    \$JQ_BIN -r -S '.payloads' '$input' > '$output'
-		]]></command>
+    FILENAME=\$JQ_BIN -r -S '.payloads' '$input' && 
+	worker-dla -i '$input' -o '$output' --image /home/paulb1/tempImages/$FILENAME
+	]]></command>
 
     <inputs>
-
-        <param name="input" type="data" format="json" label="Open Digital specimen object" />
-      
-     </inputs>
+        <param name="input" type="data" format="json" label="Open Digital specimen object" />    
+    </inputs>
 
     <outputs>
         <data format="json" name="output" />
