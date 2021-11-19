@@ -16,7 +16,7 @@
 
 	    FILENAME=$(jq '.payloads.filename' $input)
 		echo $FILENAME > $output
-        worker-dla -i '$input' -o '$output' --image /images/$FILENAME
+       
     </command>
 
     <inputs>
