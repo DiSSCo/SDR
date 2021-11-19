@@ -2,12 +2,6 @@
 
     <description>Teklia Worker DLA for Synthesis+</description>
 
-    <macros>
-        <xml name="opends_property" token_name="" token_property="">
-            <param name="opends.@NAME@" type="hidden" value="@PROPERTY@" />
-        </xml>
-    </macros>
-
     <requirements>
         <container type="docker">teklia/synthesis-worker-dla</container>
     </requirements>
@@ -20,8 +14,7 @@
     <inputs>
 
         <param name="input" type="data" format="json" label="Open Digital specimen object" />
-        <expand macro="opends_property" name="filename" property="$.payloads.filename" />
-
+      
      </inputs>
 
     <outputs>
