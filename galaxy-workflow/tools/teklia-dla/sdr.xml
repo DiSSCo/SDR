@@ -13,7 +13,7 @@
     </requirements>
 
     <command>
-	    $(jq .payloads.filename '$input') > $output
+	    $(jq .payloads '$input') > $output
     </command>
 
     <inputs>
