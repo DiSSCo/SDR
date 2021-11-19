@@ -13,11 +13,7 @@
     </requirements>
 
     <command>
-
-	    FILENAME=$(jq .payloads.filename '$input')
-		
-		echo $FILENAME > $output
-       
+	    $(jq .payloads.filename '$input') > $output
     </command>
 
     <inputs>
