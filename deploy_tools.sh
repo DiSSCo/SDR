@@ -35,7 +35,7 @@ cp -f ~/SDR/galaxy-workflow/config/opends-schema.json ~/galaxy/config/opends-sch
 cp -f ~/SDR/galaxy-workflow/config/galaxy.yml ~/galaxy/config/galaxy.yml
 
 #copy data type files
-cp -f ~/SDR/galaxy-workflow/config/galaxy.yml ~/galaxy/config/datatypes_conf.xml
+cp -f ~/SDR/galaxy-workflow/config/datatypes_conf.xml ~/galaxy/config/datatypes_conf.xml
 
 #copy visualisations
 strEcho "Updating visualisations"
