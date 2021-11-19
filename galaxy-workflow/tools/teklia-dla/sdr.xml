@@ -2,8 +2,6 @@
 
     <description>Teklia Worker DLA for Synthesis+</description>
 
-    <code file="code.py"/>
-
     <macros>
         <xml name="opends_property" token_name="" token_property="">
             <param name="opends.@NAME@" type="hidden" value="@PROPERTY@" />
@@ -15,7 +13,8 @@
     </requirements>
 
     <command>
-        worker-dla -i '$input' -o '$output' --image '/images/$opends_properties["filename"]'
+	    FILENAME=$(jq '.payloads.filename' $input)
+        worker-dla -i '$input' -o '$output' --image /images/$FILENAME
     </command>
 
     <inputs>

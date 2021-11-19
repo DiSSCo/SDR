@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <datatypes>
   <registration converters_path="lib/galaxy/datatypes/converters" display_path="display_applications">
-	    <datatype extension="opends" type="galaxy.datatypes.text:Json" mimetype="application/json" subclass="true" display_in_upload="true"/>
+	<datatype extension="opends" type="galaxy.datatypes.text:Json" mimetype="application/json" subclass="true" display_in_upload="true"/>
     <datatype extension="jp2" type="galaxy.datatypes.binary:JP2" mimetype="application/octet-stream" display_in_upload="true"/>
     <datatype extension="ab1" type="galaxy.datatypes.binary:Ab1" mimetype="application/octet-stream" display_in_upload="true" description="A binary sequence file in 'ab1' format with a '.ab1' file extension.  You must manually select this 'File Format' when uploading the file." description_url="https://wiki.galaxyproject.org/Learn/Datatypes#Ab1"/>
     <datatype extension="afg" type="galaxy.datatypes.assembly:Amos" display_in_upload="false"/>
