@@ -8,8 +8,7 @@
     </requirements>
 
     <command><![CDATA[
-	JQ_BIN=`which jq` &&
-    \$JQ_BIN '.payloads' '$input' > '$output'
+	jq '.payloads' '$input' > '$output'
 		]]></command>
 
     <inputs>
