@@ -13,7 +13,7 @@
     </requirements>
 
     <command>
-	    jq .payloads $input > $output
+	    /bin/jq .payloads $input > $output
     </command>
 
     <inputs>
