@@ -9,7 +9,7 @@
 
     <command><![CDATA[
 	JQ_BIN=`which jq` &&
-    FILENAME=$('\$JQ_BIN' -r -S '.payloads' '$input') && 
+    FILENAME=$('\$JQ_BIN' -r -S .payloads.filename '$input') && 
 	worker-dla -i '$input' -o '$output' --image /home/paulb1/tempImages/$FILENAME
 	]]></command>
 
