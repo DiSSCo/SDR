@@ -9,7 +9,7 @@
 
     <command><![CDATA[
 	JQ_BIN=`which jq` &&
-    cat '$input' | \$JQ_BIN '.payloads' > '$output'
+    \$JQ_BIN '.payloads' '$input' > '$output'
 		]]></command>
 
     <inputs>
