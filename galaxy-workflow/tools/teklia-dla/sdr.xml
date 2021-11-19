@@ -13,7 +13,8 @@
     </requirements>
 
     <command>
-	    /usr/bin/jq .payloads $input > $output
+	    JQ_BIN=`which jq` &&
+        cat '$input' | env -i JQ_BIN=\$JQ_BIN \$JQ_BIN -r -S .payloads
     </command>
 
     <inputs>
