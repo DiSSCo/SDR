@@ -4,10 +4,10 @@
 
     <requirements>
         <container type="docker">teklia/synthesis-worker-dla</container>
+        <requirement type="package" version="1.5">jq</requirement>
     </requirements>
 
     <command><![CDATA[
-JQ_BIN='which jq' && 
 cat '$input' | env -i JQ_BIN=\$JQ_BIN \$JQ_BIN -r -S '.payloads' > '$output'
 		]]></command>
 
