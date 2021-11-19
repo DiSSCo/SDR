@@ -15,7 +15,7 @@ end.parse!
 open_ds = JSON.parse(File.read(options[:open_ds]))
 
 ##### Create a file name
-local_folder = '/home/osboxes'
+local_folder = ENV["SDR_IMAGE_DOWNLOAD_DIRECTORY"]
 image_uri = open_ds["images"]["availableImages"][0]["source"]
 ext = FastImage.type(image_uri).to_s #get file type by mime type
 file_name = "#{SecureRandom.uuid}.#{ext}" 
