@@ -6,7 +6,10 @@
         <container type="docker">teklia/synthesis-worker-dla</container>
     </requirements>
 
-    <command>JQ_BIN='which jq' && cat '$input' | env -i JQ_BIN=\$JQ_BIN \$JQ_BIN -r -S .payloads</command>
+    <command><![CDATA[
+JQ_BIN='which jq' && 
+cat '$input' | env -i JQ_BIN=\$JQ_BIN \$JQ_BIN -r -S '.payloads' > '$output'
+		]]</command>
 
     <inputs>
 
