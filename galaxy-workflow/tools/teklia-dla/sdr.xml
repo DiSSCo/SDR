@@ -14,7 +14,8 @@
 
     <command>
 
-	    FILENAME=$(jq '.payloads.filename' $input)
+	    FILENAME=$(jq .payloads.filename '$input')
+		
 		echo $FILENAME > $output
        
     </command>
