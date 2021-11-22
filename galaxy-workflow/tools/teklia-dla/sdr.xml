@@ -7,14 +7,13 @@
         <requirement type="package" version="1.5">jq</requirement>
     </requirements>
 
-    <command><![CDATA[
-	JQ_BIN=`which jq` &&
-    FILENAME=$('\$JQ_BIN' -r -S .payloads.filename '$input') && 
-	worker-dla -i '$input' -o '$output' --image /home/paulb1/tempImages/$FILENAME
-	]]></command>
+    <command>
+        worker-dla -i '$input' -o '$output' --image '/images/$file_location'
+    </command>
 
     <inputs>
         <param name="input" type="data" format="json" label="Open Digital specimen object" />    
+		<param format="text" name="file_location" type="text" label="File location"/>
     </inputs>
 
     <outputs>
