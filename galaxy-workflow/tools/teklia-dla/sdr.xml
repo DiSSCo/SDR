@@ -13,7 +13,7 @@
 
     <inputs>
         <param name="input" type="data" format="json" label="Open Digital specimen object" />    
-		<param format="text" name="file_location" type="text" label="File location"/>
+		<param format="json" name="file_location" type="text" label="File location"/>
     </inputs>
 
     <outputs>
