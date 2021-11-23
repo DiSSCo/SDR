@@ -295,7 +295,7 @@
 						xmlHttp.send( null );
 						var hist = JSON.parse(xmlHttp.responseText);
 						var state_ids = hist["state_ids"];
-						if(state_ids["new"].length===0 && (state_ids["upload"].length===0 && (state_ids["queued"].length===0 && (state_ids["running"].length===0)
+						if(state_ids["new"].length===0 && state_ids["upload"].length===0 && state_ids["queued"].length===0 && state_ids["running"].length===0)
 						{
 							processResults(historyId);
 						}
