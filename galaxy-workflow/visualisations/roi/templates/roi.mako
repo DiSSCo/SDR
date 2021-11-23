@@ -24,26 +24,29 @@
 	var sdoId = '${trans.security.encode_id( sdo.id )}';
 	var dataUrl = rawUrl + '/' + sdoId + '/display?to_ext=json';
 	
-	$.ajax(dataUrl, {
-		        dataType    : 'text',
-		        success     : parseJson
-		    });
-	function parseJson( data ) {
-		
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET", "dataUrl", false ); // false for synchronous request
+	xmlHttp.send( null );
 
-	    var opends = JSON.parse(data);
-		$('img#roi-image').attr('src', opends['images']['availableImages'][0]['source']);
+	var opends = JSON.parse(xmlHttp.responseText);
+    document.getElementById("roi-image").src = opends['images']['availableImages'][0]['source'];
 	
-		opends['regions'].forEach(function(x, i){ 
+	opends['regions'].forEach(function(x, i){ 
 		var left = x['polygon'][0][0];
 		var top = x['polygon'][0][1];
 		var width = x['polygon'][2][0] - x['polygon'][0][0];
 		var height = x['polygon'][3][1] - x['polygon'][0][1];
 		var name = x['class_name'];
 		console.log(name, left, top, width, height);
-		var div = $('<div class="roi"><span>test</span></div>').width(width).height(height).css({top: top, left: left});
-		$('#roi-container').append(div);
-		$(div).children().first().text(name);
+		var div =  document.createElement("div");
+		var span =  document.createElement("span");
+		span.innerHTML = name;
+		div.appendChild(span);
+		document.getElementById("#roi-container").appendChild(div);
+		div.setAttribute("style","width:" + width + "px");
+		div.setAttribute("style","height:" + height + "px");
+		div.setAttribute("style","top:" + top + "px");
+		div.setAttribute("style","left:" + left + "px");
 	});
-	}
+	
 </script>
