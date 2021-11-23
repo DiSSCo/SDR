@@ -255,7 +255,9 @@
 						xhr.send(payload);
 						
 						//save the invocation id 
-						invocationIds.push(JSON.parse(xmlHttp.responseText)["id"]);
+						var invocationResult = JSON.parse(xmlHttp.responseText);
+						invocationIds.push(invocationResult["url"]);
+						alert(invocationIds[0]);
 						
 						var span = document.createElement("span");
 						span.innerHTML = (new Date().getTime() - start) + "ms > Submitting specimen " + specimen[0] + " with payload: " + payload;
