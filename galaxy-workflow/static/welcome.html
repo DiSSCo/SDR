@@ -92,6 +92,8 @@
 			  position: relative;
 			  width: 80px;
 			  height: 80px;
+			  margin: auto;
+			  padding: 10px;
 			}
 			.lds-spinner div {
 			  transform-origin: 40px 40px;
@@ -333,7 +335,7 @@
 							});
 							//now we have the output job id	we can get the result					
 							
-							url = "api/histories/" + historyId + "/contents/" + jobId + "/display";
+							url = "/api/histories/" + historyId + "/contents/" + jobId + "/display";
 							xmlHttp.open( "GET", url, false ); // false for synchronous request
 							xmlHttp.send( null );
 							var output = xmlHttp.responseText;
@@ -350,6 +352,8 @@
 						
 						document.getElementById("Workflows").disabled=true;
 						document.getElementById("Histories").disabled=true;
+						document.getElementById("fileinput").disabled=true;
+						document.getElementById("upload_buttons").querySelector('button').disabled=true;
 						invocationIds = [];
 						InvokeWorkflow();
 					}
