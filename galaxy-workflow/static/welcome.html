@@ -313,6 +313,8 @@
 						document.getElementById("spinner").style.display = "none";
 						var jobId = "";
 						invocationIds.forEach(function(invocationId){
+							console.log(invocationIds);
+							console.log(invocationId);
 							var url = "/api/invocations/" + invocationId;
 							var xmlHttp = new XMLHttpRequest();
 							xmlHttp.open( "GET", url, false ); // false for synchronous request
