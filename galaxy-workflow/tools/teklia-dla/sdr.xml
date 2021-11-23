@@ -9,7 +9,7 @@
 
     <command>
 	<![CDATA[
-	 worker-dla -i $input -o $output --image /images/tempImages/`cat $file_location`
+	 worker-dla -i $input -o $output --image /images/tempImages/5053a116-aa38-400b-9333-572a1f2e7ad2.jpeg
 	 ]]>
     </command>
 
