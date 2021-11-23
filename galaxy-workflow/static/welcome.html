@@ -272,7 +272,11 @@
 						}
 						else
 						{
-							pollHistories(historyId);
+							document.getElementById("upload_results4").style.display = "block";
+							document.getElementById("spinner").style.display = "block";
+							setTimeout(function() {
+								pollHistories(historyId);
+							}, 2000);
 
 							//when they're empty, iterate through an array of invocations and get them like this
 							//https://sdr.nhm.ac.uk/api/invocations/c6584a5370802cb6
@@ -286,8 +290,7 @@
 					function pollHistories(historyId) {
 					
 						//show results panel
-						document.getElementById("upload_results4").style.display = "block";
-						document.getElementById("spinner").style.display = "block";
+
 					
 						var url = "/api/histories/" + historyId;
 						var xmlHttp = new XMLHttpRequest();
