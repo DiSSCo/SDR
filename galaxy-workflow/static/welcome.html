@@ -325,7 +325,7 @@
 							alert(invocationId);
 							var hist = JSON.parse(xmlHttp.responseText);
 							//iterate through the steps
-							jobId = hist["steps"][hist["steps"].length - 2] //TODO: why does it need to be the second to last?????
+							jobId = hist["steps"][hist["steps"].length - 2]["job_id"]; //TODO: why does it need to be the second to last?????
 							//now we have the output job id	we can get the result					
 							
 							url = "/api/histories/" + historyId + "/contents/" + jobId + "/display";
