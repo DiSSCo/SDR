@@ -71,6 +71,9 @@
 				color: #ffffff;
 				text-align: left;
 			}	
+			#upload_results4 {
+				display:none;
+			}
 			#fileinput{
 				display:block;
 				padding:0.46em 1.6em;
@@ -82,6 +85,84 @@
 				color:#fff;
 				background-color:#009879;
 				text-align:center;
+			}
+			.lds-spinner {
+			  color: official;
+			  display: inline-block;
+			  position: relative;
+			  width: 80px;
+			  height: 80px;
+			}
+			.lds-spinner div {
+			  transform-origin: 40px 40px;
+			  animation: lds-spinner 1.2s linear infinite;
+			}
+			.lds-spinner div:after {
+			  content: " ";
+			  display: block;
+			  position: absolute;
+			  top: 3px;
+			  left: 37px;
+			  width: 6px;
+			  height: 18px;
+			  border-radius: 20%;
+			  background: #009879;
+			}
+			.lds-spinner div:nth-child(1) {
+			  transform: rotate(0deg);
+			  animation-delay: -1.1s;
+			}
+			.lds-spinner div:nth-child(2) {
+			  transform: rotate(30deg);
+			  animation-delay: -1s;
+			}
+			.lds-spinner div:nth-child(3) {
+			  transform: rotate(60deg);
+			  animation-delay: -0.9s;
+			}
+			.lds-spinner div:nth-child(4) {
+			  transform: rotate(90deg);
+			  animation-delay: -0.8s;
+			}
+			.lds-spinner div:nth-child(5) {
+			  transform: rotate(120deg);
+			  animation-delay: -0.7s;
+			}
+			.lds-spinner div:nth-child(6) {
+			  transform: rotate(150deg);
+			  animation-delay: -0.6s;
+			}
+			.lds-spinner div:nth-child(7) {
+			  transform: rotate(180deg);
+			  animation-delay: -0.5s;
+			}
+			.lds-spinner div:nth-child(8) {
+			  transform: rotate(210deg);
+			  animation-delay: -0.4s;
+			}
+			.lds-spinner div:nth-child(9) {
+			  transform: rotate(240deg);
+			  animation-delay: -0.3s;
+			}
+			.lds-spinner div:nth-child(10) {
+			  transform: rotate(270deg);
+			  animation-delay: -0.2s;
+			}
+			.lds-spinner div:nth-child(11) {
+			  transform: rotate(300deg);
+			  animation-delay: -0.1s;
+			}
+			.lds-spinner div:nth-child(12) {
+			  transform: rotate(330deg);
+			  animation-delay: 0s;
+			}
+			@keyframes lds-spinner {
+			  0% {
+				opacity: 1;
+			  }
+			  100% {
+				opacity: 0;
+			  }
 			}
 
 		</style>
@@ -113,8 +194,12 @@
 				<div id="upload_results2"></div>
 				<div id="upload_buttons"></div>
 				<div id="upload_results3"></div>
-				<script>
+				<div id="upload_results4">
 				
+					<div class="lds-spinner" id="spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+					
+				</div>
+				<script>
 				
 				var xmlHttp = new XMLHttpRequest();
 				xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/api/workflows", false ); // false for synchronous request
@@ -138,6 +223,7 @@
 				select.addEventListener('change', getWorkflowInputs);		
 				var event = new Event('change');
 				select.dispatchEvent(event);
+				var invocationIds = [];
 				
 				var lines = "";
 				var index = 1;
@@ -146,14 +232,13 @@
 				var wf = "";
 				
 					function InvokeWorkflow() {
-						
 						var specimen = lines[index].split(",");
-		
+						var historyId = document.getElementById("Histories").value;
 						var xhr = new XMLHttpRequest();
 						xhr.open("POST", selectedWorkflow + "/invocations", false);
 						xhr.setRequestHeader('Content-Type', 'application/json');
 						var payload = JSON.stringify({
-							history: "hist_id=" + document.getElementById("Histories").value,
+							history: "hist_id=" + historyId,
 							inputs : {
 								"Catalog number": specimen[0],
 								"Image license": specimen[1],
@@ -169,6 +254,9 @@
 						});
 						xhr.send(payload);
 						
+						//save the invocation id 
+						invocationIds.push(JSON.parse(xmlHttp.responseText)["id"]);
+						
 						var span = document.createElement("span");
 						span.innerHTML = (new Date().getTime() - start) + "ms > Submitting specimen " + specimen[0] + " with payload: " + payload;
 						var logDiv = document.getElementById("upload_results3");
@@ -182,13 +270,78 @@
 						{
 							setTimeout(InvokeWorkflow, 0);
 						}
+						else
+						{
+							pollHistories(historyId);
+
+							//when they're empty, iterate through an array of invocations and get them like this
+							//https://sdr.nhm.ac.uk/api/invocations/c6584a5370802cb6
+							//from here get the download_url element and here's the results file
+							//https://sdr.nhm.ac.uk/api/histories/72ad249754f05d26/contents/fd15bdea5ab485cd/display
+							//now zip them up clientside and download like this
+							//https://stuk.github.io/jszip/
+						}
+					}
+					
+					function pollHistories(historyId) {
+					
+						//show results panel
+						document.getElementById("upload_results4").style.display = "block";
+						document.getElementById("spinner").style.display = "block";
+					
+						var url = "/api/histories/" + historyId;
+						var xmlHttp = new XMLHttpRequest();
+						xmlHttp.open( "GET", url, false ); // false for synchronous request
+						xmlHttp.send( null );
+						var hist = JSON.parse(xmlHttp.responseText);
+						var state_ids = hist["state_ids"];
+						if(state_ids["new"].length===0 && (state_ids["upload"].length===0 && (state_ids["queued"].length===0 && (state_ids["running"].length===0 &&)
+						{
+							processResults(historyId);
+						}
+						else {
+							setTimeout(function() {
+								pollHistories(historyId);
+							}, 1000);
+						}
+					}
+					
+					function processResults(historyId){
+						document.getElementById("spinner").style.display = "none";
+						var jobId = "";
+						invocationIds.forEach(function(invocationId){
+							var url = "/api/invocations/" + invocationId;
+							var xmlHttp = new XMLHttpRequest();
+							xmlHttp.open( "GET", url, false ); // false for synchronous request
+							xmlHttp.send( null );
+							var hist = JSON.parse(xmlHttp.responseText);
+							//iterate through the steps
+							hist.forEach(function(step){
+								//find the one called output
+								if(step["workflow_step_label"] === "Output")
+								{
+									jobId = step["job_id"];
+								}
+							});
+							//now we have the output job id	we can get the result					
+							
+							url = "api/histories/" + historyId + "/contents/" + jobId + "/display";
+							xmlHttp.open( "GET", url, false ); // false for synchronous request
+							xmlHttp.send( null );
+							var output = xmlHttp.responseText;
+						});
 					}
 				
 					function runWorkflows(evt) {
+					
 						document.getElementById("upload_results3").style.display = "block";
 						selectedWorkflow = document.getElementById("Workflows").value;
 						index = 1;
 						start = new Date().getTime();
+						
+						document.getElementById("Workflows").disabled=true;
+						document.getElementById("Histories").disabled=true;
+						invocationIds = [];
 						InvokeWorkflow();
 					}
 				
