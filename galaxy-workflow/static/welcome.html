@@ -324,6 +324,7 @@
 							var xmlHttp = new XMLHttpRequest();
 							xmlHttp.open( "GET", url, false ); // false for synchronous request
 							xmlHttp.send( null );
+							alert(xmlHttp.responseText);
 							var hist = JSON.parse(xmlHttp.responseText);
 							//iterate through the steps
 							hist["steps"].forEach(function(step){
