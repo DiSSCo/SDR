@@ -265,7 +265,7 @@
 						logDiv.appendChild(span);
 						logDiv.innerHTML += "<br/>";
 						logDiv.scrollTop = logDiv.scrollHeight;
-						//top.document.getElementById("history-refresh-button").click();
+
 						
 						index++;
 						if(index < lines.length)
@@ -278,6 +278,7 @@
 							document.getElementById("spinner").style.display = "block";
 							setTimeout(function() {
 								pollHistories(historyId);
+								top.document.getElementById("history-refresh-button").click();
 							}, 2000);
 
 							//when they're empty, iterate through an array of invocations and get them like this
@@ -324,7 +325,7 @@
 							xmlHttp.send( null );
 							var hist = JSON.parse(xmlHttp.responseText);
 							//iterate through the steps
-							hist.forEach(function(step){
+							hist["steps"].forEach(function(step){
 								//find the one called output
 								if(step["workflow_step_label"] === "Output")
 								{
@@ -337,6 +338,7 @@
 							xmlHttp.open( "GET", url, false ); // false for synchronous request
 							xmlHttp.send( null );
 							var output = xmlHttp.responseText;
+							alert("output");
 						});
 					}
 				
