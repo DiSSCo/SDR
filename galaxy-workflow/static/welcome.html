@@ -336,6 +336,9 @@
 							//now we have the output job id	we can get the result					
 							
 							url = "/api/histories/" + historyId + "/contents/" + jobId + "/display";
+							alert(historyId);
+							alert(jobId);
+							alert(url);
 							xmlHttp.open( "GET", url, false ); // false for synchronous request
 							xmlHttp.send( null );
 							var output = xmlHttp.responseText;
