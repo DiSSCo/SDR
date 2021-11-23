@@ -315,7 +315,6 @@
 					function processResults(historyId){
 						document.getElementById("spinner").style.display = "none";
 						var jobId = "";
-						alert(invocationIds[0]);
 						invocationIds.forEach(function(invocationId){
 							console.log(invocationIds);
 							console.log(invocationId);
@@ -338,7 +337,7 @@
 							xmlHttp.open( "GET", url, false ); // false for synchronous request
 							xmlHttp.send( null );
 							var output = xmlHttp.responseText;
-							alert("output");
+							alert(output);
 						});
 					}
 				
