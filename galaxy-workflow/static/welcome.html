@@ -255,10 +255,7 @@
 						xhr.send(payload);
 						
 						//save the invocation id 
-						var invocationResult = JSON.parse(xmlHttp.responseText);
-						alert(invocationResult);
-						alert(invocationResult["id"]);
-						alert(invocationIds[0]);
+						var invocationResult = JSON.parse(xhr.responseText);
 						invocationIds.push(invocationResult["id"]);
 						
 						
