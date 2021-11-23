@@ -256,8 +256,11 @@
 						
 						//save the invocation id 
 						var invocationResult = JSON.parse(xmlHttp.responseText);
-						invocationIds.push(invocationResult["url"]);
+						alert(invocationResult);
+						alert(invocationResult["id"]);
 						alert(invocationIds[0]);
+						invocationIds.push(invocationResult["id"]);
+						
 						
 						var span = document.createElement("span");
 						span.innerHTML = (new Date().getTime() - start) + "ms > Submitting specimen " + specimen[0] + " with payload: " + payload;
