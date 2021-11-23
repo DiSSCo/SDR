@@ -16,8 +16,9 @@
 		  float:left;
 	}
 </style>
-<img id="roi-image" src="" />
+
 <div id="roi-container">
+	<img id="roi-image" src="" />
 </div>
 <script defer='defer'>
 	var rawUrl = '${h.url_for( controller="/datasets", action="index" )}';
