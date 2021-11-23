@@ -43,10 +43,7 @@
 		span.innerHTML = name;
 		div.appendChild(span);
 		document.getElementById("roi-container").appendChild(div);
-		div.setAttribute("style","width:" + width + "px");
-		div.setAttribute("style","height:" + height + "px");
-		div.setAttribute("style","top:" + top + "px");
-		div.setAttribute("style","left:" + left + "px");
+		div.setAttribute("style","width:" + width + "px, "+ "height:" + height + "px, " + "top:" + top + "px, " + "left:" + left + "px");
 	});
 	
 </script>
