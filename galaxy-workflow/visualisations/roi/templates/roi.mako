@@ -25,7 +25,7 @@
 	var dataUrl = rawUrl + '/' + sdoId + '/display?to_ext=json';
 	
 	var xmlHttp = new XMLHttpRequest();
-	xmlHttp.open( "GET", "dataUrl", false ); // false for synchronous request
+	xmlHttp.open( "GET", dataUrl, false ); // false for synchronous request
 	xmlHttp.send( null );
 
 	var opends = JSON.parse(xmlHttp.responseText);
