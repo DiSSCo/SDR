@@ -318,8 +318,6 @@
 						document.getElementById("spinner").style.display = "none";
 						var jobId = "";
 						invocationIds.forEach(function(invocationId){
-							console.log(invocationIds);
-							console.log(invocationId);
 							var url = "/api/invocations/" + invocationId;
 							var xmlHttp = new XMLHttpRequest();
 							xmlHttp.open( "GET", url, false ); // false for synchronous request
@@ -327,19 +325,10 @@
 							alert(invocationId);
 							var hist = JSON.parse(xmlHttp.responseText);
 							//iterate through the steps
-							hist["steps"].forEach(function(step){
-								//find the one called output
-								if(step["workflow_step_label"] === "Output")
-								{
-									jobId = step["job_id"];
-								}
-							});
+							jobId = hist["steps"][hist["steps"].length - 2] //TODO: why does it need to be the second to last?????
 							//now we have the output job id	we can get the result					
 							
 							url = "/api/histories/" + historyId + "/contents/" + jobId + "/display";
-							alert(historyId);
-							alert(jobId);
-							alert(url);
 							xmlHttp.open( "GET", url, false ); // false for synchronous request
 							xmlHttp.send( null );
 							var output = xmlHttp.responseText;
