@@ -44,7 +44,7 @@
 		span.innerHTML = name;
 		div.appendChild(span);
 		
-		div.setAttribute("style","width:" + width + "px, "+ "height:" + height + "px, " + "top:" + top + "px, " + "left:" + left + "px");
+		div.setAttribute("style","width:" + width + "px; "+ "height:" + height + "px; " + "top:" + top + "px; " + "left:" + left + "px");
 		div.setAttribute("class","roi");
 		document.getElementById("roi-container").appendChild(div);
 	});
