@@ -8,12 +8,12 @@
     </requirements>
 
     <command>
-        worker-dla -i '$input' -o '$output' --image '/images/$file_location'
+	 file_location="$(cat file_location)" && worker-dla -i '$input' -o '$output' --image '/images/$file_location'
     </command>
 
     <inputs>
         <param name="input" type="data" format="json" label="Open Digital specimen object" />    
-		<param format="txt" name="file_location" type="text" label="File location"/>
+		<param format="json" name="file_location" type="data" label="File location"/>
     </inputs>
 
     <outputs>
