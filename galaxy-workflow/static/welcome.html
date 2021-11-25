@@ -6,6 +6,25 @@
 			#welcome-container {
 				font-family: Sans-Serif;
 			}
+			.header-div {
+				background-color: #004683;
+				width:100%;
+				height:75px;
+				font-family: Sans-Serif;
+				color:#fff;
+			}
+			.header-div h1 {
+				padding:20px;
+			}
+			.sdr-logo {
+				float:left;
+				height:75px;
+				width:63px;
+				padding-right:20px;
+			}
+			.synth-logo {
+				float:right;
+			}
 			#upload_results {
 				height:70px;
 
@@ -175,10 +194,25 @@
     </head>
 
     <body class="m-0">
+		<div class="header-div">
+			<img class="sdr-logo" src="sdr-logo.png" />
+			<img class="synth-logo" src="https://www.synthesys.info/etc/designs/nhm-synthesys/img/synthesys-plus-logo.png" />
+			<h1>Specimen data refinery v0.1</h1>
+		</div>
         <div class="py-4">
             <div class="container" id="welcome-container">
                 <h2>Welcome to the <strong>Specimen Data Refinery</strong>, part of SYNTHESYS+</h2>
 				<p>Insert some text about the project here</p>
+				
+				<div class="tab">
+				  <button class="tablinks" onclick="openTab(event, 'denovo')">De novo digitisation</button>
+				  <button class="tablinks" onclick="openTab(event, 'enrichment')">Enrichment digitisation</button>
+				  <button class="tablinks" onclick="openTab(event, 'modifying')">Modifying workflows</button>
+				  <button class="tablinks" onclick="openTab(event, 'exporting')">Exporting workflow results</button>
+				  <button class="tablinks" onclick="openTab(event, 'provenance')">Exporting workflow provenance</button>
+				</div>
+				<div  class="tabcontent">
+				
 				<h3>Bulk upload</h3>
 				<p>This form can be used to schedule multiple digitisations at once.</p>
 				<div id="wf-holder"></div>
@@ -445,6 +479,7 @@
 				    }
 			 	    document.getElementById('fileinput').addEventListener('change', readSingleFile);						
 				</script>	
+				  </div>
 		   </div>
         </div>
     </body>
