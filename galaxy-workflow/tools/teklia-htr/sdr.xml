@@ -8,7 +8,7 @@
 
     <command>
 	<![CDATA[
-	 worker-htr -i $input -o $output --image /images/`cat $file_location`
+	 worker-htr -i $input -o $output --image /images/`cat $file_location` --model=kaldi_synthesys
 	 ]]>
     </command>
 
