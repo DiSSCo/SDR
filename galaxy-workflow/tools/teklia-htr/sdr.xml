@@ -1,0 +1,29 @@
+<tool id="sdr_teklia_worker_htr" name="SDR Teklia worker-htr" version="0.1.0">
+
+    <description>Teklia Worker HTR for Synthesis+</description>
+
+    <requirements>
+        <container type="docker">teklia/synthesis-worker-htr</container>
+    </requirements>
+
+    <command>
+	<![CDATA[
+	 worker-htr -i $input -o $output --image /images/`cat $file_location`
+	 ]]>
+    </command>
+
+    <inputs>
+        <param name="input" type="data" format="json" label="Open Digital specimen object" />    
+		<param format="json" name="file_location" type="data" label="File location"/>
+    </inputs>
+
+    <outputs>
+        <data format="json" name="output" />
+    </outputs>
+
+    <help>This tool transcribes text from visual regions on an image using a Machine Learning model from Teklia</help>
+
+    <citations>
+
+    </citations>
+</tool>
