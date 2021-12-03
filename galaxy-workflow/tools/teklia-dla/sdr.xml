@@ -8,7 +8,7 @@
 
     <command>
 	<![CDATA[
-	 worker-dla -i $input -o $output --image /images/`cat $file_location` --model=@training_model
+	 worker-dla -i $input -o $output --image /images/`cat $file_location` --model=$training_model
 	 ]]>
     </command>
 
