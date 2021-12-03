@@ -8,11 +8,12 @@
 
     <command>
 	<![CDATA[
-	 worker-htr -i $input -o $output --image /images/`cat $file_location` --model=kaldi_synthesys
+	 worker-htr -i $input -o $output --image /images/`cat $file_location` --model=@training_model
 	 ]]>
     </command>
 
     <inputs>
+		<param format="text" name="training_model" type="text" label="Training model"/>
         <param name="input" type="data" format="json" label="Open Digital specimen object" />    
 		<param format="json" name="file_location" type="data" label="File location"/>
     </inputs>
