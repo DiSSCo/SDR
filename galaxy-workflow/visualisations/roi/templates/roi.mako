@@ -37,7 +37,7 @@
 	xmlHttp.send( null );
 
 	var opends = JSON.parse(xmlHttp.responseText);
-    document.querySelector("image").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', opends['images']['availableImages'][0]['source']);
+    document.querySelector("image").setAttributeNS('http://www.w3.org/1999/xlink', 'href', opends['images']['availableImages'][0]['source']);
 	
 	opends['regions'].forEach(function(x, i){ 
 		var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
