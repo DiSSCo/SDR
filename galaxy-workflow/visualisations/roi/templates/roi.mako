@@ -36,7 +36,7 @@
     document.getElementById("roi-image").src = opends['images']['availableImages'][0]['source'];
 	
 	opends['regions'].forEach(function(x, i){ 
-		var polygon = document.createElementNS("polygon");
+		var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
 		polygon.setAttribute("points", "");
 		x['polygon'].forEach(function(y){
 			
