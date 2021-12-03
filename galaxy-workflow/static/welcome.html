@@ -487,7 +487,7 @@
 						xmlHttp.send( null );
 						wf = JSON.parse(xmlHttp.responseText);
 						Object.values(wf["inputs"]).forEach(function(element){
-						var li = document.createElement("li");
+							var li = document.createElement("li");
 							li.innerHTML = element["label"];
 							document.getElementById('wf-inputs').appendChild(li);
 							}

@@ -4,11 +4,12 @@
 		<style>
 			div.roi {
 				position:absolute;
-				border:3px solid red;
+				border:1px solid green;
 			}
 
 			div.roi:hover {
-				border:3px solid yellow;
+				background-color:green;
+				opacity:0.3;
 			}
 
 			div span{
@@ -23,8 +24,9 @@
 	</head>
 
 	<body>
-		<img src="https://raw.githubusercontent.com/DiSSCo/SDR/main/galaxy-workflow/samples/images/nhmuk-012539905.jpg" />
-
+		<svg>
+			<img src="https://raw.githubusercontent.com/DiSSCo/SDR/main/galaxy-workflow/samples/images/nhmuk-012539905.jpg" />
+		</svg>
 
 		<div id="container">
 		</div>
@@ -35,7 +37,12 @@
 
 			var opends = JSON.parse(opends_json);
 
-			opends['regions'].forEach(function(x, i){ 
+			opends['regions'].forEach(function(x){ 
+			
+				x['polygon'].forEach(function(x){
+				
+				
+				});
 				var left = x['polygon'][0][0];
 				var top = x['polygon'][0][1];
 				var width = x['polygon'][2][0] - x['polygon'][0][0];

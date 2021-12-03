@@ -1,23 +1,27 @@
 <style>
 	div.roi {
 		position:absolute;
-		border:3px solid red;
+		border:1px solid green;
 	}
+
 	div.roi:hover {
-		border:3px solid yellow;
+		background-color:green;
+		opacity:0.3;
 	}
-	#roi-container div span{
+
+	div span{
 		color:red;
 		font-size: 15px;
-		  padding: 10px;
-		  background-color:white;
-		  display:block;
-		  float:left;
+	    padding: 10px;
+		background-color:white;
+		display:block;
+		float:left;
 	}
 </style>
-
 <div id="roi-container">
-	<img id="roi-image" src="" />
+	<svg id="visualisation">
+		<img id="roi-image" src="" />
+	</svg>
 </div>
 <script defer='defer'>
 	var rawUrl = '${h.url_for( controller="/datasets", action="index" )}';
@@ -32,20 +36,16 @@
     document.getElementById("roi-image").src = opends['images']['availableImages'][0]['source'];
 	
 	opends['regions'].forEach(function(x, i){ 
-		var left = x['polygon'][0][0];
-		var top = x['polygon'][0][1];
-		var width = x['polygon'][2][0] - x['polygon'][0][0];
-		var height = x['polygon'][3][1] - x['polygon'][0][1];
-		var name = x['class_name'];
-		console.log(name, left, top, width, height);
-		var div =  document.createElement("div");
-		var span =  document.createElement("span");
-		span.innerHTML = name;
-		div.appendChild(span);
+		var polygon = document.createElement("polygon");
+		polygon.setAttribute("points", "");
+		x['polygon'].forEach(function(y){
+			
+			polygon.setAttribute("points", polygon.getAttribute("points") + " " + y.toString());
+			polygon.setAttribute("class","roi");
 		
-		div.setAttribute("style","width:" + width + "px; "+ "height:" + height + "px; " + "top:" + top + "px; " + "left:" + left + "px");
-		div.setAttribute("class","roi");
-		document.getElementById("roi-container").appendChild(div);
+		});
+		document.getElementById("visualisation").appendChild(polygon);
+		
 	});
 	
 </script>
