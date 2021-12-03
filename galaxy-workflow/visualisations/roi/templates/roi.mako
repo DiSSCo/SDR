@@ -1,11 +1,11 @@
 <style>
 	div.roi {
 		position:absolute;
-		border:1px solid green;
+		stroke:1px solid green;
 	}
 
 	div.roi:hover {
-		background-color:green;
+		fill:green;
 		opacity:0.3;
 	}
 
