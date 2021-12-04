@@ -50,7 +50,7 @@
 <div id="contents">
 	<div id="roi-container">
 		<svg id="visualisation">
-			<image id="roi-image" href="https://raw.githubusercontent.com/DiSSCo/SDR/main/galaxy-workflow/samples/images/010615522_151401_1084574.2500x5792.jpeg">
+			<image id="roi-image">
 		</svg>
 	</div>
 </div>
@@ -65,7 +65,7 @@
 
     var opends = JSON.parse(xmlHttp.responseText);
 	
-    document.getElementById("roi-image").setAttribute('src', opends['images']['availableImages'][0]['source']);
+    document.getElementById("roi-image").setAttributeNS("null", 'href', opends['images']['availableImages'][0]['source']);
 	
 	window.addEventListener('load', (event) => {
 		var svg = document.getElementById("visualisation");
