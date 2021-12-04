@@ -123,7 +123,7 @@
 	
         
 	function hsl_col_perc(percent, start, end) {
-	  var b = (end - start) * a,
+	  var b = (end - start) * percent,
 			c = b + start;
 
 	  // Return a CSS HSL string
