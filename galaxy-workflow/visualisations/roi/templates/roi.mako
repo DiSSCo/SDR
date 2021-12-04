@@ -63,7 +63,7 @@
 	xmlHttp.open( "GET", dataUrl, false ); // false for synchronous request
 	xmlHttp.send( null );
 
-    var opends = JSON.parse(opends_json);
+    var opends = JSON.parse(xmlHttp.responseText);
 	
     document.getElementById("roi-image").setAttribute('src', opends['images']['availableImages'][0]['source']);
 	
