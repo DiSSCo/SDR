@@ -119,7 +119,7 @@
 				var region_confidence = "Region confidence: " + x['confidence'] + "<br>";
 				
 				//don't try to create a transcription label if we don't have a transcription
-				if(x['class_name'] == "text_line")
+				if(x.includes("transcription"))
 				{
 					label.classList.add("label" + round_up_to_nearest_5_percent(x['transcription']['confidence']));
 					var transcription = "Transcription: " + x['transcription']['text'] + "<br>";
@@ -128,7 +128,7 @@
 				}
 				else
 				{
-				label.classList.add("label" + round_up_to_nearest_5_percent(x['confidence']));
+					label.classList.add("label" + round_up_to_nearest_5_percent(x['confidence']));
 					label.innerHTML = class_name + region_confidence;
 				}
 				polygon.classList.add("poly" + round_up_to_nearest_5_percent(x['confidence']));
