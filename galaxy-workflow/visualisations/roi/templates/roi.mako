@@ -71,7 +71,7 @@
 	var img = new Image();
 	img.src = imageURL;
 	
-	img.getElementById("roi-image").addEventListener('load', (event) => {
+	img.addEventListener('load', (event) => {
 	    var height = img.height;
 		var width = img.width;
 		var svg = document.getElementById("visualisation");
