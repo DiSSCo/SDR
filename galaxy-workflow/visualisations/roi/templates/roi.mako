@@ -39,6 +39,7 @@
 	
 	#image1 {
 		position: absolute;
+		width:100%;
 	}
 	
 	#contents span{
@@ -86,6 +87,8 @@
 		
 		svg.setAttribute("height", img.naturalHeight);
 		svg.setAttribute("width", img.naturalWidth);
+		var scale = img.clientWidth / img.naturalWidth;
+		img.style.transform = "scale(" + scale + ")";
 	});
 	img.setAttribute("src", imageURL);
 
