@@ -154,7 +154,7 @@
 	
 	function round_up_to_nearest_5_percent(fraction) {
 		percent = fraction *100;
-		return (Math.ceil(percent/5)*5) / 100;
+		return (Math.ceil(percent/5)*5);
 	}
 	
 </script>
