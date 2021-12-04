@@ -17,15 +17,42 @@
 		display:block;
 		float:left;
 	}
-	svg#visualisation {
+	
+	#visualisation {
+				
+	}
+	
+	#roi-container {
 		width:100%;
-		heighth:100%;
+		overflow:scroll;
+	}
+
+	polygon {
+		stroke: green;
+		fill: green;
+		opacity: 0.5;
+	}
+	
+	polygon:hover {
+		opacity: 0.25;
+	}
+	
+	#contents {
+
+	}
+	
+	#contents span{
+		position: absolute;
+		top:0;
+		left:0;
 	}
 </style>
-<div id="roi-container">
-	<svg id="visualisation">
-		<image id="roi-image" href="" />
-	</svg>
+<div id="contents">
+	<div id="roi-container">
+		<svg id="visualisation">
+			<image id="roi-image" href="https://raw.githubusercontent.com/DiSSCo/SDR/main/galaxy-workflow/samples/images/010615522_151401_1084574.2500x5792.jpeg">
+		</svg>
+	</div>
 </div>
 <script defer='defer'>
 	var rawUrl = '${h.url_for( controller="/datasets", action="index" )}';
@@ -36,20 +63,26 @@
 	xmlHttp.open( "GET", dataUrl, false ); // false for synchronous request
 	xmlHttp.send( null );
 
-	var opends = JSON.parse(xmlHttp.responseText);
-    document.querySelector("image").setAttributeNS('http://www.w3.org/1999/xlink', 'href', opends['images']['availableImages'][0]['source']);
+    var opends = JSON.parse(opends_json);
 	
-	opends['regions'].forEach(function(x, i){ 
-		var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-		polygon.setAttribute("points", "");
-		x['polygon'].forEach(function(y){
-			
-			polygon.setAttribute("points", polygon.getAttribute("points") + " " + y.toString());
-			polygon.setAttribute("class","roi");
-		
+    document.getElementById("roi-image").setAttribute('src', opends['images']['availableImages'][0]['source']);
+	
+	window.addEventListener('load', (event) => {
+		var svg = document.getElementById("visualisation");
+		opends['regions'].forEach(function(x){ 
+			var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+			svg.appendChild(polygon);			
+			x['polygon'].forEach(function(y, i){
+				var point = svg.createSVGPoint();
+				point.x = y[0];
+				point.y = y[1];
+				polygon.points.appendItem(point);
+			});
 		});
-		document.getElementById("visualisation").appendChild(polygon);
-		
+		var img = document.getElementById('roi-image')
+		var bbox = img.getBBox();
+		svg.setAttribute("height", bbox.height);
+		svg.setAttribute("width", bbox.width);
 	});
 	
 </script>

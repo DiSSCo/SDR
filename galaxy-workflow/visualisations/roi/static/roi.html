@@ -1,57 +1,85 @@
-<html>
-	<head>
-<script type="text/javascript" src="/static/scripts/libs/jquery/jquery.js"></script>
-		<style>
-			div.roi {
-				position:absolute;
-				border:1px solid green;
-			}
+<style>
+	div.roi {
+		position:absolute;
+		stroke:1px solid green;
+	}
 
-			div.roi:hover {
-				background-color:green;
-				opacity:0.3;
-			}
+	div.roi:hover {
+		fill:green;
+		opacity:0.3;
+	}
 
-			div span{
-				color:red;
-				font-size: 15px;
-				  padding: 10px;
-				  background-color:white;
-				  display:block;
-				  float:left;
-			}
-		</style>
-	</head>
+	div span{
+		color:red;
+		font-size: 15px;
+	    padding: 10px;
+		background-color:white;
+		display:block;
+		float:left;
+	}
+	
+	#visualisation {
+				
+	}
+	
+	#roi-container {
+		width:100%;
+		overflow:scroll;
+	}
 
-	<body>
-		<svg>
-			<img src="https://raw.githubusercontent.com/DiSSCo/SDR/main/galaxy-workflow/samples/images/nhmuk-012539905.jpg" />
+	polygon {
+		stroke: green;
+		fill: green;
+		opacity: 0.5;
+	}
+	
+	polygon:hover {
+		opacity: 0.25;
+	}
+	
+	#contents {
+
+	}
+	
+	#contents span{
+		position: absolute;
+		top:0;
+		left:0;
+	}
+</style>
+<div id="contents">
+	<div id="roi-container">
+		<svg id="visualisation">
+			<image id="roi-image" href="https://raw.githubusercontent.com/DiSSCo/SDR/main/galaxy-workflow/samples/images/010615522_151401_1084574.2500x5792.jpeg">
 		</svg>
+	</div>
+</div>
+<script defer='defer'>
+		
+	var opends_json = '{"authoritative":{"physicalSpecimenId":"10615522","institution":["NHM","http://nhm.ac.uk"],"materialType":"Pinned insect"},"images":{"availableImages":[{"source":"https://raw.githubusercontent.com/DiSSCo/SDR/main/galaxy-workflow/samples/images/010615522_151401_1084574.2500x5792.jpeg","license":"CC BY"}]},"higher_classification":"Insecta","payloads":{"name":"original image","filename":"f5ea6ca1-f30b-4a69-8be8-2872fe498790.jpeg","width":2499,"height":1666,"mediaType":"image/jpeg","size n":1524545},"regions":[{"polygon":[[1788,589],[1789,520],[2323,524],[2322,593]],"confidence":0.88,"class_name":"text_line","transcription":{"text":"Chandler \' s Ford .","confidence":0.3322}},{"polygon":[[1877,599],[2219,599],[2219,769],[1877,769]],"confidence":0.85,"class_name":"text_line","transcription":{"text":"Loz .","confidence":0.2582}},{"polygon":[[1822,877],[2115,877],[2115,922],[1822,922]],"confidence":0.91,"class_name":"text_line","transcription":{"text":"Christie Coll .","confidence":0.6285}},{"polygon":[[1817,978],[1818,933],[2053,938],[2052,982]],"confidence":0.91,"class_name":"text_line","transcription":{"text":"BMNH  ( E )","confidence":0.5388}},{"polygon":[[1818,1036],[1818,994],[2010,994],[2010,1036]],"confidence":0.89,"class_name":"text_line","transcription":{"text":"2010 - 62","confidence":0.5125}},{"polygon":[[1808,1318],[1809,1269],[2261,1274],[2260,1323]],"confidence":0.91,"class_name":"text_line","transcription":{"text":"NHMUK01061552","confidence":0.5306}}]}';
 
-		<div id="container">
-		</div>
-
-	</body>
-	<script defer='defer'>
-			var opends_json = '{"authoritative":{"physicalSpecimenId":"asda","institution":["asd","sasa"],"materialType":"Herbarium sheet"},"images":{"availableImages":[{"source":"https://raw.githubusercontent.com/DiSSCo/SDR/main/galaxy-workflow/samples/images/nhmuk-012539905.jpg","license":"CC0"}]},"higher_classification":"asas","payloads":{"name":"original image","filename":"b0ea10dd-e024-492f-abef-857f92f4c373.jpeg","width":2160,"height":1440,"mediaType":"image/jpeg","size n":742474},"regions":[{"polygon":[[1507,258],[1906,258],[1906,565],[1507,565]],"confidence":0.98,"class_name":"scale_bar"},{"polygon":[[385,396],[1155,365],[1184,1119],[413,1150]],"confidence":0.76,"class_name":"specimen"},{"polygon":[[1496,641],[1932,641],[1932,928],[1496,928]],"confidence":0.98,"class_name":"label"},{"polygon":[[1496,1001],[2036,990],[2041,1212],[1501,1226]],"confidence":0.97,"class_name":"bar_code"}]}';
-
-			var opends = JSON.parse(opends_json);
-
-			opends['regions'].forEach(function(x){ 
-			
-				x['polygon'].forEach(function(x){
-				
-				
-				});
-				var left = x['polygon'][0][0];
-				var top = x['polygon'][0][1];
-				var width = x['polygon'][2][0] - x['polygon'][0][0];
-				var height = x['polygon'][3][1] - x['polygon'][0][1];
-				var name = x['class_name'];
-				console.log(name, left, top, width, height);
-				var div = $('<div class="roi"><span>test</span></div>').width(width).height(height).css({top: top, left: left});
-				$('#container').append(div);
-				$(div).children().first().text(name)		
+	var opends = JSON.parse(opends_json);
+	
+    document.getElementById("roi-image").setAttribute('src', opends['images']['availableImages'][0]['source']);
+	
+	window.addEventListener('load', (event) => {
+		var svg = document.getElementById("visualisation");
+		opends['regions'].forEach(function(x){ 
+			var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+			svg.appendChild(polygon);			
+			x['polygon'].forEach(function(y, i){
+				var point = svg.createSVGPoint();
+				point.x = y[0];
+				point.y = y[1];
+				polygon.points.appendItem(point);
 			});
-	</script>
-</html>
+		});
+		var img = document.getElementById('roi-image')
+		var bbox = img.getBBox();
+		svg.setAttribute("height", bbox.height);
+		svg.setAttribute("width", bbox.width);
+	});
+	
+	
+	
+</script>
