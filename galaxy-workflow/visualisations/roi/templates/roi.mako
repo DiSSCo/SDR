@@ -84,7 +84,7 @@
 			var svg = document.getElementById("visualisation");
 			opends['regions'].forEach(function(x){ 
 				var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-				svg.appendChild(polygon);			
+					
 				x['polygon'].forEach(function(y, i){
 					var point = svg.createSVGPoint();
 					point.x = y[0];
@@ -101,6 +101,7 @@
 				var transcription = "Transcription: " + x['transcription']['text'] + "<br>";
 				var transcription_confidence = "Transcription confidence: " + x['transcription']['confidence'] + "<br>";
 				label.innerHTML = class_name + region_confidence + transcription + transcription_confidence;
+				svg.appendChild(polygon);		
 				
 			});
 			
