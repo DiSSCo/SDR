@@ -69,11 +69,11 @@
 
 
 	var img = new Image();
-	img.src = imageURL;
+
 	
 	img.addEventListener('load', (event) => {
-	    var height = img.height;
-		var width = img.width;
+	    var height = img.naturalHeight ;
+		var width = img.naturalWidth ;
 		var svg = document.getElementById("visualisation");
 		opends['regions'].forEach(function(x){ 
 			var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
@@ -90,5 +90,7 @@
 		svg.setAttribute("height", height);
 		svg.setAttribute("width", width);
 	});
+	
+		img.src = imageURL;
 	
 </script>
