@@ -37,17 +37,19 @@
 	
 	polygon:hover {
 		opacity: 0.25;
+		cursor: pointer;
 	}
 	
 	#image1 {
 		position: absolute;
 		width:100%;
 	}
-	
-	#contents span{
+
+	.label{
 		position: absolute;
 		top:0;
 		left:0;
+	
 	}
 </style>
 <div id="contents">
@@ -56,6 +58,7 @@
 		<svg id="visualisation">
 			<image id="roi-image">
 		</svg>
+		<div class="label">name<br>date<br>species </label>
 	</div>
 </div>
 <script defer='defer'>
