@@ -87,7 +87,7 @@
 		var bbox = img.getBBox();
 		svg.setAttribute("height", height);
 		svg.setAttribute("width", width);
-	});
+	};
 	img.src = imageURL;
 	
 </script>
