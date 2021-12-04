@@ -69,9 +69,7 @@
 
 
 	var img = new Image();
-
-	
-	img.addEventListener('load', (event) => {
+	img.onload = function() {
 	    var height = img.naturalHeight ;
 		var width = img.naturalWidth ;
 		var svg = document.getElementById("visualisation");
@@ -90,7 +88,6 @@
 		svg.setAttribute("height", height);
 		svg.setAttribute("width", width);
 	});
-	
-		img.src = imageURL;
+	img.src = imageURL;
 	
 </script>
