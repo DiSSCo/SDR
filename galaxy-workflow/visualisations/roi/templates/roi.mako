@@ -59,6 +59,7 @@
 	</div>
 </div>
 <script defer='defer'>
+window.addEventListener("load", function(){
 	var rawUrl = '${h.url_for( controller="/datasets", action="index" )}';
 	var sdoId = '${trans.security.encode_id( sdo.id )}';
 	var dataUrl = rawUrl + '/' + sdoId + '/display?to_ext=json';
@@ -95,6 +96,6 @@
 		svg.style.transform = "scale(" + scale + ")";
 	});
 	img.setAttribute("src", imageURL);
-
+});
 	
 </script>
