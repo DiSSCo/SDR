@@ -78,7 +78,7 @@
 	<div id="roi-container">
 		<img id="image1" />
 		<svg id="visualisation">
-			<image id="roi-image">
+			
 		</svg>
 		<div class="label">name<br>date<br>species </label>
 	</div>
@@ -95,7 +95,6 @@
 
 		var opends = JSON.parse(xmlHttp.responseText);
 		var imageURL = opends['images']['availableImages'][0]['source'];
-		document.getElementById("roi-image").setAttributeNS("http://www.w3.org/2000/svg", 'href', imageURL);
 		var img = document.getElementById("image1");
 
 		img.addEventListener('load', (event) => {
