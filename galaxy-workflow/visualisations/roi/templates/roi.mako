@@ -91,7 +91,7 @@
 					point.y = y[1];
 					polygon.points.appendItem(point);
 				});
-				polygon.setAttribute("fill", hsl_col_perc(x['transcription']['confidence'], 0, 120));
+				polygon.setAttribute("style", "fill+" + hsl_col_perc(x['transcription']['confidence'], 0, 120));
 				var label = document.createElement("div");
 				var container = document.getElementById("roi-container");
 				container.appendChild(label);
