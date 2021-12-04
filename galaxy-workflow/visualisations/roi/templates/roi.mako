@@ -121,7 +121,7 @@
 				var transcription = "Transcription: " + x['transcription']['text'] + "<br>";
 				var transcription_confidence = "Transcription confidence: " + x['transcription']['confidence'] + "<br>";
 				label.innerHTML = class_name + region_confidence + transcription + transcription_confidence;
-				polygon.classList.add("poly" + round_up_to_nearest_5_percent(transcription_confidence));
+				polygon.classList.add("poly" + round_up_to_nearest_5_percent(x['transcription']['confidence']));
 				svg.appendChild(polygon);		
 				
 			});
@@ -154,7 +154,7 @@
 	
 	function round_up_to_nearest_5_percent(fraction) {
 		percent = fraction *100;
-		return (Math.ceil(fraction/5)*5) / 100;
+		return (Math.ceil(percent/5)*5) / 100;
 	}
 	
 </script>
