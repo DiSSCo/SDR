@@ -83,9 +83,9 @@
 				polygon.points.appendItem(point);
 			});
 		});
-		var img = document.getElementById('roi-image')
-		svg.setAttribute("height", img.naturalHeight);
-		svg.setAttribute("width", img.naturalWidth);
+		
+		svg.setAttribute("height", img.clientHeight);
+		svg.setAttribute("width", img.clientWidth);
 	});
 	img.setAttribute("src", imageURL);
 
