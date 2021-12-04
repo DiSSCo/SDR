@@ -49,7 +49,10 @@
 		position: absolute;
 		top:0;
 		left:0;
-	
+		background-color:white;
+		padding:20px;
+		font-family:sans-serif;
+		font-size:16px;
 	}
 </style>
 <div id="contents">
