@@ -104,13 +104,13 @@
 			opends['regions'].forEach(function(x){ 
 				var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
 					
-				x['polygon'].forEach(function(y, i){
+				x['polygon'].forEach(function(y){
 					var point = svg.createSVGPoint();
 					point.x = y[0];
 					point.y = y[1];
 					polygon.points.appendItem(point);
 				});
-				//polygon.setAttributeNS("http://www.w3.org/2000/svg", "fill", hsl_col_perc(x['transcription']['confidence'], 0, 120));
+				
 				var label = document.createElement("div");
 				var container = document.getElementById("roi-container");
 				container.appendChild(label);
@@ -123,7 +123,12 @@
 				label.innerHTML = class_name + region_confidence + transcription + transcription_confidence;
 				polygon.classList.add("poly" + round_up_to_nearest_5_percent(x['confidence']));
 				svg.appendChild(polygon);		
-				
+				polygon.addEventListener("mouseover", function( event ) {
+				    //get index of calling element
+					var index = Array.prototype.indexOf.call(event.target.parentElement.children, this);
+				    console.log(index);
+				  
+				}, false);
 			});
 			
 			svg.setAttribute("height", img.naturalHeight);
@@ -142,15 +147,6 @@
 		var scale = img.clientWidth / img.naturalWidth;
 		svg.style.transform = "scale(" + scale + ")";
 	}, true);
-	
-        
-	function hsl_col_perc(percent, start, end) {
-	  var b = (end - start) * percent,
-			c = b + start;
-
-	  // Return a CSS HSL string
-	  return 'hsl('+c+', 100%, 50%)';
-	}
 	
 	function round_up_to_nearest_5_percent(fraction) {
 		percent = fraction *100;
