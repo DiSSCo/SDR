@@ -91,6 +91,17 @@
 					point.y = y[1];
 					polygon.points.appendItem(point);
 				});
+				polygon.style.fill = hsl_col_perc(x['transcription']['confidence'], 0, 120);
+				var label = document.createElement("div");
+				var container = document.getElementById("roi-container");
+				container.appendChild(label);
+				label.classList.add("label");
+				var class_name = "Class name: " + x['class_name'] + "<br>";
+				var region_confidence = "Region confidence: " + x['confidence'] + "<br>";
+				var transcription = "Transcription: " + x['transcription']['text'] + "<br>";
+				var transcription_confidence = "Transcription confidence: " + x['transcription']['confidence'] + "<br>";
+				label.innerHTML = class_name + region_confidence + transcription + transcription_confidence;
+				
 			});
 			
 			svg.setAttribute("height", img.naturalHeight);
@@ -109,5 +120,14 @@
 		var scale = img.clientWidth / img.naturalWidth;
 		svg.style.transform = "scale(" + scale + ")";
 	}, true);
+	
+        
+	function hsl_col_perc(percent, start, end) {
+	  var b = (end - start) * a,
+			c = b + start;
+
+	  // Return a CSS HSL string
+	  return 'hsl('+c+', 100%, 50%)';
+	}
 	
 </script>
