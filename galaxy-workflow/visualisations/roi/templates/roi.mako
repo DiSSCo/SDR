@@ -115,12 +115,22 @@
 				var container = document.getElementById("roi-container");
 				container.appendChild(label);
 				label.classList.add("label");
-				label.classList.add("label" + round_up_to_nearest_5_percent(x['transcription']['confidence']));
 				var class_name = "Class name: " + x['class_name'] + "<br>";
 				var region_confidence = "Region confidence: " + x['confidence'] + "<br>";
-				var transcription = "Transcription: " + x['transcription']['text'] + "<br>";
-				var transcription_confidence = "Transcription confidence: " + x['transcription']['confidence'] + "<br>";
-				label.innerHTML = class_name + region_confidence + transcription + transcription_confidence;
+				
+				//don't try to create a transcription label if we don't have a transcription
+				if(class_name == "text_line")
+				{
+					label.classList.add("label" + round_up_to_nearest_5_percent(x['transcription']['confidence']));
+					var transcription = "Transcription: " + x['transcription']['text'] + "<br>";
+					var transcription_confidence = "Transcription confidence: " + x['transcription']['confidence'] + "<br>";
+					label.innerHTML = class_name + region_confidence + transcription + transcription_confidence;
+				}
+				else
+				{
+				label.classList.add("label" + round_up_to_nearest_5_percent(x['confidence']));
+					label.innerHTML = class_name + region_confidence;
+				}
 				polygon.classList.add("poly" + round_up_to_nearest_5_percent(x['confidence']));
 				svg.appendChild(polygon);	
 
