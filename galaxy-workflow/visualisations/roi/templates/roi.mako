@@ -70,9 +70,8 @@
 	var img = document.getElementById("image1").setAttribute("src", imageURL);
 
 	
-	img.onload = function() {
-	    var height = 2499;
-		var width = 1666;
+	img.addEventListener('load', (event) => {
+
 		var svg = document.getElementById("visualisation");
 		opends['regions'].forEach(function(x){ 
 			var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
@@ -86,9 +85,9 @@
 		});
 		var img = document.getElementById('roi-image')
 		var bbox = img.getBBox();
-		svg.setAttribute("height", height);
-		svg.setAttribute("width", width);
-	};
+		svg.setAttribute("height", img.naturalHeight);
+		svg.setAttribute("width", img.naturalWidth);
+	});
 	img.src = imageURL;
 	
 </script>
