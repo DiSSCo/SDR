@@ -84,8 +84,8 @@
 			});
 		});
 		var img = document.getElementById('roi-image')
-		svg.setAttribute("height", img.clientHeight);
-		svg.setAttribute("width", img.clientWidth);
+		svg.setAttribute("height", img.naturalHeight);
+		svg.setAttribute("width", img.naturalWidth);
 	});
 	img.setAttribute("src", imageURL);
 
