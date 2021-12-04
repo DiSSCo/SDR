@@ -67,7 +67,7 @@
     var opends = JSON.parse(xmlHttp.responseText);
 	var imageURL = opends['images']['availableImages'][0]['source'];
     document.getElementById("roi-image").setAttributeNS("http://www.w3.org/2000/svg", 'href', imageURL);
-	var img = document.getElementById("image1").setAttribute("src", imageURL);
+	var img = document.getElementById("image1");
 
 	
 	img.addEventListener('load', (event) => {
@@ -88,6 +88,6 @@
 		svg.setAttribute("height", img.naturalHeight);
 		svg.setAttribute("width", img.naturalWidth);
 	});
-	img.src = imageURL;
+	img.setAttribute("src", imageURL) = imageURL;
 	
 </script>
