@@ -59,43 +59,40 @@
 	</div>
 </div>
 <script defer='defer'>
-window.addEventListener("load", function(){
-	var rawUrl = '${h.url_for( controller="/datasets", action="index" )}';
-	var sdoId = '${trans.security.encode_id( sdo.id )}';
-	var dataUrl = rawUrl + '/' + sdoId + '/display?to_ext=json';
-	
-	var xmlHttp = new XMLHttpRequest();
-	xmlHttp.open( "GET", dataUrl, false ); // false for synchronous request
-	xmlHttp.send( null );
-
-    var opends = JSON.parse(xmlHttp.responseText);
-	var imageURL = opends['images']['availableImages'][0]['source'];
-    document.getElementById("roi-image").setAttributeNS("http://www.w3.org/2000/svg", 'href', imageURL);
-	var img = document.getElementById("image1");
-
-	
-	img.addEventListener('load', (event) => {
-
-		var svg = document.getElementById("visualisation");
-		opends['regions'].forEach(function(x){ 
-			var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-			svg.appendChild(polygon);			
-			x['polygon'].forEach(function(y, i){
-				var point = svg.createSVGPoint();
-				point.x = y[0];
-				point.y = y[1];
-				polygon.points.appendItem(point);
-			});
-		});
+	window.addEventListener("load", function(){
+		var rawUrl = '${h.url_for( controller="/datasets", action="index" )}';
+		var sdoId = '${trans.security.encode_id( sdo.id )}';
+		var dataUrl = rawUrl + '/' + sdoId + '/display?to_ext=json';
 		
-		svg.setAttribute("height", img.naturalHeight);
-		svg.setAttribute("width", img.naturalWidth);
-		var scale = document.body.offsetWidth / img.naturalWidth;
-		console.log(document.body.offsetWidth);
-		console.log(img.naturalWidth);
-		svg.style.transform = "scale(" + scale + ")";
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open( "GET", dataUrl, false ); // false for synchronous request
+		xmlHttp.send( null );
+
+		var opends = JSON.parse(xmlHttp.responseText);
+		var imageURL = opends['images']['availableImages'][0]['source'];
+		document.getElementById("roi-image").setAttributeNS("http://www.w3.org/2000/svg", 'href', imageURL);
+		var img = document.getElementById("image1");
+
+		img.addEventListener('load', (event) => {
+
+			var svg = document.getElementById("visualisation");
+			opends['regions'].forEach(function(x){ 
+				var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+				svg.appendChild(polygon);			
+				x['polygon'].forEach(function(y, i){
+					var point = svg.createSVGPoint();
+					point.x = y[0];
+					point.y = y[1];
+					polygon.points.appendItem(point);
+				});
+			});
+			
+			svg.setAttribute("height", img.naturalHeight);
+			svg.setAttribute("width", img.naturalWidth);
+			var scale = img.clientWidth / img.naturalWidth;
+			svg.style.transform = "scale(" + scale + ")";
+		});
+		img.setAttribute("src", imageURL);
 	});
-	img.setAttribute("src", imageURL);
-});
 	
 </script>
