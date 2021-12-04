@@ -95,4 +95,13 @@
 		img.setAttribute("src", imageURL);
 	});
 	
+	window.addEventListener('resize', function(event) {
+		var img = document.getElementById("image1");
+		var svg = document.getElementById("visualisation");
+		svg.setAttribute("height", img.naturalHeight);
+		svg.setAttribute("width", img.naturalWidth);
+		var scale = img.clientWidth / img.naturalWidth;
+		svg.style.transform = "scale(" + scale + ")";
+	}, true);
+	
 </script>
