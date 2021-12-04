@@ -34,7 +34,26 @@
 		opacity: 0.5;
 	}
 	
-	.poly1 { fill:red; }
+	.poly5 { fill:hsl(6, 80%, 50%); }
+	.poly10 { fill:hsl(12, 80%, 50%); }
+	.poly15 { fill:hsl(18, 80%, 50%); }
+	.poly20 { fill:hsl(24, 80%, 50%); }
+	.poly25 { fill:hsl(30, 80%, 50%); }
+	.poly30 { fill:hsl(36, 80%, 50%); }
+	.poly35 { fill:hsl(42, 80%, 50%); }
+	.poly40 { fill:hsl(48, 80%, 50%); }
+	.poly45 { fill:hsl(54, 80%, 50%); }
+	.poly50 { fill:hsl(60, 80%, 50%); }
+	.poly55 { fill:hsl(66, 80%, 50%); }
+	.poly60 { fill:hsl(72, 80%, 50%); }
+	.poly65 { fill:hsl(78, 80%, 50%); }
+	.poly70 { fill:hsl(84, 80%, 50%); }
+	.poly75 { fill:hsl(90, 80%, 50%); }
+	.poly80 { fill:hsl(96, 80%, 50%); }
+	.poly85 { fill:hsl(102, 80%, 50%); }
+	.poly90 { fill:hsl(108, 80%, 50%); }
+	.poly95 { fill:hsl(114, 80%, 50%); }
+	.poly100 { fill:hsl(120, 80%, 50%); }
 	
 	polygon:hover {
 		opacity: 0.25;
@@ -92,7 +111,7 @@
 					point.y = y[1];
 					polygon.points.appendItem(point);
 				});
-				polygon.setAttributeNS("http://www.w3.org/2000/svg", "fill", hsl_col_perc(x['transcription']['confidence'], 0, 120));
+				//polygon.setAttributeNS("http://www.w3.org/2000/svg", "fill", hsl_col_perc(x['transcription']['confidence'], 0, 120));
 				var label = document.createElement("div");
 				var container = document.getElementById("roi-container");
 				container.appendChild(label);
@@ -102,7 +121,7 @@
 				var transcription = "Transcription: " + x['transcription']['text'] + "<br>";
 				var transcription_confidence = "Transcription confidence: " + x['transcription']['confidence'] + "<br>";
 				label.innerHTML = class_name + region_confidence + transcription + transcription_confidence;
-				polygon.classList.add("poly1");
+				polygon.classList.add("poly" + round_up_to_nearest_5_percent(transcription_confidence));
 				svg.appendChild(polygon);		
 				
 			});
