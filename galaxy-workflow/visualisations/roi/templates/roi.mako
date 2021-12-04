@@ -20,11 +20,13 @@
 	
 	#visualisation {
 		position:absolute;
+		transform-origin: 0 0;
 	}
 	
 	#roi-container {
 		width:100%;
 		overflow:scroll;
+		
 	}
 
 	polygon {
