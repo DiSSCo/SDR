@@ -119,7 +119,7 @@
 				var region_confidence = "Region confidence: " + x['confidence'] + "<br>";
 				
 				//don't try to create a transcription label if we don't have a transcription
-				if(class_name == "text_line")
+				if(x['class_name'] == "text_line")
 				{
 					label.classList.add("label" + round_up_to_nearest_5_percent(x['transcription']['confidence']));
 					var transcription = "Transcription: " + x['transcription']['text'] + "<br>";
