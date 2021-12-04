@@ -70,8 +70,8 @@
 
 	var img = new Image();
 	img.onload = function() {
-	    var height = img.naturalHeight ;
-		var width = img.naturalWidth ;
+	    var height = 2499 ;
+		var width = 1666 ;
 		var svg = document.getElementById("visualisation");
 		opends['regions'].forEach(function(x){ 
 			var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
