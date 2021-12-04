@@ -72,6 +72,7 @@
 		padding:20px;
 		font-family:sans-serif;
 		font-size:16px;
+		display:none;
 	}
 </style>
 <div id="contents">
@@ -80,7 +81,7 @@
 		<svg id="visualisation">
 			
 		</svg>
-		<div class="label">name<br>date<br>species </label>
+		
 	</div>
 </div>
 <script defer='defer'>
@@ -121,12 +122,14 @@
 				var transcription_confidence = "Transcription confidence: " + x['transcription']['confidence'] + "<br>";
 				label.innerHTML = class_name + region_confidence + transcription + transcription_confidence;
 				polygon.classList.add("poly" + round_up_to_nearest_5_percent(x['confidence']));
-				svg.appendChild(polygon);		
+				svg.appendChild(polygon);	
+
+				//wire up the hover
 				polygon.addEventListener("mouseover", function( event ) {
 				    //get index of calling element
 					var index = Array.prototype.indexOf.call(event.target.parentElement.children, this);
-				    console.log(index);
-				  
+				    //show matching label
+					document.getElementsByClassName("label")[index].style.display = "block";
 				}, false);
 			});
 			
