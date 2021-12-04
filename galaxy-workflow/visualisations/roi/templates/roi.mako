@@ -89,8 +89,8 @@
 		
 		svg.setAttribute("height", img.naturalHeight);
 		svg.setAttribute("width", img.naturalWidth);
-		var scale = img.getBoundingClientRect().width / img.naturalWidth;
-		console.log(img.getBoundingClientRect().width);
+		var scale = document.body.offsetWidth / img.naturalWidth;
+		console.log(document.body.offsetWidth);
 		console.log(img.naturalWidth);
 		svg.style.transform = "scale(" + scale + ")";
 	});
