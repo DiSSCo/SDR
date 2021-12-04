@@ -67,7 +67,7 @@
 	
     document.getElementById("roi-image").setAttributeNS("null", 'href', opends['images']['availableImages'][0]['source']);
 	
-	window.addEventListener('load', (event) => {
+	document.getElementById("roi-image").addEventListener('load', (event) => {
 		var svg = document.getElementById("visualisation");
 		opends['regions'].forEach(function(x){ 
 			var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
