@@ -64,10 +64,16 @@
 	xmlHttp.send( null );
 
     var opends = JSON.parse(xmlHttp.responseText);
+	var imageURL = opends['images']['availableImages'][0]['source'];
+    document.getElementById("roi-image").setAttributeNS("null", 'href', imageURL);
+
+
+	var img = new Image();
+	img.src = imageURL;
 	
-    document.getElementById("roi-image").setAttributeNS("null", 'href', opends['images']['availableImages'][0]['source']);
-	
-	document.getElementById("roi-image").addEventListener('load', (event) => {
+	img.getElementById("roi-image").addEventListener('load', (event) => {
+	    var height = img.height;
+		var width = img.width;
 		var svg = document.getElementById("visualisation");
 		opends['regions'].forEach(function(x){ 
 			var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
@@ -81,8 +87,8 @@
 		});
 		var img = document.getElementById('roi-image')
 		var bbox = img.getBBox();
-		svg.setAttribute("height", bbox.height);
-		svg.setAttribute("width", bbox.width);
+		svg.setAttribute("height", height);
+		svg.setAttribute("width", width);
 	});
 	
 </script>
