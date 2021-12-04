@@ -85,8 +85,10 @@
 		});
 		var img = document.getElementById('roi-image')
 		var bbox = img.getBBox();
-
+		svg.setAttribute("height", bbox.height);
+		svg.setAttribute("width", bbox.width);
 	});
 	img.setAttribute("src", imageURL);
+
 	
 </script>
