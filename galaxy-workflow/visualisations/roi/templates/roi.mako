@@ -19,7 +19,7 @@
 	}
 	
 	#visualisation {
-				
+		position:absolute;
 	}
 	
 	#roi-container {
@@ -37,8 +37,8 @@
 		opacity: 0.25;
 	}
 	
-	#contents {
-
+	#image1 {
+		position: absolute;
 	}
 	
 	#contents span{
@@ -85,10 +85,7 @@
 		});
 		var img = document.getElementById('roi-image')
 		var bbox = img.getBBox();
-		alert(bbox);
-		alert(img.naturalHeight);
-		//svg.setAttribute("height", img.naturalHeight);
-		//svg.setAttribute("width", img.naturalWidth);
+
 	});
 	img.setAttribute("src", imageURL);
 	
