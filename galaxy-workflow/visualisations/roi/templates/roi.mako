@@ -30,10 +30,11 @@
 	}
 
 	polygon {
-		stroke: green;
 		fill: green;
 		opacity: 0.5;
 	}
+	
+	.poly1 { fill:red; }
 	
 	polygon:hover {
 		opacity: 0.25;
@@ -101,6 +102,7 @@
 				var transcription = "Transcription: " + x['transcription']['text'] + "<br>";
 				var transcription_confidence = "Transcription confidence: " + x['transcription']['confidence'] + "<br>";
 				label.innerHTML = class_name + region_confidence + transcription + transcription_confidence;
+				polygon.classList.add("poly1");
 				svg.appendChild(polygon);		
 				
 			});
@@ -129,6 +131,11 @@
 
 	  // Return a CSS HSL string
 	  return 'hsl('+c+', 100%, 50%)';
+	}
+	
+	function round_up_to_nearest_5_percent(fraction) {
+		percent = fraction *100;
+		return (Math.ceil(fraction/5)*5) / 100;
 	}
 	
 </script>
