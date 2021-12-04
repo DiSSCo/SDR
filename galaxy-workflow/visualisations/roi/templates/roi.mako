@@ -131,6 +131,12 @@
 				    //show matching label
 					document.getElementsByClassName("label")[index].style.display = "block";
 				}, false);
+				polygon.addEventListener("mouseleave", function( event ) {
+				    //get index of calling element
+					var index = Array.prototype.indexOf.call(event.target.parentElement.children, this);
+				    //show matching label
+					document.getElementsByClassName("label")[index].style.display = "none";
+				}, false);
 			});
 			
 			svg.setAttribute("height", img.naturalHeight);
