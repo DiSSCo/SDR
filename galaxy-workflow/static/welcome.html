@@ -236,15 +236,22 @@
 		</div>
         <div class="py-4">
             <div class="container" id="welcome-container">
-                <h2>Welcome to the <strong>Specimen Data Refinery</strong>, part of SYNTHESYS+</h2>
-				<p>Insert some text about the project here</p>
+                
+				<p>This is a small-scale prototype (early) alpha of the Specimen Data Refinery. We will have a period of closed testing in early 2022 followed by open testing from ~March 2022.</p> 
+				<p>Project links:
+					<ul>
+						<li><a target="_blank" href="https://github.com/DiSSCo/SDR">Github</a></li>
+						<li><a target="_blank" href="https://github.com/DiSSCo/SDR/projects/1">Github project dashboard</a></li>
+						<li><a target="_blank" href="https://docs.google.com/document/d/1rastvWffVw10cg5KI38a-O3nHkbVaZKBMUD95gZ2BE8/edit">Minimum viable project documentation</a></li>
+					</ul>
+				</p> 
 				
 				<div class="tab">
 				  <button class="tablinks active" onclick="openTab(event, 'denovo')">De novo digitisation</button>
-				  <button class="tablinks" onclick="openTab(event, 'enrichment')">Enrichment digitisation</button>
-				  <button class="tablinks" onclick="openTab(event, 'modifying')">Modifying workflows</button>
-				  <button class="tablinks" onclick="openTab(event, 'exporting')">Exporting workflow results</button>
-				  <button class="tablinks" onclick="openTab(event, 'provenance')">Exporting workflow provenance</button>
+				  <button disabled="true" class="tablinks" onclick="openTab(event, 'enrichment')">Enrichment digitisation</button>
+				  <button disabled="true" class="tablinks" onclick="openTab(event, 'modifying')">Modifying workflows</button>
+				  <button disabled="true" class="tablinks" onclick="openTab(event, 'exporting')">Exporting workflow results</button>
+				  <button disabled="true" class="tablinks" onclick="openTab(event, 'provenance')">Exporting workflow provenance</button>
 				</div>
 				<div class="tabcontainer">
 				<div id='denovo' class="tabcontent active">
@@ -271,11 +278,9 @@
 				<div id="upload_buttons"></div>
 				<div id="upload_results3"></div>
 				<div id="upload_results4">
-				
 					<div class="lds-spinner" id="spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-
-				</div>
-				  </div>
+					</div>
+			      </div>
 				  <div id='enrichment' class="tabcontent"></div>
 				  <div id='modifying' class="tabcontent"></div>
 				  <div id='exporting' class="tabcontent"></div>

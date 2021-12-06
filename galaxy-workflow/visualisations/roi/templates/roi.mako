@@ -144,7 +144,7 @@
 				polygon.addEventListener("mouseleave", function( event ) {
 				    //get index of calling element
 					var index = Array.prototype.indexOf.call(event.target.parentElement.children, this);
-				    //show matching label
+				    //hide matching label
 					document.getElementsByClassName("label")[index].style.display = "none";
 				}, false);
 			});
