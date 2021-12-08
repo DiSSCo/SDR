@@ -7,6 +7,8 @@ We are using GitHub's simple Project Trello boards to track [Publications and Ou
 
 We have a separate repo for [SDR datasets](https://github.com/DiSSCo/sdr-datasets)
 
+Our workflows are available on our [SDR WorkflowHub project](https://workflowhub.eu/projects/72)
+
 ## Communication channels and key documents:
 
    **Rolling Google Doc for our [regular meeting notes & minutes](https://docs.google.com/document/d/1iYDDnXsDy34HSTFqjIbJeYXe0J4bHp-8VZHzOVTY8Yw)**
