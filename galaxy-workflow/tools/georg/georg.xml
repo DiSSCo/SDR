@@ -1,0 +1,57 @@
+<tool id="georg" name="GEORG" version="0.0.1">
+
+    <description>GEORG Geospatial Search</description>
+
+    <macros>
+        <import>macros.xml</import>
+    </macros>    
+
+    <code file="code.py"/>
+
+    <requirements>
+        <requirement type="package" version="0.1.18">json</requirement>
+        <requirement type="package" version="1.5.3">jsonpath-ng</requirement>
+        <requirement type="package" version="2.25.1">requests</requirement>  
+    </requirements> 
+
+    <command>
+        <![CDATA[
+            python '$__tool_directory__/main.py' 
+                -i '$input' 
+                -o '$output'
+            #for $f in $opends_properties.keys
+                --$f '$opends_properties[$f]'
+            #end for            
+        ]]>
+    </command> 
+
+    <inputs>
+
+        <param name="input" type="data" format="json" label="Open Digital specimen object" />
+
+        <!-- TODO: Add non required property -->
+        <expand macro="opends_property" name="country_code" property="$.countryCode" />
+        <expand macro="opends_property" name="locality" property="$.locality" />
+
+     </inputs>
+
+    <outputs>
+        <data format="json" name="output" />
+    </outputs>
+
+    <tests>
+        <test>
+            <param name="opends" value="open-ds.json" />
+            <output name="opends" file="open-ds.json" ftype="json" lines_diff="2" />
+        </test>      
+    </tests>
+
+    <help>
+
+        This tool searches Georg API
+
+    </help>
+    <citations>
+      
+    </citations>
+</tool>
