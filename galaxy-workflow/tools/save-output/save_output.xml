@@ -1,0 +1,17 @@
+<tool id="save_output" name="Save output to disk" version="0.1.0">
+  <description>Saves the output of a digitisation to disk</description>
+  <command>ruby '$__tool_directory__/save_output.rb'
+        '--opends' '$opends_in'
+		'--output_dir' '$output_dir'
+		'--batch_id' '$batch_id'
+		> '$output'
+  </command>
+  <inputs>
+    <param format="json" name="opends_in" type="data" label="openDS"/>
+	<param format="text" name="batch_id" type="text" label="Batch ID"/>
+	<param format="text" name="output_dir" type="text" label="Output directory"/>
+  </inputs>
+  <help>
+		Saves the output of a digitisation to disk
+  </help>
+</tool>

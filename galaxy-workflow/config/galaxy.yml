@@ -43,6 +43,9 @@ uwsgi:
 
   # Mapping to serve static content.
   static-map: /static=static
+  
+  # PB 20/01/22 Mapping to serve results as static content
+  static-map: /results=results
 
   # Mapping to serve the favicon.
   static-map: /favicon.ico=static/favicon.ico
