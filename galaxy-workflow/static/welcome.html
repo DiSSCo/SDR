@@ -224,7 +224,6 @@
 				opacity: 0;
 			  }
 			}
-
 		</style>
     </head>
 
@@ -250,7 +249,7 @@
 				  <button class="tablinks active" onclick="openTab(event, 'denovo')">De novo digitisation</button>
 				  <button disabled="true" class="tablinks" onclick="openTab(event, 'enrichment')">Enrichment digitisation</button>
 				  <button disabled="true" class="tablinks" onclick="openTab(event, 'modifying')">Modifying workflows</button>
-				  <button disabled="true" class="tablinks" onclick="openTab(event, 'exporting')">Exporting workflow results</button>
+				  <button class="tablinks" onclick="openTab(event, 'exporting')">Exporting workflow results</button>
 				  <button disabled="true" class="tablinks" onclick="openTab(event, 'provenance')">Exporting workflow provenance</button>
 				</div>
 				<div class="tabcontainer">
@@ -548,7 +547,9 @@
 						    alert("Failed to load file");
 					    }
 				    }
-			 	    document.getElementById('fileinput').addEventListener('change', readSingleFile);						
+			 	    document.getElementById('fileinput').addEventListener('change', readSingleFile);
+
+					function loadPreviousresults() {}					
 				</script>	
 
     </body>
