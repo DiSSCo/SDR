@@ -13,7 +13,7 @@ OptionParser.new do |opts|
 
 end.parse!
 
-rootdir = "/" + options[:output_dir]
+rootdir = "/tmp/" + options[:output_dir]
 batchdir =  File.join(rootdir, options[:batch_id])
 outputfile = File.join(batchdir, File.basename(options[:opends]))
 file_listing = File.join(rootdir, "files")
