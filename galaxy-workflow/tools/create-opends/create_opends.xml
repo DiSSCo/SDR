@@ -29,7 +29,6 @@
 	<param format="text" name="higher_classification" type="text" label="Higher classification"/>
 	<param format="text" name="person_name" type="text" label="Person name"/>
 	<param format="text" name="person_identifier" type="text" label="Person identifier"/>
-	<param format="text" name="batch_id" type="text" label="Person identifier"/>
   </inputs>
   <outputs>
     <data format="json" name="output" />
