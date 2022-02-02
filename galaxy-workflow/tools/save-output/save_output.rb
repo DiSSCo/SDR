@@ -13,17 +13,12 @@ OptionParser.new do |opts|
   opts.on("--batch_id=BATCH_ID", "Batch Id") do |batch_id|
     options[:batch_id] = batch_id
   end
-
 end.parse!
 
 rootdir = "/var/www/html/galaxy/results" + options[:output_dir]
 batchdir =  File.join(rootdir, options[:batch_id])
 outputfile = File.join(batchdir, File.basename(options[:opends]))
 file_listing = File.join(rootdir, "files")
-
-unless File.directory?(rootdir)
-  FileUtils.mkdir_p(rootdir)
-end
 
 unless File.directory?(batchdir)
   FileUtils.mkdir_p(batchdir)
