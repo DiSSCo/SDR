@@ -60,7 +60,7 @@ end
 
 
 ##### Create a file name
-local_folder = ENV["SDR_IMAGE_DOWNLOAD_DIRECTORY"]
+local_folder = "/home/paulb1/tempImages"
 image_uri = options[:image_uri]
 ext = FastImage.type(image_uri).to_s #get file type by mime type
 file_name = "#{SecureRandom.uuid}.#{ext}" 
