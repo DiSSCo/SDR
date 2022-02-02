@@ -5,8 +5,10 @@ options = {}
 OptionParser.new do |opts|
   opts.on("--opends=OPENDS", "Opends") do |opends|
     options[:opends] = opends
+  end
   opts.on("--output_dir=OUTPUT_DIR", "Output Dir") do |output_dir|
     options[:output_dir] = output_dir
+  end
   opts.on("--batch_id=BATCH_ID", "Batch Id") do |batch_id|
     options[:batch_id] = batch_id
   end
