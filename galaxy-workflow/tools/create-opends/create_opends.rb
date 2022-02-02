@@ -60,7 +60,7 @@ end
 
 
 ##### Create a file name
-local_folder = "/home/paulb1/tempImages"
+local_folder = "/images/"
 image_uri = options[:image_uri]
 ext = FastImage.type(image_uri).to_s #get file type by mime type
 file_name = "#{SecureRandom.uuid}.#{ext}" 
