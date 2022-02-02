@@ -1,5 +1,6 @@
 require 'json'
 require 'optparse'
+require 'fileutils'
 
 options = {}
 OptionParser.new do |opts|
