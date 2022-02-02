@@ -30,6 +30,6 @@ end
 	
 FileUtils.cp(options[:opends], outputfile)
 
-open('file_listing', 'a') do |f|
+open(file_listing, 'a') do |f|
   f.puts outputfile
 end
