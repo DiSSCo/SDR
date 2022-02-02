@@ -3,8 +3,7 @@
  <section name="SDR" id="sdr">
   <tool file="sdr/create-opends/create_opends.xml" />
 	<tool file="sdr/validate-opends/validate_opends.xml" />
-	<tool file="sdr/download-image/download_image.xml" />
-  <tool file="sdr/download-image/download_image.xml" />
+  <tool file="sdr/save-output/save_output.xml" />
   
   <tool file="sdr/teklia-dla/sdr.xml" />
   <tool file="sdr/teklia-htr/sdr.xml" />
