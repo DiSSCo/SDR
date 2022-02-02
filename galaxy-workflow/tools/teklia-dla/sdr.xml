@@ -8,7 +8,7 @@
 
     <command>
 	<![CDATA[
-	 worker-dla -i $input -o $output --image /home/paulb1/tempImages/`cat $file_location` --model=$training_model 2>/dev/null 
+	 worker-dla -i $input -o $output --image /home/paulb1/tempImages/`cat $file_location` --model=$training_model 
 	 ]]>
     </command>
 
