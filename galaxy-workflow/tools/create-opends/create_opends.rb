@@ -69,12 +69,12 @@ File.write(concat_file_name, Net::HTTP.get(URI.parse(image_uri)))
 
 ##### Read file metadata
 size_array = FastImage.size(concat_file_name)
-open_ds["payloads"] = Hash.new
-open_ds["payloads"]["name"] = 'original image'
-open_ds["payloads"]["filename"] = file_name
-open_ds["payloads"]["width"] = size_array[0]
-open_ds["payloads"]["height"] = size_array[1]
-open_ds["payloads"]["mediaType"] = "image/#{ext}"
-open_ds["payloads"]["size n"] = File.size(concat_file_name)
+open_DS["payloads"] = Hash.new
+open_DS["payloads"]["name"] = 'original image'
+open_DS["payloads"]["filename"] = file_name
+open_DS["payloads"]["width"] = size_array[0]
+open_DS["payloads"]["height"] = size_array[1]
+open_DS["payloads"]["mediaType"] = "image/#{ext}"
+open_DS["payloads"]["size n"] = File.size(concat_file_name)
 
 puts open_DS.to_json
