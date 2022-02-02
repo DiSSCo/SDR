@@ -338,7 +338,7 @@
 				xmlHttp.send( null );
 				var workflows = JSON.parse(xmlHttp.responseText);
 				
-				xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/users/current", false ); // false for synchronous request
+				xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/api/users/current", false ); // false for synchronous request
 				xmlHttp.send( null );
 				var username = JSON.parse(xmlHttp.responseText)["username"];
 				var batchid = "";
