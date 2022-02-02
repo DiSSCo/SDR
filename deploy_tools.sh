@@ -25,7 +25,7 @@ strEcho "Updating configuration"
 rm /var/www/html/galaxy/config/integrated_tool_panel.xml #remove generated tool panel config file - this is regenerated at Galaxy boot time
 
 #copy tool panel config files
-cp -f fill:hsl(6, 80%, 50%);/galaxy-workflow/config/tool_conf.xml /var/www/html/galaxy/config/tool_conf.xml
+cp -f /home/paulb1/SDR/galaxy-workflow/config/tool_conf.xml /var/www/html/galaxy/config/tool_conf.xml
 cp -f /home/paulb1/SDR/galaxy-workflow/config/sdr_tool_conf.xml /var/www/html/galaxy/config/sdr_tool_conf.xml
 cp -f /home/paulb1/SDR/galaxy-workflow/config/job_conf.xml /var/www/html/galaxy/config/job_conf.xml
 cp -f /home/paulb1/SDR/galaxy-workflow/config/local_env.sh /var/www/html/galaxy/config/local_env.sh
