@@ -11,6 +11,9 @@
 	<param format="text" name="batch_id" type="text" label="Batch ID"/>
 	<param format="text" name="output_dir" type="text" label="Output directory"/>
   </inputs>
+    <outputs>
+    <data format="json" name="output" />
+  </outputs>
   <help>
 		Saves the output of a digitisation to disk
   </help>
