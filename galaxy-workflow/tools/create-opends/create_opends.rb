@@ -1,5 +1,8 @@
 require 'json'
 require 'optparse'
+require 'net/http'
+require 'securerandom'
+require 'fastimage'
 
 options = {}
 OptionParser.new do |opts|
@@ -53,5 +56,25 @@ end
 if(!options[:person_identifier].nil?)
   open_DS[:person_identifier] = options[:person_identifier]
 end
+
+
+
+##### Create a file name
+local_folder = "/images/"
+image_uri = options[:image_uri]
+ext = FastImage.type(image_uri).to_s #get file type by mime type
+file_name = "#{SecureRandom.uuid}.#{ext}" 
+concat_file_name = File.join(local_folder, file_name)
+File.write(concat_file_name, Net::HTTP.get(URI.parse(image_uri)))
+
+##### Read file metadata
+size_array = FastImage.size(concat_file_name)
+open_DS["payloads"] = Hash.new
+open_DS["payloads"]["name"] = 'original image'
+open_DS["payloads"]["filename"] = file_name
+open_DS["payloads"]["width"] = size_array[0]
+open_DS["payloads"]["height"] = size_array[1]
+open_DS["payloads"]["mediaType"] = "image/#{ext}"
+open_DS["payloads"]["size n"] = File.size(concat_file_name)
 
 puts open_DS.to_json
