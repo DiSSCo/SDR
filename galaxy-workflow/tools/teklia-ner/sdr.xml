@@ -1,0 +1,30 @@
+<tool id="sdr_teklia_worker_ner" name="SDR Teklia worker-ner" version="0.1.0">
+
+    <description>Teklia Worker NER for Synthesis+</description>
+
+    <requirements>
+        <container type="docker">teklia/synthesis-worker-ner</container>
+    </requirements>
+
+    <command>
+	<![CDATA[
+	 worker-ner -i $input -o $output --image /images/`cat $file_location` --model=$training_model 
+	 ]]>
+    </command>
+
+    <inputs>
+		<param format="text" name="training_model" type="text" label="Training model"/>
+        <param name="input" type="data" format="json" label="Open Digital specimen object" />    
+		<param format="json" name="file_location" type="data" label="File location"/>
+    </inputs>
+
+    <outputs>
+        <data format="json" name="output" />
+    </outputs>
+
+    <help>Integration of Spacy for Synthesys+ project</help>
+
+    <citations>
+
+    </citations>
+</tool>

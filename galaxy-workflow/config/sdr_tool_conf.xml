@@ -7,6 +7,7 @@
   
   <tool file="sdr/teklia-dla/sdr.xml" />
   <tool file="sdr/teklia-htr/sdr.xml" />
+  <tool file="sdr/teklia-ner/sdr.xml" />
 
  </section>
 </toolbox>
