@@ -112,7 +112,7 @@ uwsgi:
 
 galaxy:
 
-  admin_users: paul.brack@manchester.ac.uk,l.livermore@nhm.ac.uk, ben@benscott.co.uk
+  admin_users: paul.brack@manchester.ac.uk,l.livermore@nhm.ac.uk, ben@benscott.co.uk, soiland-reyes@manchester.ac.uk
   require_login: true
   allow_user_creation: false
   allow_user_deletion: true
