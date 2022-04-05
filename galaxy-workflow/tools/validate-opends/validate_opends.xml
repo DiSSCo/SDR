@@ -12,5 +12,14 @@
   <help>
      Validate a specimen data object
   </help>
-
+  <tests>
+    <test>
+      <param name="opends-path" value="valid-opends.json"/>
+      <output name="output" file="valid.output"/>
+    </test>
+    <test>
+      <param name="opends-path" value="valid-opends.json"/>
+      <output name="output" file="invalid-opends-missing-physicalSpecimenId.output"/>
+    </test>
+  </tests>
 </tool>
