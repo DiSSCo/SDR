@@ -23,7 +23,7 @@ def main(args):
 
     #    try:
     try:
-        with open('opends_schema.json', 'r') as opends_schema_file:
+        with open(f'{args.schema_dir}/opends_schema.json', 'r') as opends_schema_file:
             opends_schema = json.load(opends_schema_file)
             jsonschema.validate(instance=opends_json,
                                 schema=opends_schema)
@@ -42,6 +42,7 @@ def parse_args(raw_args):
     parser = argparse.ArgumentParser(prog='Validate OpenDS',
                                      description='Options for the validate_opends wrapper')
     parser.add_argument('--opends-path', required=True)
+    parser.add_argument('--schema-dir', required=True)
     args = parser.parse_args(raw_args)
     return args
 
