@@ -13,7 +13,7 @@
 		> '$output'
   </command>
   <inputs>
-    <param format="text" name="catalog_number" type="text" label="Catalog PYTHON number"/>
+    <param format="text" name="catalog_number" type="text" label="Catalog number"/>
     <param format="text" name="image_license" type="select" label="Image license">
       <option value="CC0">CC0</option>
       <option value="CC BY">CC BY</option>
