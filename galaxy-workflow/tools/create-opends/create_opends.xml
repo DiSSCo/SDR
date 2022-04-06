@@ -1,6 +1,6 @@
 <tool id="sdr_create_sdo" name="Create specimen data object" version="0.1.0">
   <description>Create a specimen data object for de novo digitisation</description>
-  <command>ruby '$__tool_directory__/create_opends.rb'
+  <command>python '$__tool_directory__/create_opends.py'
 		'--catalog_number' '$catalog_number'
 		'--image_license' '$image_license'
 		'--image_uri' '$image_uri'
@@ -13,27 +13,42 @@
 		> '$output'
   </command>
   <inputs>
-    <param format="text" name="catalog_number" type="text" label="Catalog number"/>
-	<param format="text" name="image_license" type="select" label="Image license">
-		<option value="CC0">CC0</option>
-		<option value="CC BY">CC BY</option>
-	</param>
-	<param format="text" name="image_uri" type="text" label="Image URI"/>
-	<param format="text" name="object_type" type="select" label="Object type">
-		<option value="Pinned insect">Pinned insect</option>
-		<option value="Microscope slide">Microscope slide</option>
-		<option value="Herbarium sheet">Herbarium sheet</option>
-	</param>
-	<param format="text" name="rights_holder" type="text" label="Rights holder"/>
-	<param format="text" name="registered_institution_url" type="text" label="Registered institution URL"/>
-	<param format="text" name="higher_classification" type="text" label="Higher classification"/>
-	<param format="text" name="person_name" type="text" label="Person name"/>
-	<param format="text" name="person_identifier" type="text" label="Person identifier"/>
+    <param format="text" name="catalog_number" type="text" label="Catalog PYTHON number"/>
+    <param format="text" name="image_license" type="select" label="Image license">
+      <option value="CC0">CC0</option>
+      <option value="CC BY">CC BY</option>
+    </param>
+    <param format="text" name="image_uri" type="text" label="Image URI"/>
+    <param format="text" name="object_type" type="select" label="Object type">
+      <option value="Pinned insect">Pinned insect</option>
+      <option value="Microscope slide">Microscope slide</option>
+      <option value="Herbarium sheet">Herbarium sheet</option>
+    </param>
+    <param format="text" name="rights_holder" type="text" label="Rights holder"/>
+    <param format="text" name="registered_institution_url" type="text" label="Registered institution URL"/>
+    <param format="text" name="higher_classification" type="text" label="Higher classification"/>
+    <param format="text" name="person_name" type="text" label="Person name"/>
+    <param format="text" name="person_identifier" type="text" label="Person identifier"/>
   </inputs>
   <outputs>
     <data format="json" name="output" />
   </outputs>
+  <tests>
+    <test>
+      <param name="" value=""/>
+      <param name="catalog_number" value="123456789"/>
+      <param name="image_license" value="CC0"/>
+      <param name="image_uri" value="https://upload.wikimedia.org/wikipedia/commons/3/3f/JPEG_example_flower.jpg"/>
+      <param name="object_type" value="Pinned insect"/>
+      <param name="rights_holder" value="Open"/>
+      <param name="registered_institution_url" value="https://wikimedia.org/"/>
+      <param name="higher_classification" value="flower"/>
+      <param name="person_name" value="a guy"/>
+      <param name="person_identifier" value="42"/>
+      <output name="output" file="test.output"/>
+    </test>
+  </tests>
   <help>
-		Create a specimen data object for de novo digitisation
+    Create a specimen data object for de novo digitisation
   </help>
 </tool>
