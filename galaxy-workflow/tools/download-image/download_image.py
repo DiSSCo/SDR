@@ -27,7 +27,7 @@ def main(args):
 
         # Retrieve the URI
         (filename, headers) = request.urlretrieve(image_uri,
-                                                  filename=f'/tmp/{filename_hash}')
+                                                  filename=f'/srv/galaxy/images/{filename_hash}')
 
         # -----------------------------------------------------------------------------
         #  Populate metadata

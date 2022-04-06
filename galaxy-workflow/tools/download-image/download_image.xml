@@ -1,7 +1,7 @@
 <tool id="download_image" name="Download image" version="0.1.0">
   <description>Download an image for digitisation</description>
-  <command>ruby $__tool_directory__/download_image.rb 
-	--opends $opends_in > $opends_out
+  <command>python $__tool_directory__/download_image.py
+                  --opends $opends_in > $opends_out
   </command>
   <inputs>
 	<param format="json" name="opends_in" type="data" label="openDS"/>
