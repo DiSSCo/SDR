@@ -1,0 +1,87 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "format-version": "0.1",
+    "name": "SDR Milestone 1 test 2",
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "test1"
+                }
+            ],
+            "label": "test1",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "bottom": 368,
+                "height": 61,
+                "left": 435.5,
+                "right": 635.5,
+                "top": 307,
+                "width": 200,
+                "x": 435.5,
+                "y": 307
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "67b0e06d-5846-4bb9-b959-79f6b0bfe94e",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "ba5612d6-a150-4eae-a526-722560bba1a2"
+                }
+            ]
+        },
+        "1": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "test2"
+                }
+            ],
+            "label": "test2",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "bottom": 453,
+                "height": 61,
+                "left": 435.5,
+                "right": 635.5,
+                "top": 392,
+                "width": 200,
+                "x": 435.5,
+                "y": 392
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "93c1734d-25b3-4ef6-afa9-32eb19d87ec3",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "eeab1bfe-ce81-4f0b-889a-98d606eb13a8"
+                }
+            ]
+        }
+    },
+    "tags": [],
+    "uuid": "0cc92880-4573-4745-8377-68bd5c0a637e",
+    "version": 2
+}
