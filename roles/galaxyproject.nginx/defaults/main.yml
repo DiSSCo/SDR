@@ -1,0 +1,58 @@
+---
+# defaults file for galaxyproject.nginx
+
+# Where should the role find ssl certificates to copy to the remote host (relative from where ansible-playbook is called
+# if not absolute)
+nginx_ssl_src_dir: files/ssl
+nginx_server_src_dir: templates/nginx
+
+# "flavor" of nginx to install
+nginx_flavor: full
+
+# where to install nginx configs
+nginx_conf_dir: /etc/nginx
+nginx_conf_file: "{{ nginx_conf_dir }}/nginx.conf"
+nginx_ssl_conf_dir: "{{ nginx_conf_dir }}/ssl"
+
+# Path to the nginx binary for version and config checking (default will use whatever is on $PATH)
+nginx_command: nginx
+
+# Validate config with `nginx -t`, attempt to restore previous config upon validation failure
+nginx_check_conf: true
+
+# SSL defaults (version dependent ones such as ssl_protocols can be found in the template)
+nginx_conf_ssl_ciphers:
+  - ECDHE-ECDSA-AES128-GCM-SHA256
+  - ECDHE-ECDSA-AES256-GCM-SHA384
+  - ECDHE-ECDSA-AES128-SHA
+  - ECDHE-ECDSA-AES256-SHA
+  - ECDHE-ECDSA-AES128-SHA256
+  - ECDHE-ECDSA-AES256-SHA384
+  - ECDHE-RSA-AES128-GCM-SHA256
+  - ECDHE-RSA-AES256-GCM-SHA384
+  - ECDHE-RSA-AES128-SHA
+  - ECDHE-RSA-AES256-SHA
+  - ECDHE-RSA-AES128-SHA256
+  - ECDHE-RSA-AES256-SHA384
+  - DHE-RSA-AES128-GCM-SHA256
+  - DHE-RSA-AES256-GCM-SHA384
+  - DHE-RSA-AES128-SHA
+  - DHE-RSA-AES256-SHA
+  - DHE-RSA-AES128-SHA256
+  - DHE-RSA-AES256-SHA256
+
+# whether nginx will run from supervisor
+nginx_supervisor: false
+nginx_supervisor_service_name: nginx
+
+# enable ipv6 for the default vhost?
+nginx_enable_default_ipv6: true
+
+# server block template files to install
+nginx_servers: "{{ nginx_configs | default([]) }}"
+#nginx_ssl_servers: []
+
+__nginx_ssl: "{{ nginx_conf_ssl_certificate is defined and nginx_conf_ssl_certificate_key is defined }}"
+__nginx_sslmode: "{{ 'external' if nginx_ssl_role is defined else 'internal' }}"
+
+nginx_selinux_allow_local_connections: false

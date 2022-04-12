@@ -1,0 +1,36 @@
+---
+# Manage Galaxy clone
+
+- name: Clone Galaxy
+  block:
+
+    - name: Update Galaxy to specified ref
+      git:
+        dest: "{{ galaxy_server_dir }}"
+        force: "{{ galaxy_force_checkout }}"
+        depth: "{{ galaxy_clone_depth | default(omit) }}"
+        repo: "{{ galaxy_repo }}"
+        version: "{{ galaxy_commit_id }}"
+        executable: "{{ git_executable | default(omit) }}"
+      diff: "{{ galaxy_diff_mode_verbose }}"
+      register: __galaxy_git_update_result
+      notify:
+        - "{{ galaxy_restart_handler_name }}"
+        - email administrator with commit id
+
+    - name: Report Galaxy version change
+      debug:
+        msg: "Galaxy version changed from '{{ __galaxy_git_update_result.before }}' to '{{ __galaxy_git_update_result.after }}'"
+      changed_when: __galaxy_git_update_result is changed
+      when: __galaxy_git_update_result is changed
+
+    - name: Include virtualenv setup tasks
+      import_tasks: virtualenv.yml
+
+    - name: Remove orphaned .pyc files and compile bytecode
+      import_tasks: compile.yml
+      when: __galaxy_git_update_result is changed
+
+  remote_user: "{{ galaxy_remote_users.privsep | default(__galaxy_remote_user) }}"
+  become: "{{ true if galaxy_become_users.privsep is defined else __galaxy_become }}"
+  become_user: "{{ galaxy_become_users.privsep | default(__galaxy_become_user) }}"

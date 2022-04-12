@@ -1,0 +1,15 @@
+galaxy_root:   /srv/galaxy
+galaxy_tools:  /srv/galaxy/server/tools/sdr
+galaxy_config: /srv/galaxy/server/config
+galaxy_vis:    /srv/galaxy/config/plugins/visualizations
+galaxy_static: /srv/galaxy/server/static
+
+sdr_root:   /srv/SDR
+sdr_tools:  /srv/SDR/galaxy-workflow/tools/  # copy inner contents
+sdr_config: /srv/SDR/galaxy-workflow/config
+sdr_vis:    /srv/SDR/galaxy-workflow/visualisations/roi
+sdr_static: /srv/SDR/galaxy-workflow/static/  # copy inner contents
+
+owner: galaxy
+group: galaxy
+mode:  0755

@@ -1,0 +1,82 @@
+- hosts: [galaxyservers, remoteservers]
+  become: true
+  become_user: root
+  vars_files:
+    - group_vars/secret.yml
+    - group_vars/locations.yml
+  tasks:
+    - name: Checkout SDR
+      ansible.builtin.git:
+        repo: 'https://github.com/DiSSCo/SDR.git'
+        dest: '{{ sdr_root }}'
+    - name: Copy SDR tools to galaxy tools folder
+      copy:
+        src: '{{ sdr_tools }}'
+        dest: '{{ galaxy_tools }}'
+        remote_src: yes
+        force: yes
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+    - name: Copy SDR config to galaxy 
+      copy:
+        src: '{{ item }}'
+        dest: '{{ galaxy_config }}'
+        remote_src: yes
+        force: yes
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+      loop:
+        # Main server config (performed using template by ansible)
+        #- '{{ sdr_config }}/galaxy.yml'
+        # Tool panel config
+        - '{{ sdr_config }}/integrated_tool_panel.xml'
+        # SDR config
+        - '{{ sdr_config }}/tool_conf.xml'
+        - '{{ sdr_config }}/sdr_tool_conf.xml'
+        - '{{ sdr_config }}/job_conf.xml'
+        - '{{ sdr_config }}/local_env.sh'
+        - '{{ sdr_config }}/opends-schema.json'
+        # Data type config
+        - '{{ sdr_config }}/datatypes_conf.xml'
+    - name: Create visualisation directory if it does not exist
+      file:
+        path: '{{ galaxy_vis }}'
+        state: directory
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+    - name: Copy visualisations
+      copy:
+        src: '{{ sdr_vis }}' 
+        dest: '{{ galaxy_vis }}'
+        remote_src: yes
+        force: yes
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+    - name: Copy static
+      copy:
+        src: '{{ sdr_static }}'
+        dest: '{{ galaxy_static }}'
+        remote_src: yes
+        force: yes
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+    - name: Copy welcome page
+      copy:
+        src: '{{ sdr_static }}/welcome.html'
+        dest: '{{ galaxy_static }}/welcome.html.sdr'
+        remote_src: yes
+        force: yes
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+    - name: Restart galaxy
+      ansible.builtin.systemd:
+        state: restarted
+        #daemon_reload: yes # unneeded unless config changes
+        name: galaxy
+
