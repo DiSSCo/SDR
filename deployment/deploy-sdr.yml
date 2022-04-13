@@ -2,13 +2,76 @@
   become: true
   become_user: root
   vars_files:
+    - group_vars/galaxyservers.yml
     - group_vars/secret.yml
     - group_vars/locations.yml
   tasks:
+    - name: Set local or remote SDR
+      set_fact:
+        use_local: false
+    
     - name: Checkout SDR
       ansible.builtin.git:
         repo: 'https://github.com/DiSSCo/SDR.git'
         dest: '{{ sdr_root }}'
+        version: 'main'
+      when: not use_local
+
+    - name: Local copy SDR tools
+      copy:
+        src: '{{ local_sdr_tools }}'
+        dest: '{{ sdr_tools }}'
+        force: yes
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+      when: use_local
+
+    - name: Install SDR python dependencies
+      pip:
+        requirements: "{{ sdr_requirements_file }}"
+        extra_args: "--index-url https://wheels.galaxyproject.org/simple/ --extra-index-url https://pypi.python.org/simple {{ pip_extra_args | default('') }}"
+        virtualenv: "{{ galaxy_root }}/venv"
+        virtualenv_command: "{{ pip_virtualenv_command }}"
+      environment:
+        PYTHONPATH: null
+        VIRTUAL_ENV: "{{ galaxy_root }}/venv"
+
+    - name: Find all SDR tools
+      find:
+        paths: '{{ sdr_tools }}'
+        patterns: '*.xml'
+        #patterns: 'create_opends.xml'
+        excludes: ['sdr-*', 'macro*']
+        recurse: yes
+      register: glob_sdr_tools
+
+    - name: Check syntax of SDR tools
+      command: planemo lint --fail_level error --report_level warn '{{ item }}'
+      loop: "{{ glob_sdr_tools.files | map(attribute='path') | list }}"
+      loop_control:
+        label: "Checking {{ item }}"
+      register: sdrlint
+    - name: Print Syntax check output
+      debug:
+        msg: '{{ item.stdout_lines }}'
+      loop: '{{ sdrlint.results }}'
+      loop_control:
+        label: ""
+
+    # - name: Test SDR tools
+    #   command: planemo test '{{ item }}'
+    #   loop: "{{ glob_sdr_tools.files | map(attribute='path') | list }}"
+    #   loop_control:
+    #     label: "Testing {{ item }}"
+    #   register: sdrlint
+    # - name: Print test output
+    #   debug:
+    #     msg: '{{ item.stdout_lines }}'
+    #   loop: '{{ sdrlint.results }}'
+    #   loop_control:
+    #     label: ""
+
     - name: Copy SDR tools to galaxy tools folder
       copy:
         src: '{{ sdr_tools }}'
@@ -40,13 +103,19 @@
         - '{{ sdr_config }}/opends-schema.json'
         # Data type config
         - '{{ sdr_config }}/datatypes_conf.xml'
-    - name: Create visualisation directory if it does not exist
+
+    - name: Create directories
       file:
-        path: '{{ galaxy_vis }}'
+        path: '{{ item }}'
         state: directory
         owner: '{{ owner }}'
         group: '{{ group }}'
         mode: '{{ mode }}'
+      loop:
+        - '{{ galaxy_images }}'
+        - '{{ galaxy_vis }}'
+        - '{{ galaxy_results }}'
+
     - name: Copy visualisations
       copy:
         src: '{{ sdr_vis }}' 

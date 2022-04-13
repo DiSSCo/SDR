@@ -6,7 +6,7 @@
   pre_tasks:
     - name: Install Dependencies
       package:
-        name: ['acl', 'bzip2', 'git', 'make', 'python3-psycopg2', 'tar', 'virtualenv', 'ruby', 'ruby-fastimage' ]
+        name: ['acl', 'bzip2', 'git', 'make', 'python3-psycopg2', 'tar', 'virtualenv' ]
   roles:
     - galaxyproject.postgresql
     - role: natefoo.postgresql_objects
