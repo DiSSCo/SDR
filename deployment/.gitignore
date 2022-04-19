@@ -1,5 +1,0 @@
-*.pyc
-__pycache__
-secret.yml.template
-hosts
-pb_parsed_galaxy.yml
