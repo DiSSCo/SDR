@@ -45,7 +45,7 @@ def main(args):
 
         # -----------------------------------------------------------------------------
         #  Print
-        
+
         open_DS_json = json.dumps(open_DS)
         print(open_DS_json)
 
@@ -62,10 +62,3 @@ def parse_args(raw_args):
 if __name__ == '__main__':
     args = parse_args(sys.argv[1:])
     main(args)
-    print(args.opends_path)
-
-
-# -----------------------------------------------------------------------------
-#  Parse command line options
-
-
