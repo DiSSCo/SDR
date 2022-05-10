@@ -51,7 +51,7 @@ def main(args):
     image = Image.open(filename)
     open_DS['payloads'] = {
         'name': 'original image',
-        'filename': filename,
+        'filename': filename_hash,
         'width': image.width,
         'height': image.height,
         'mediaType': headers.get_content_type(),
