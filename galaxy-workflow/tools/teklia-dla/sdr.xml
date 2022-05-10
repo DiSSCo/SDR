@@ -13,9 +13,9 @@
     </command>
 
     <inputs>
-		<param format="text" name="training_model" type="text" label="Training model"/>
-        <param name="input" type="data" format="json" label="Open Digital specimen object" />    
-		<param format="json" name="file_location" type="data" label="File location"/>
+      <param format="text" name="training_model" type="text" label="Training model"/>
+      <param name="input" type="data" format="json" label="Open Digital specimen object" />    
+      <param format="json" name="file_location" type="data" label="File location"/>
     </inputs>
 
     <outputs>
