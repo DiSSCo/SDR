@@ -1,0 +1,49 @@
+<tool id="sdr_barcode" name="SDR Barcode" version="0.0.1">
+
+    <description>Extract specimen image from barcode</description>
+
+    <macros>
+        <import>macros.xml</import>
+    </macros>    
+
+    <code file="code.py"/>
+    <expand macro="requirements" />  
+
+    <command>
+        <![CDATA[
+            python '$__tool_directory__/main.py' 
+                -i '$input' 
+                -o '$output'
+            #for $f in $opends_properties.keys
+                --$f '$opends_properties[$f]'
+            #end for            
+        ]]>
+    </command> 
+
+    <inputs>
+
+        <param name="input" type="data" format="json" label="Open Digital specimen object" />
+        <expand macro="opends_property" name="image" property="$.images.availableImages[0].source" />
+
+     </inputs>
+
+    <outputs>
+        <data format="json" name="output" />
+    </outputs>
+
+    <tests>
+        <test>
+            <param name="opends" value="open-ds.json" />
+            <output name="opends" file="open-ds.json" ftype="json" lines_diff="2" />
+        </test>      
+    </tests>
+
+    <help>
+
+        This tool reads barcodes from a specimen object.
+
+    </help>
+    <citations>
+      
+    </citations>
+</tool>

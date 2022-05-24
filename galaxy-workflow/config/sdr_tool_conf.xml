@@ -10,5 +10,7 @@
   <tool file="sdr/teklia-htr/sdr.xml" />
   <tool file="sdr/teklia-ner/sdr.xml" />
 
+  <tool file="sdr/sdr-barcode/sdr-barcode.xml" />
+
  </section>
 </toolbox>
