@@ -1,6 +1,6 @@
-<tool id="sdr_example" name="SDR Tool example" version="0.0.1">
+<tool id="sdr_barcode" name="SDR Barcode" version="0.0.1">
 
-    <description>Description of tool</description>
+    <description>Extract specimen image from barcode</description>
 
     <macros>
         <import>macros.xml</import>
@@ -40,7 +40,7 @@
 
     <help>
 
-        This tool reads a barcode from a specimen object.
+        This tool reads barcodes from a specimen object.
 
     </help>
     <citations>
