@@ -8,14 +8,13 @@
 
     <command>
 	<![CDATA[
-	 worker-ner -i $input -o $output --image /images/`cat $file_location` --model=$training_model 
+	 worker-ner -i $input -o $output --model=$training_model 
 	 ]]>
     </command>
 
     <inputs>
-		<param format="text" name="training_model" type="text" label="Training model"/>
-        <param name="input" type="data" format="json" label="Open Digital specimen object" />    
-		<param format="json" name="file_location" type="data" label="File location"/>
+      <param name="input" type="data" format="json" label="Open Digital specimen object" />    
+      <param name="training_model" type="text" format="text" label="Training model"/>
     </inputs>
 
     <outputs>
