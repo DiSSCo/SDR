@@ -326,24 +326,25 @@
 				}
 				
 				function getUserId() {
-					xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/users/current", false ); // false for synchronous request
+					xmlHttp.open( "GET", baseurl+"/api/users/current", false ); // false for synchronous request
 					xmlHttp.send( null );
 					username = JSON.parse(xmlHttp.responseText)["username"];
 		
 				}
 				
-				
-				var xmlHttp = new XMLHttpRequest();
-				xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/api/workflows", false ); // false for synchronous request
+
+                                var baseurl = window.location.origin 
+                            	var xmlHttp = new XMLHttpRequest();
+
+				xmlHttp.open( "GET", baseurl+"/api/workflows", false ); // false for synchronous request
 				xmlHttp.send( null );
 				var workflows = JSON.parse(xmlHttp.responseText);
 				
-				xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/api/users/current", false ); // false for synchronous request
+				xmlHttp.open( "GET", baseurl+"/api/users/current", false ); // false for synchronous request
 				xmlHttp.send( null );
 				var username = JSON.parse(xmlHttp.responseText)["username"];
 				var batchid = "";
-				
-				
+								
 				var select = document.createElement("select");
 				select.name = "Workflows";
 				select.id = "Workflows"
@@ -395,10 +396,13 @@
 							inputs_by: 'name'
 						});
 						xhr.send(payload);
+                                                console.log(specimen)
+                                                console.log(payload)
 						
 						//save the invocation id 
 						var invocationResult = JSON.parse(xhr.responseText);
 						invocationIds.push(invocationResult["id"]);
+                                                console.log(invocationResult)
 						
 						
 						var span = document.createElement("span");
@@ -536,7 +540,7 @@
 						    }
 							r.readAsText(f);
 							var xmlHttp = new XMLHttpRequest();
-							xmlHttp.open( "GET", "https://sdr.nhm.ac.uk/api/histories", false ); // false for synchronous request
+							xmlHttp.open( "GET", baseurl+"/api/histories", false ); // false for synchronous request
 							xmlHttp.send( null );
 							var histories = JSON.parse(xmlHttp.responseText);
 							var select1 = document.createElement("select");
