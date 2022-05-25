@@ -15,7 +15,7 @@ def __main__(opends_json, output_file, image):
     
     log.debug("Running SDR Barcode Tool")
     
-    cdll_path = os.getcwd() + '/lib/libbardecode.so'
+    cdll_path = os.getcwd() + '/lib/9_1_4/libbardecode.so'
 
     # Load the libbardecode.so library
     cdll=CDLL(cdll_path)
