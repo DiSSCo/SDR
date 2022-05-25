@@ -14,6 +14,7 @@
             python '$__tool_directory__/main.py' 
                 -i '$input' 
                 -o '$output'
+                --image /srv/galaxy/images/`cat $file_location`
             #for $f in $opends_properties.keys
                 --$f '$opends_properties[$f]'
             #end for            
@@ -23,7 +24,8 @@
     <inputs>
 
         <param name="input" type="data" format="json" label="Open Digital specimen object" />
-        <expand macro="opends_property" name="image" property="$.images.availableImages[0].source" />
+        <!-- <expand macro="opends_property" name="image" property="$.images.availableImages[0].source" /> -->
+        <param format="json" name="file_location" type="data" label="File location"/>
 
      </inputs>
 
