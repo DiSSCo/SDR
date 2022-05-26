@@ -8,7 +8,7 @@
 
     <command>
 	<![CDATA[
-	 worker-ner -i $input -o $output --model=$training_model 
+	 worker-ner -i $input -o $output --model=$training_model 2>&1
 	 ]]>
     </command>
 
