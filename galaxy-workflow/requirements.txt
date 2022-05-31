@@ -1,1 +1,2 @@
 pillow
+jsonpath-ng==1.5.3
