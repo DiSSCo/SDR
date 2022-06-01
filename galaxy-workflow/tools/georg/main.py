@@ -42,9 +42,7 @@ def __main__(input, output):
 def georg_do_search(text, country_code=None):
     params = {'text': text}
     if country_code: params['countryCode'] = country_code
-    
-    print(params)
-    
+
     r = requests.get(GEORG_API_SEARCH_ENDPOINT, params=params, verify=False)
     r.raise_for_status()
     return r.json()
