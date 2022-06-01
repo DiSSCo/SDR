@@ -12,7 +12,7 @@
         <requirement type="package" version="2.25.1">requests</requirement>  
     </requirements> 
 
-    <code file="code.py"/>
+    <!-- <code file="code.py"/> -->
 
     <command>
         <![CDATA[
@@ -30,8 +30,8 @@
         <param name="input" type="data" format="json" label="Open Digital specimen object" />
 
         <!-- TODO: Add non required property -->
-        <expand macro="opends_property" name="country_code" property="$.countryCode" />
-        <expand macro="opends_property" name="locality" property="$.locality" />
+        <!-- <expand macro="opends_property" name="country_code" property="$.countryCode" /> -->
+        <!-- <expand macro="opends_property" name="locality" property="$.locality" /> -->
 
      </inputs>
 
@@ -41,7 +41,7 @@
 
     <tests>
         <test>
-            <param name="input" value="open-ds.json" />
+            <param name="opends" value="open-ds.json" />
             <output name="output" file="open-ds.json" ftype="json" lines_diff="2" />
         </test>      
     </tests>
