@@ -1,0 +1,568 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "Minimal viable workflow for testing Teklia's HTR (handwritten text/OCR) tool.",
+    "format-version": "0.1",
+    "name": "HTR-test",
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "Catalog number"
+                }
+            ],
+            "label": "Catalog number",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "bottom": 529.53125,
+                "height": 61.78125,
+                "left": 960,
+                "right": 1160,
+                "top": 467.75,
+                "width": 200,
+                "x": 960,
+                "y": 467.75
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "06b2ce90-e351-48b6-9b7e-4e0df2679788",
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "Image license"
+                }
+            ],
+            "label": "Image license",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "bottom": 602.015625,
+                "height": 61.78125,
+                "left": 958.59375,
+                "right": 1158.59375,
+                "top": 540.234375,
+                "width": 200,
+                "x": 958.59375,
+                "y": 540.234375
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "f1962065-f997-4ff4-a1ce-ada76ce70c20",
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 2,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "Image URI"
+                }
+            ],
+            "label": "Image URI",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "bottom": 679.546875,
+                "height": 61.78125,
+                "left": 958.59375,
+                "right": 1158.59375,
+                "top": 617.765625,
+                "width": 200,
+                "x": 958.59375,
+                "y": 617.765625
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "95c8e2c8-8612-4f34-9cf9-04de1c4608e5",
+            "workflow_outputs": []
+        },
+        "3": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 3,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "Object type"
+                }
+            ],
+            "label": "Object type",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "bottom": 753.515625,
+                "height": 61.78125,
+                "left": 957.5,
+                "right": 1157.5,
+                "top": 691.734375,
+                "width": 200,
+                "x": 957.5,
+                "y": 691.734375
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "b1f06674-9d56-4c66-87ac-3d662593060a",
+            "workflow_outputs": []
+        },
+        "4": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 4,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "Rights holder"
+                }
+            ],
+            "label": "Rights holder",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "bottom": 835.546875,
+                "height": 61.78125,
+                "left": 959.53125,
+                "right": 1159.53125,
+                "top": 773.765625,
+                "width": 200,
+                "x": 959.53125,
+                "y": 773.765625
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "2d23ccc9-66be-4892-a96c-c1a43d69fa2f",
+            "workflow_outputs": []
+        },
+        "5": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 5,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "Institution URL"
+                }
+            ],
+            "label": "Institution URL",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "bottom": 916.515625,
+                "height": 61.78125,
+                "left": 963.59375,
+                "right": 1163.59375,
+                "top": 854.734375,
+                "width": 200,
+                "x": 963.59375,
+                "y": 854.734375
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "f6416c9a-4b74-4933-9314-bead3cd7be00",
+            "workflow_outputs": []
+        },
+        "6": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 6,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "Higher classification"
+                }
+            ],
+            "label": "Higher classification",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "bottom": 1017.9375,
+                "height": 82.171875,
+                "left": 971.5625,
+                "right": 1171.5625,
+                "top": 935.765625,
+                "width": 200,
+                "x": 971.5625,
+                "y": 935.765625
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "11887af3-e742-4eeb-9f5f-83a60b1e26f9",
+            "workflow_outputs": []
+        },
+        "7": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 7,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "Person name"
+                }
+            ],
+            "label": "Person name",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "bottom": 1082.484375,
+                "height": 61.78125,
+                "left": 977.5,
+                "right": 1177.5,
+                "top": 1020.703125,
+                "width": 200,
+                "x": 977.5,
+                "y": 1020.703125
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "d43743ba-a788-44a5-9f80-618197868e11",
+            "workflow_outputs": []
+        },
+        "8": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 8,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "Person identifier"
+                }
+            ],
+            "label": "Person identifier",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "bottom": 1159.53125,
+                "height": 61.78125,
+                "left": 989.53125,
+                "right": 1189.53125,
+                "top": 1097.75,
+                "width": 200,
+                "x": 989.53125,
+                "y": 1097.75
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "b2ba79df-93c7-4237-9034-417f80803d5d",
+            "workflow_outputs": []
+        },
+        "9": {
+            "annotation": "",
+            "content_id": "sdr_create_sdo",
+            "errors": null,
+            "id": 9,
+            "input_connections": {
+                "catalog_number": {
+                    "id": 0,
+                    "output_name": "output"
+                },
+                "higher_classification": {
+                    "id": 6,
+                    "output_name": "output"
+                },
+                "image_license": {
+                    "id": 1,
+                    "output_name": "output"
+                },
+                "image_uri": {
+                    "id": 2,
+                    "output_name": "output"
+                },
+                "object_type": {
+                    "id": 3,
+                    "output_name": "output"
+                },
+                "person_identifier": {
+                    "id": 8,
+                    "output_name": "output"
+                },
+                "person_name": {
+                    "id": 7,
+                    "output_name": "output"
+                },
+                "registered_institution_url": {
+                    "id": 5,
+                    "output_name": "output"
+                },
+                "rights_holder": {
+                    "id": 4,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": "Create SDO",
+            "name": "Create specimen data object",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "json"
+                }
+            ],
+            "position": {
+                "bottom": 843.59375,
+                "height": 336.296875,
+                "left": 1289.03125,
+                "right": 1489.03125,
+                "top": 507.296875,
+                "width": 200,
+                "x": 1289.03125,
+                "y": 507.296875
+            },
+            "post_job_actions": {},
+            "tool_id": "sdr_create_sdo",
+            "tool_state": "{\"catalog_number\": {\"__class__\": \"ConnectedValue\"}, \"higher_classification\": {\"__class__\": \"ConnectedValue\"}, \"image_license\": {\"__class__\": \"ConnectedValue\"}, \"image_uri\": {\"__class__\": \"ConnectedValue\"}, \"object_type\": {\"__class__\": \"ConnectedValue\"}, \"person_identifier\": {\"__class__\": \"ConnectedValue\"}, \"person_name\": {\"__class__\": \"ConnectedValue\"}, \"registered_institution_url\": {\"__class__\": \"ConnectedValue\"}, \"rights_holder\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "00ec1cb5-7bda-48b1-adbf-c628673d6f79",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "fd481b48-51cd-4ae2-88e8-eb536a51425d"
+                }
+            ]
+        },
+        "10": {
+            "annotation": "",
+            "content_id": "download_image",
+            "errors": null,
+            "id": 10,
+            "input_connections": {
+                "opends_in": {
+                    "id": 9,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Download image",
+            "outputs": [
+                {
+                    "name": "opends_out",
+                    "type": "json"
+                }
+            ],
+            "position": {
+                "bottom": 922.375,
+                "height": 93.171875,
+                "left": 1561.71875,
+                "right": 1761.71875,
+                "top": 829.203125,
+                "width": 200,
+                "x": 1561.71875,
+                "y": 829.203125
+            },
+            "post_job_actions": {},
+            "tool_id": "download_image",
+            "tool_state": "{\"opends_in\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "429086a9-23ca-4471-a0a0-c20a219e9c3a",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "opends_out",
+                    "uuid": "373f3ef8-16de-4ede-919d-d24eb9567b92"
+                }
+            ]
+        },
+        "11": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/jq/jq/1.0",
+            "errors": null,
+            "id": 11,
+            "input_connections": {
+                "input": {
+                    "id": 10,
+                    "output_name": "opends_out"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "JQ",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "json"
+                }
+            ],
+            "position": {
+                "bottom": 1095.78125,
+                "height": 93.171875,
+                "left": 1663.1875,
+                "right": 1863.1875,
+                "top": 1002.609375,
+                "width": 200,
+                "x": 1663.1875,
+                "y": 1002.609375
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/jq/jq/1.0",
+            "tool_shed_repository": {
+                "changeset_revision": "5ff75eb1a893",
+                "name": "jq",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"filter\": \".payloads.filename\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"tsv\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0",
+            "type": "tool",
+            "uuid": "9155cbea-14ab-4fc8-a72b-927def7fdd3d",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "a50b6d7f-4e8e-4096-a397-f3ead6b0d35a"
+                }
+            ]
+        },
+        "12": {
+            "annotation": "",
+            "content_id": "sdr_teklia_worker_dla",
+            "errors": null,
+            "id": 12,
+            "input_connections": {
+                "file_location": {
+                    "id": 11,
+                    "output_name": "output"
+                },
+                "input": {
+                    "id": 10,
+                    "output_name": "opends_out"
+                }
+            },
+            "inputs": [],
+            "label": "DLA - detect text lines",
+            "name": "SDR Teklia worker-dla",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "json"
+                }
+            ],
+            "position": {
+                "bottom": 972.109375,
+                "height": 164.34375,
+                "left": 1880.5,
+                "right": 2080.5,
+                "top": 807.765625,
+                "width": 200,
+                "x": 1880.5,
+                "y": 807.765625
+            },
+            "post_job_actions": {},
+            "tool_id": "sdr_teklia_worker_dla",
+            "tool_state": "{\"file_location\": {\"__class__\": \"ConnectedValue\"}, \"input\": {\"__class__\": \"ConnectedValue\"}, \"training_model\": \"line_synthesys\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.5",
+            "type": "tool",
+            "uuid": "14f4949c-472c-4af1-ac91-93670a6a0f33",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "33bf6d83-be1d-4f8c-ba53-0c6d79bd28e9"
+                }
+            ]
+        },
+        "13": {
+            "annotation": "",
+            "content_id": "sdr_teklia_worker_htr",
+            "errors": null,
+            "id": 13,
+            "input_connections": {
+                "file_location": {
+                    "id": 11,
+                    "output_name": "output"
+                },
+                "input": {
+                    "id": 12,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "SDR Teklia worker-htr",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "json"
+                }
+            ],
+            "position": {
+                "bottom": 1118.109375,
+                "height": 164.34375,
+                "left": 2120.25,
+                "right": 2320.25,
+                "top": 953.765625,
+                "width": 200,
+                "x": 2120.25,
+                "y": 953.765625
+            },
+            "post_job_actions": {},
+            "tool_id": "sdr_teklia_worker_htr",
+            "tool_state": "{\"file_location\": {\"__class__\": \"ConnectedValue\"}, \"input\": {\"__class__\": \"ConnectedValue\"}, \"training_model\": \"kaldi_synthesys\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "327974dd-5e61-4729-80f5-5013f3421364",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "2aa687d1-2a53-431c-b0fe-1b737f4e2038"
+                }
+            ]
+        }
+    },
+    "tags": [
+        "Default-SDR",
+        "Test"
+    ],
+    "uuid": "dc9e53d6-2044-4f91-9be8-8095b6417f85",
+    "version": 4
+}
