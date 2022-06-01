@@ -1,7 +1,0 @@
-<macros>
-
-    <xml name="opends_property" token_name="" token_property="">            
-        <param name="opends.@NAME@" type="hidden" value="@PROPERTY@" />
-    </xml>
-
-</macros>

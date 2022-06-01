@@ -2,8 +2,9 @@
 
 import logging
 import requests
-
-from utils import parse_args, write_opends_to_output_file
+import argparse
+import json
+import sys
 
 
 log = logging.getLogger(__name__)
@@ -11,31 +12,38 @@ log = logging.getLogger(__name__)
 
 GEORG_API_SEARCH_ENDPOINT = 'https://georg-stage.nrm.se/api/search'
 
-
-@parse_args
-def __main__(opends_json, output_file, locality, country_code):
+def __main__(input, output):
     
     log.debug("Running GEORG Search")
     
-    georg_result = georg_search(locality, country_code)
+    with open(input) as open_input:
+        open_DS = json.load(open_input)
     
-    if errors := georg_result['geocoding'].get('errors'):
-        raise Exception(errors)  
-    
-    log.debug("Selecting 1st result out of %d returned from GEORG Search API", len(georg_result['features']))
-    
-    opends_json['geocoding'] = georg_result['features'][0]
-    
-    # TODO: Georg result includes geocoding information, which is relevant to specimen provenance
-    opends_json.setdefault("provenance", {})    
-    opends_json['provenance']['geocoding'] = georg_result['geocoding']
-   
-    write_opends_to_output_file(opends_json, output_file)    
-    
+        locality = open_DS.get('locality')
+        country_code = open_DS.get('countryCode')
+        
+        if not locality:
+            raise Exception("Specimen locality string not present in open digital specimen object (expected at $.locality)")  
+        
+        georg_result = georg_do_search(locality, country_code)
+        
+        if errors := georg_result['geocoding'].get('errors'):
+            raise Exception(errors)  
+        
+        log.debug("Selecting 1st result out of %d returned from GEORG Search API", len(georg_result['features']))
+        
+        open_DS['geocoding'] = georg_result['features'][0]
 
-def georg_search(text, country_code=None):
+        # Georg result includes geocoding information, which is relevant to specimen provenance
+        open_DS.setdefault("provenance", {})    
+        open_DS['provenance']['geocoding'] = georg_result['geocoding']
+        print(open_DS)
+   
+def georg_do_search(text, country_code=None):
     params = {'text': text}
     if country_code: params['countryCode'] = country_code
+    
+    print(params)
     
     r = requests.get(GEORG_API_SEARCH_ENDPOINT, params=params, verify=False)
     r.raise_for_status()
@@ -43,5 +51,10 @@ def georg_search(text, country_code=None):
 
 
 if __name__ == "__main__":
-    georg_result = georg_search('lyme regis', 'GB')        
-    print(georg_result)    
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-i','--input', required=True)
+    parser.add_argument('-o','--output', required=True)
+    
+    args = parser.parse_args()
+
+    __main__(args.input, args.output)

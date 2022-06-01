@@ -2,36 +2,13 @@
 
     <description>GEORG Geospatial Search</description>
 
-    <macros>
-        <import>macros.xml</import>
-    </macros>    
-
     <requirements>
-        <requirement type="package" version="0.1.18">json</requirement>
-        <requirement type="package" version="1.5.3">jsonpath-ng</requirement>
         <requirement type="package" version="2.25.1">requests</requirement>  
     </requirements> 
-
-    <code file="code.py"/>
-
-    <command>
-        <![CDATA[
-            python '$__tool_directory__/main.py' 
-                -i '$input' 
-                -o '$output'
-            #for $f in $opends_properties.keys
-                --$f '$opends_properties[$f]'
-            #end for            
-        ]]>
-    </command> 
 
     <inputs>
 
         <param name="input" type="data" format="json" label="Open Digital specimen object" />
-
-        <!-- TODO: Add non required property -->
-        <expand macro="opends_property" name="country_code" property="$.countryCode" />
-        <expand macro="opends_property" name="locality" property="$.locality" />
 
      </inputs>
 
@@ -48,9 +25,10 @@
 
     <help>
 
-        This tool searches Georg API
+        Search GEORG API for the locality property in the Open Digital specimen object.
 
     </help>
+    
     <citations>
       
     </citations>
