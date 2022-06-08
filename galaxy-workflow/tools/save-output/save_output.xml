@@ -2,14 +2,12 @@
   <description>Saves the output of a digitisation to disk</description>
   <command>python '$__tool_directory__/save_output.py'
                   '--opends-path' '$opends_in'
-		  '--output-dir' '$output_dir'
 		  '--batch-id' '$batch_id'
 		  > '$output'
   </command>
   <inputs>
     <param format="json" name="opends_in" type="data" label="openDS"/>
     <param format="text" name="batch_id" type="text" label="Batch ID"/>
-    <param format="text" name="output_dir" type="text" label="Output directory"/>
   </inputs>
   <outputs>
     <data format="json" name="output" />

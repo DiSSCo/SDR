@@ -10,7 +10,7 @@ galaxy_root = '/srv/galaxy/server/results/'
 
 
 def main(args):
-    rootdir      = f'{galaxy_root}/{args.output_dir}'
+    rootdir      = f'{galaxy_root}/'
     batchdir     = f'{rootdir}/{args.batch_id}'
     file_listing = f'{rootdir}/files'
 
@@ -34,7 +34,6 @@ def parse_args(raw_args):
     parser = argparse.ArgumentParser(prog='Save output',
                                      description='Options for the validate_opends wrapper')
     parser.add_argument('--opends-path', required=True)
-    parser.add_argument('--output-dir', required=True)
     parser.add_argument('--batch-id', required=True)
     args = parser.parse_args(raw_args)
     return args
