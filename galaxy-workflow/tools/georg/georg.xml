@@ -6,33 +6,18 @@
         <requirement type="package" version="2.25.1">requests</requirement>  
     </requirements> 
 
-<<<<<<< HEAD
-=======
-    <!-- <code file="code.py"/> -->
-
     <command>
         <![CDATA[
-            python '$__tool_directory__/main.py' 
-                -i '$input' 
+            python '$__tool_directory__/main.py'
+                -i '$input'
                 -o '$output'
-            #for $f in $opends_properties.keys
-                --$f '$opends_properties[$f]'
-            #end for            
         ]]>
-    </command> 
+    </command>
 
->>>>>>> 064ce8479a010b1ab8f67281e00c3f13decaafbb
     <inputs>
 
         <param name="input" type="data" format="json" label="Open Digital specimen object" />
 
-<<<<<<< HEAD
-=======
-        <!-- TODO: Add non required property -->
-        <!-- <expand macro="opends_property" name="country_code" property="$.countryCode" /> -->
-        <!-- <expand macro="opends_property" name="locality" property="$.locality" /> -->
-
->>>>>>> 064ce8479a010b1ab8f67281e00c3f13decaafbb
      </inputs>
 
     <outputs>
