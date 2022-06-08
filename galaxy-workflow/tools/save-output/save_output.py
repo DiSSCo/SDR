@@ -12,7 +12,7 @@ galaxy_root = '/srv/galaxy/server/results/'
 def main(args):
     rootdir      = f'{galaxy_root}/'
     batchdir     = f'{rootdir}/{args.batch_id}'
-    file_listing = f'{rootdir}/files'
+    file_listing = f'{batchdir}/files'
 
     opends_filename = os.path.basename(args.opends_path)
     outputfile   = f'{batchdir}/{opends_filename}'
