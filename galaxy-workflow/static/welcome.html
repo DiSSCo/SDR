@@ -2,229 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <style>
-			#welcome-container {
-				font-family: Sans-Serif;
-			}
-			.header-div {
-				background-color: #004683;
-				width:100%;
-				height:75px;
-				font-family: Sans-Serif;
-				color:#fff;
-			}
-			.header-div h1 {
-				padding:20px;
-			}
-			.sdr-logo {
-				float:left;
-				height:75px;
-				width:63px;
-				padding-right:20px;
-			}
-			.tab {
-				width:100%;
-				border-bottom: 5px solid #004683;
-				 overflow: hidden;
-				 box-sizing: border-box;
-			}
-			.tabcontent {
-				clear:left;
-				padding:10px;
-			}
-			button.tablinks {
-				display: block;
-
-				  border: 1px solid white;
-				  border-bottom: none;
-				  background-color: #004683;
-				  color: white;
-				  padding: 8px 10px;
-				  font-size: 16px;
-				  cursor: pointer;
-				  float:left;
-				  
-			}
-						button.tablinks:hover {
-							opacity:0.8;
-						
-						}
-						
-												button.tablinks.active {
-				  border: 1px solid #004683;
-				  background-color: white;
-				  border-bottom: none;
-				  color: #004683;
-						
-						}
-			.synth-logo {
-				float:right;
-			}
-			#upload_results {
-				height:70px;
-
-				border: 2px solid #004683;
-				padding:12px 15px;
-				display:none;
-				background-color: #004683;
-				color: #ffffff;
-								font-family: monospace;	
-			}
-			#upload_results2 {
-				max-height:300px;
-				overflow-y:scroll;
-				border: 2px solid #004683;
-				display:none;
-
-			}
-			
-			#upload_results3 {
-				height:200px;
-				overflow-y:scroll;
-				border: 2px solid #004683;
-				display:none;
-				background-color: #004683;
-								padding:12px 15px;
-			}
-			#upload_buttons {
-				padding:12px 15px;
-			}
-			#upload_buttons button, #upload_results4 button{
-				background-color: #004683;
-				padding:12px 15px;
-				color:white;
-				margin-top:10px;
-			}
-			#upload_buttons button:disabled{
-				background-color: gray;
-			}
-			#upload_results3 span{
-				display:block;
-				color: #ffffff;
-				font-family: monospace;				
-			}
-		
-			#upload_results2 table {
-				border-collapse: collapse;
-				font-size: 0.9em;
-				font-family: sans-serif;
-				width:100%;
-			}
-			
-			#upload_results2 table th,
-			#upload_results2 table td {
-				padding: 12px 15px;
-			}
-			#upload_results2 table tbody tr {
-				border-bottom: 1px solid #dddddd;
-			}
-
-			#upload_results2 table tbody tr:nth-of-type(even) {
-				background-color: #f3f3f3;
-			}	
-			
-			#upload_results2 table tbody tr:first-child {
-				background-color: #004683;
-				color: #ffffff;
-				text-align: left;
-			}	
-			#upload_results4 {
-				padding:12px 15px;
-				display:none;
-			}
-			#fileinput{
-				display:block;
-				padding:0.46em 1.6em;
-				margin:0 0.2em 0.2em 0;
-				border-radius:0.12em;
-				box-sizing: border-box;
-				text-decoration:none;
-				width:100%;
-				color:#fff;
-				background-color:#004683;
-				text-align:center;
-			}
-			.lds-spinner {
-			  color: official;
-			  display: inline-block;
-			  position: relative;
-			  width: 80px;
-			  height: 80px;
-			  margin: auto;
-			  padding: 10px;
-			}
-			.lds-spinner div {
-			  transform-origin: 40px 40px;
-			  animation: lds-spinner 1.2s linear infinite;
-			}
-			.lds-spinner div:after {
-			  content: " ";
-			  display: block;
-			  position: absolute;
-			  top: 3px;
-			  left: 37px;
-			  width: 6px;
-			  height: 18px;
-			  border-radius: 20%;
-			  background: #004683;
-			}
-			.lds-spinner div:nth-child(1) {
-			  transform: rotate(0deg);
-			  animation-delay: -1.1s;
-			}
-			.lds-spinner div:nth-child(2) {
-			  transform: rotate(30deg);
-			  animation-delay: -1s;
-			}
-			.lds-spinner div:nth-child(3) {
-			  transform: rotate(60deg);
-			  animation-delay: -0.9s;
-			}
-			.lds-spinner div:nth-child(4) {
-			  transform: rotate(90deg);
-			  animation-delay: -0.8s;
-			}
-			.lds-spinner div:nth-child(5) {
-			  transform: rotate(120deg);
-			  animation-delay: -0.7s;
-			}
-			.lds-spinner div:nth-child(6) {
-			  transform: rotate(150deg);
-			  animation-delay: -0.6s;
-			}
-			.lds-spinner div:nth-child(7) {
-			  transform: rotate(180deg);
-			  animation-delay: -0.5s;
-			}
-			.lds-spinner div:nth-child(8) {
-			  transform: rotate(210deg);
-			  animation-delay: -0.4s;
-			}
-			.lds-spinner div:nth-child(9) {
-			  transform: rotate(240deg);
-			  animation-delay: -0.3s;
-			}
-			.lds-spinner div:nth-child(10) {
-			  transform: rotate(270deg);
-			  animation-delay: -0.2s;
-			}
-			.lds-spinner div:nth-child(11) {
-			  transform: rotate(300deg);
-			  animation-delay: -0.1s;
-			}
-			.lds-spinner div:nth-child(12) {
-			  transform: rotate(330deg);
-			  animation-delay: 0s;
-			}
-			@keyframes lds-spinner {
-			  0% {
-				opacity: 1;
-			  }
-			  100% {
-				opacity: 0;
-			  }
-			}
-		</style>
+        <link rel="stylesheet" href="welcome.css">
     </head>
 
     <body class="m-0">
@@ -372,7 +150,7 @@
 				var wf = "";
 				var zip = new JSZip();
 				
-					function InvokeWorkflow() {
+				  function InvokeWorkflow() {
 						var specimen = lines[index].split(",");
 						var historyId = document.getElementById("Histories").value;
 						var xhr = new XMLHttpRequest();
@@ -396,14 +174,10 @@
 							inputs_by: 'name'
 						});
 						xhr.send(payload);
-                                                console.log(specimen)
-                                                console.log(payload)
 						
 						//save the invocation id 
 						var invocationResult = JSON.parse(xhr.responseText);
 						invocationIds.push(invocationResult["id"]);
-                                                console.log(invocationResult)
-						
 						
 						var span = document.createElement("span");
 						span.innerHTML = (new Date().getTime() - start) + "ms > Submitting specimen " + specimen[0] + " with payload: " + payload;
@@ -449,7 +223,14 @@
 					}
 					
 					function processResults(historyId){
-						document.getElementById("spinner").style.display = "none";
+					    document.getElementById("spinner").style.display = "none";
+
+                                            // // Make a new empty crate
+                                            // const {ROCrate} = require('ro-crate');
+                                            // const crate = new ROCrate();
+                                            // console.log("Crate", JSON.stringify(crate.getJson(), null, 2));
+                                            // console.log("Crate");
+                                            
 						var jobId = "";
 						var results = [];
 
