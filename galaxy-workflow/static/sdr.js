@@ -1,32 +1,3 @@
-function openTab(evt, tabName) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-	tabcontent[i].style.display = "none";
-    }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-	tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-function getUserId() {
-    xmlHttp.open( "GET", baseurl+"/api/users/current", false ); // false for synchronous request
-    xmlHttp.send( null );
-    username = JSON.parse(xmlHttp.responseText)["username"];
-    
-}
-
-
 var baseurl = window.location.origin 
 var xmlHttp = new XMLHttpRequest();
 
@@ -65,6 +36,7 @@ var selectedWorkflow = "";
 var start = "";
 var wf = "";
 var zip = new JSZip();
+document.getElementById('fileinput').addEventListener('change', readSingleFile);
 
 function InvokeWorkflow() {
     var specimen = lines[index].split(",");
@@ -140,13 +112,7 @@ function pollHistories(historyId) {
 
 function processResults(historyId){
     document.getElementById("spinner").style.display = "none";
-
-    // // Make a new empty crate
-    // const {ROCrate} = require('ro-crate');
-    // const crate = new ROCrate();
-    // console.log("Crate", JSON.stringify(crate.getJson(), null, 2));
-    // console.log("Crate");
-    
+ 
     var jobId = "";
     var results = [];
 
@@ -266,8 +232,34 @@ function readSingleFile(evt) {
 	alert("Failed to load file");
     }
 }
-document.getElementById('fileinput').addEventListener('change', readSingleFile);
 
 function loadPreviousresults() {}					
 
+function openTab(evt, tabName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+	tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+	tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+function getUserId() {
+    xmlHttp.open( "GET", baseurl+"/api/users/current", false ); // false for synchronous request
+    xmlHttp.send( null );
+    username = JSON.parse(xmlHttp.responseText)["username"];
     
+}
+
