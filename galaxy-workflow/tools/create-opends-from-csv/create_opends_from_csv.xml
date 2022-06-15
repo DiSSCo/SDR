@@ -1,0 +1,18 @@
+<tool id="sdr_create_sdo_from_csv" name="Create specimen data object from csv" version="0.1.0">
+  <description>Create a specimen data object for de novo digitisation</description>
+  <command>python '$__tool_directory__/create_opends_from_csv.py'
+		--input '$input'
+		> '$output'
+  </command>
+  <inputs>
+    <param format="text" name="input" type="data" label="Input"/>
+  </inputs>
+  <outputs>
+    <data format="json" name="output" />
+  </outputs>
+  <tests>
+  </tests>
+  <help>
+    Create a specimen data object for de novo digitisation from a csv
+  </help>
+</tool>

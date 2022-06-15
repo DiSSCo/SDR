@@ -11,6 +11,7 @@
   <tool file="sdr/teklia-ner/sdr.xml" />
 
   <tool file="sdr/sdr-barcode/sdr-barcode.xml" />
+  <tool file="sdr/create-opends-from-csv/create_opends_from_csv.xml" />
 
  </section>
 </toolbox>
