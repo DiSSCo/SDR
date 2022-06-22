@@ -14,22 +14,22 @@ def main(args):
 
     input_list = ""
     with open(args.input, 'r') as input:
-        input_list = input.read().split(",")
+        input_list = input.read().split("\t")
 
-    if (len(input_list) < 7):
+    if (len(input_list) <= 7):
         exit()
         
     catalog_number             = input_list[0]
+    image_license              = input_list[1]
+    image_uri                  = input_list[2]
+    object_type                = input_list[3]
     rights_holder              = input_list[4]
     registered_institution_url = input_list[5]
-    object_type                = input_list[3]
-    image_uri                  = input_list[2]
-    image_license              = input_list[1]
     higher_classification      = input_list[6]
 
     person_name = ""
     person_identifier = ""
-    if (len(input_list) > 7):
+    if (len(input_list) == 9):
         person_name = input_list[7]
         person_identifier = input_list[8]
         
