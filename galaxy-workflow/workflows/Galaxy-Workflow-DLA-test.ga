@@ -15,14 +15,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "bottom": 308.015625,
+                "bottom": 396.015625,
                 "height": 61.78125,
-                "left": -447.5,
-                "right": -247.5,
-                "top": 246.234375,
+                "left": -15,
+                "right": 185,
+                "top": 334.234375,
                 "width": 200,
-                "x": -447.5,
-                "y": 246.234375
+                "x": -15,
+                "y": 334.234375
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": \"\"}",
@@ -52,14 +52,14 @@
                 }
             ],
             "position": {
-                "bottom": 338.84375,
+                "bottom": 426.84375,
                 "height": 93.171875,
-                "left": -206.046875,
-                "right": -6.046875,
-                "top": 245.671875,
+                "left": 226.453125,
+                "right": 426.453125,
+                "top": 333.671875,
                 "width": 200,
-                "x": -206.046875,
-                "y": 245.671875
+                "x": 226.453125,
+                "y": 333.671875
             },
             "post_job_actions": {},
             "tool_id": "Remove beginning1",
@@ -71,7 +71,7 @@
                 {
                     "label": null,
                     "output_name": "out_file1",
-                    "uuid": "c54f2673-1bb8-4dd6-a9ae-3577258836b8"
+                    "uuid": "30886357-b6dc-4534-88f2-ce28bb3b74c0"
                 }
             ]
         },
@@ -86,30 +86,35 @@
                     "output_name": "out_file1"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Split file",
+                    "name": "split_parms"
+                }
+            ],
             "label": null,
             "name": "Split file",
             "outputs": [
                 {
-                    "name": "list_output_tab",
+                    "name": "list_output_txt",
                     "type": "input"
                 }
             ],
             "position": {
-                "bottom": 391.0625,
+                "bottom": 479.0625,
                 "height": 113.5625,
-                "left": 24.984375,
-                "right": 224.984375,
-                "top": 277.5,
+                "left": 457.484375,
+                "right": 657.484375,
+                "top": 365.5,
                 "width": 200,
-                "x": 24.984375,
-                "y": 277.5
+                "x": 457.484375,
+                "y": 365.5
             },
             "post_job_actions": {
-                "HideDatasetActionlist_output_tab": {
+                "HideDatasetActionlist_output_txt": {
                     "action_arguments": {},
                     "action_type": "HideDatasetAction",
-                    "output_name": "list_output_tab"
+                    "output_name": "list_output_txt"
                 }
             },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/split_file_to_collection/split_file_to_collection/0.5.0",
@@ -119,7 +124,7 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"split_parms\": {\"select_ftype\": \"tabular\", \"__current_case__\": 0, \"input\": {\"__class__\": \"ConnectedValue\"}, \"top\": \"0\", \"split_by\": {\"select_split_by\": \"row\", \"__current_case__\": 1, \"select_mode\": {\"mode\": \"chunk\", \"__current_case__\": 0, \"chunksize\": \"1\"}, \"newfilenames\": \"sample_\", \"select_allocate\": {\"allocate\": \"byrow\", \"__current_case__\": 2}}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"split_parms\": {\"select_ftype\": \"txt\", \"__current_case__\": 5, \"input\": {\"__class__\": \"RuntimeValue\"}, \"select_mode\": {\"mode\": \"chunk\", \"__current_case__\": 0, \"chunksize\": \"1\"}, \"newfilenames\": \"split_file\", \"select_allocate\": {\"allocate\": \"byrow\", \"__current_case__\": 2}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.5.0",
             "type": "tool",
             "uuid": "a944c699-c37a-491c-953b-0d1faceb3dbb",
@@ -133,7 +138,7 @@
             "input_connections": {
                 "input": {
                     "id": 2,
-                    "output_name": "list_output_tab"
+                    "output_name": "list_output_txt"
                 }
             },
             "inputs": [],
@@ -146,14 +151,14 @@
                 }
             ],
             "position": {
-                "bottom": 422.09375,
+                "bottom": 510.09375,
                 "height": 113.5625,
-                "left": 273.25,
-                "right": 473.25,
-                "top": 308.53125,
+                "left": 705.75,
+                "right": 905.75,
+                "top": 396.53125,
                 "width": 200,
-                "x": 273.25,
-                "y": 308.53125
+                "x": 705.75,
+                "y": 396.53125
             },
             "post_job_actions": {},
             "tool_id": "sdr_create_sdo_from_csv",
@@ -165,7 +170,7 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "8bf7d772-8945-4073-80ba-7c7fa06f0614"
+                    "uuid": "326b1f70-7e0d-4df2-bd3a-4204e13c21f6"
                 }
             ]
         },
@@ -190,14 +195,14 @@
                 }
             ],
             "position": {
-                "bottom": 473.265625,
+                "bottom": 561.265625,
                 "height": 133.953125,
-                "left": 518.078125,
-                "right": 718.078125,
-                "top": 339.3125,
+                "left": 950.578125,
+                "right": 1150.578125,
+                "top": 427.3125,
                 "width": 200,
-                "x": 518.078125,
-                "y": 339.3125
+                "x": 950.578125,
+                "y": 427.3125
             },
             "post_job_actions": {},
             "tool_id": "__FILTER_FAILED_DATASETS__",
@@ -209,7 +214,7 @@
                 {
                     "label": "input dataset(s) (filtered failed datasets)",
                     "output_name": "output",
-                    "uuid": "660a6119-77f7-4420-98c1-cb364a08b34d"
+                    "uuid": "abf6c334-d390-4c0f-9d70-42e03afb83ea"
                 }
             ]
         },
@@ -224,12 +229,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool JQ",
-                    "name": "input"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "JQ",
             "outputs": [
@@ -239,14 +239,14 @@
                 }
             ],
             "position": {
-                "bottom": 571.21875,
+                "bottom": 659.21875,
                 "height": 93.171875,
-                "left": 776.921875,
-                "right": 976.921875,
-                "top": 478.046875,
+                "left": 1209.421875,
+                "right": 1409.421875,
+                "top": 566.046875,
                 "width": 200,
-                "x": 776.921875,
-                "y": 478.046875
+                "x": 1209.421875,
+                "y": 566.046875
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/jq/jq/1.0",
@@ -256,7 +256,7 @@
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"filter\": \".payloads.filename\", \"input\": {\"__class__\": \"RuntimeValue\"}, \"tsv\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"filter\": \".payloads.filename\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"tsv\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0",
             "type": "tool",
             "uuid": "723c3b9b-7752-4c12-82a4-c352e2cc5da1",
@@ -264,7 +264,7 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "7aff041e-90ff-482d-8094-afd31007d191"
+                    "uuid": "2d1f62ca-8fff-4d47-9e74-6539f041ced1"
                 }
             ]
         },
@@ -283,16 +283,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool SDR Teklia worker-dla",
-                    "name": "file_location"
-                },
-                {
-                    "description": "runtime parameter for tool SDR Teklia worker-dla",
-                    "name": "input"
-                }
-            ],
+            "inputs": [],
             "label": "DLA - detect regions",
             "name": "SDR Teklia worker-dla",
             "outputs": [
@@ -302,18 +293,18 @@
                 }
             ],
             "position": {
-                "bottom": 547.515625,
+                "bottom": 635.515625,
                 "height": 164.34375,
-                "left": 1031.9375,
-                "right": 1231.9375,
-                "top": 383.171875,
+                "left": 1464.4375,
+                "right": 1664.4375,
+                "top": 471.171875,
                 "width": 200,
-                "x": 1031.9375,
-                "y": 383.171875
+                "x": 1464.4375,
+                "y": 471.171875
             },
             "post_job_actions": {},
             "tool_id": "sdr_teklia_worker_dla",
-            "tool_state": "{\"file_location\": {\"__class__\": \"RuntimeValue\"}, \"input\": {\"__class__\": \"RuntimeValue\"}, \"training_model\": \"pinned_insects\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"file_location\": {\"__class__\": \"ConnectedValue\"}, \"input\": {\"__class__\": \"ConnectedValue\"}, \"training_model\": \"pinned_insects\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1.5",
             "type": "tool",
             "uuid": "77392890-7c47-4e6f-8680-00bc17ae0df8",
@@ -321,7 +312,7 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "fbc5d926-57da-419f-ba81-00c7a8356142"
+                    "uuid": "c4ecce5e-4363-4dcd-be66-3f439b85aa89"
                 }
             ]
         },
@@ -336,12 +327,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Bundle Collection",
-                    "name": "singles_or_list"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Bundle Collection",
             "outputs": [
@@ -351,14 +337,14 @@
                 }
             ],
             "position": {
-                "bottom": 573.0625,
+                "bottom": 661.0625,
                 "height": 93.171875,
-                "left": 1291.8125,
-                "right": 1491.8125,
-                "top": 479.890625,
+                "left": 1724.3125,
+                "right": 1924.3125,
+                "top": 567.890625,
                 "width": 200,
-                "x": 1291.8125,
-                "y": 479.890625
+                "x": 1724.3125,
+                "y": 567.890625
             },
             "post_job_actions": {
                 "RenameDatasetActionhtml_file": {
@@ -376,7 +362,7 @@
                 "owner": "nml",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"singles_or_list\": {\"type\": \"list\", \"__current_case__\": 1, \"input\": {\"__class__\": \"RuntimeValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"singles_or_list\": {\"type\": \"list\", \"__current_case__\": 1, \"input\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.3.0",
             "type": "tool",
             "uuid": "5d881216-16ba-48cb-ac66-675b86efba20",
@@ -384,7 +370,7 @@
                 {
                     "label": "SDR_output",
                     "output_name": "html_file",
-                    "uuid": "b9bbb566-f642-4227-9c47-1573626f21dc"
+                    "uuid": "b49c0857-8c87-42b9-8c32-8e9f448449bc"
                 }
             ]
         }
@@ -393,6 +379,6 @@
         "Default-SDR",
         "Test"
     ],
-    "uuid": "c5642803-b4b3-4b1d-b3b0-9d57cbc37252",
-    "version": 2
+    "uuid": "76346b80-628a-4b03-8ddf-f5416fa30957",
+    "version": 4
 }
