@@ -14,7 +14,7 @@ def main(args):
 
     input_list = ""
     with open(args.input, 'r') as input:
-        input_list = input.read().split("\t")
+        input_list = input.read().split(",")
 
     if (len(input_list) <= 7):
         exit()
