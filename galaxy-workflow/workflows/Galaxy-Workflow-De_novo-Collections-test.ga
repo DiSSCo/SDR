@@ -1,0 +1,528 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "Example de novo digitisation composed of three Teklia tools that output: regions of interest, text lines, OCR, and NER. Supports multiple specimens via .csv file input and uses collections.",
+    "creator": [
+        {
+            "class": "Person",
+            "identifier": "",
+            "name": "Oliver Woolland"
+        }
+    ],
+    "format-version": "0.1",
+    "name": "De novo-Collections-test",
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [],
+            "label": null,
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "bottom": 799.515625,
+                "height": 61.78125,
+                "left": 56,
+                "right": 256,
+                "top": 737.734375,
+                "width": 200,
+                "x": 56,
+                "y": 737.734375
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false, \"tag\": \"\"}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "4a80ca93-7c35-4071-bff9-8e377e4fbc94",
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": "Remove beginning1",
+            "errors": null,
+            "id": 1,
+            "input_connections": {
+                "input": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": "Remove header",
+            "name": "Remove beginning",
+            "outputs": [
+                {
+                    "name": "out_file1",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "bottom": 835.34375,
+                "height": 93.171875,
+                "left": 301.453125,
+                "right": 501.453125,
+                "top": 742.171875,
+                "width": 200,
+                "x": 301.453125,
+                "y": 742.171875
+            },
+            "post_job_actions": {},
+            "tool_id": "Remove beginning1",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"num_lines\": \"1\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.0",
+            "type": "tool",
+            "uuid": "0573ac37-a40b-492b-b300-5c7d442f66db",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "out_file1",
+                    "uuid": "3e80563f-b9fe-4096-a51d-6c9174e4adb2"
+                }
+            ]
+        },
+        "2": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/split_file_to_collection/split_file_to_collection/0.5.0",
+            "errors": null,
+            "id": 2,
+            "input_connections": {
+                "split_parms|input": {
+                    "id": 1,
+                    "output_name": "out_file1"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Split file",
+            "outputs": [
+                {
+                    "name": "list_output_txt",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "bottom": 884.5625,
+                "height": 113.5625,
+                "left": 537.484375,
+                "right": 737.484375,
+                "top": 771,
+                "width": 200,
+                "x": 537.484375,
+                "y": 771
+            },
+            "post_job_actions": {
+                "HideDatasetActionlist_output_txt": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "list_output_txt"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/split_file_to_collection/split_file_to_collection/0.5.0",
+            "tool_shed_repository": {
+                "changeset_revision": "6cbe2f30c2d7",
+                "name": "split_file_to_collection",
+                "owner": "bgruening",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"split_parms\": {\"select_ftype\": \"txt\", \"__current_case__\": 5, \"input\": {\"__class__\": \"ConnectedValue\"}, \"select_mode\": {\"mode\": \"chunk\", \"__current_case__\": 0, \"chunksize\": \"1\"}, \"newfilenames\": \"split_file\", \"select_allocate\": {\"allocate\": \"byrow\", \"__current_case__\": 2}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.5.0",
+            "type": "tool",
+            "uuid": "a944c699-c37a-491c-953b-0d1faceb3dbb",
+            "workflow_outputs": []
+        },
+        "3": {
+            "annotation": "",
+            "content_id": "sdr_create_sdo_from_csv",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "input": {
+                    "id": 2,
+                    "output_name": "list_output_txt"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Create specimen data object from csv",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "json"
+                }
+            ],
+            "position": {
+                "bottom": 913.59375,
+                "height": 113.5625,
+                "left": 776.75,
+                "right": 976.75,
+                "top": 800.03125,
+                "width": 200,
+                "x": 776.75,
+                "y": 800.03125
+            },
+            "post_job_actions": {},
+            "tool_id": "sdr_create_sdo_from_csv",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "9faf9f45-13c9-497b-9300-c31f1ec228a4",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "be101369-9e56-413f-85d7-cf7ff58ef5b4"
+                }
+            ]
+        },
+        "4": {
+            "annotation": "",
+            "content_id": "__FILTER_FAILED_DATASETS__",
+            "errors": null,
+            "id": 4,
+            "input_connections": {
+                "input": {
+                    "id": 3,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Filter failed datasets",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "bottom": 964.765625,
+                "height": 133.953125,
+                "left": 1021.578125,
+                "right": 1221.578125,
+                "top": 830.8125,
+                "width": 200,
+                "x": 1021.578125,
+                "y": 830.8125
+            },
+            "post_job_actions": {},
+            "tool_id": "__FILTER_FAILED_DATASETS__",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.0",
+            "type": "tool",
+            "uuid": "3ff469ca-5cbe-4947-bbff-adf1bef2b7ca",
+            "workflow_outputs": [
+                {
+                    "label": "input dataset(s) (filtered failed datasets)",
+                    "output_name": "output",
+                    "uuid": "f7577d5a-4ec3-4c3d-9ba2-f80767f782bf"
+                }
+            ]
+        },
+        "5": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/jq/jq/1.0",
+            "errors": null,
+            "id": 5,
+            "input_connections": {
+                "input": {
+                    "id": 4,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "JQ",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "json"
+                }
+            ],
+            "position": {
+                "bottom": 984.71875,
+                "height": 93.171875,
+                "left": 1386.421875,
+                "right": 1586.421875,
+                "top": 891.546875,
+                "width": 200,
+                "x": 1386.421875,
+                "y": 891.546875
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/jq/jq/1.0",
+            "tool_shed_repository": {
+                "changeset_revision": "5ff75eb1a893",
+                "name": "jq",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"filter\": \".payloads.filename\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"tsv\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0",
+            "type": "tool",
+            "uuid": "723c3b9b-7752-4c12-82a4-c352e2cc5da1",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "d05e965e-1490-4e85-9f99-390d316e1bd7"
+                }
+            ]
+        },
+        "6": {
+            "annotation": "",
+            "content_id": "sdr_teklia_worker_dla",
+            "errors": null,
+            "id": 6,
+            "input_connections": {
+                "file_location": {
+                    "id": 5,
+                    "output_name": "output"
+                },
+                "input": {
+                    "id": 4,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": "DLA - detect regions",
+            "name": "SDR Teklia worker-dla",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "json"
+                }
+            ],
+            "position": {
+                "bottom": 844.015625,
+                "height": 164.34375,
+                "left": 1638.4375,
+                "right": 1838.4375,
+                "top": 679.671875,
+                "width": 200,
+                "x": 1638.4375,
+                "y": 679.671875
+            },
+            "post_job_actions": {},
+            "tool_id": "sdr_teklia_worker_dla",
+            "tool_state": "{\"file_location\": {\"__class__\": \"ConnectedValue\"}, \"input\": {\"__class__\": \"ConnectedValue\"}, \"training_model\": \"pinned_insects\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.5",
+            "type": "tool",
+            "uuid": "77392890-7c47-4e6f-8680-00bc17ae0df8",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "3c9da0f5-107c-48de-80ae-679ceff4204b"
+                }
+            ]
+        },
+        "7": {
+            "annotation": "",
+            "content_id": "sdr_teklia_worker_dla",
+            "errors": null,
+            "id": 7,
+            "input_connections": {
+                "file_location": {
+                    "id": 5,
+                    "output_name": "output"
+                },
+                "input": {
+                    "id": 4,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": "DLA - detect text lines",
+            "name": "SDR Teklia worker-dla",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "json"
+                }
+            ],
+            "position": {
+                "bottom": 1176.734375,
+                "height": 164.34375,
+                "left": 1640.046875,
+                "right": 1840.046875,
+                "top": 1012.390625,
+                "width": 200,
+                "x": 1640.046875,
+                "y": 1012.390625
+            },
+            "post_job_actions": {},
+            "tool_id": "sdr_teklia_worker_dla",
+            "tool_state": "{\"file_location\": {\"__class__\": \"ConnectedValue\"}, \"input\": {\"__class__\": \"ConnectedValue\"}, \"training_model\": \"line_synthesys\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.5",
+            "type": "tool",
+            "uuid": "c34e5b55-370d-41cb-a012-a35cb871d869",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "ea4cd738-eae4-49ce-80c4-f618dabd8676"
+                }
+            ]
+        },
+        "8": {
+            "annotation": "",
+            "content_id": "sdr_teklia_worker_htr",
+            "errors": null,
+            "id": 8,
+            "input_connections": {
+                "file_location": {
+                    "id": 5,
+                    "output_name": "output"
+                },
+                "input": {
+                    "id": 7,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "SDR Teklia worker-htr",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "json"
+                }
+            ],
+            "position": {
+                "bottom": 1015.375,
+                "height": 164.34375,
+                "left": 1890.078125,
+                "right": 2090.078125,
+                "top": 851.03125,
+                "width": 200,
+                "x": 1890.078125,
+                "y": 851.03125
+            },
+            "post_job_actions": {},
+            "tool_id": "sdr_teklia_worker_htr",
+            "tool_state": "{\"file_location\": {\"__class__\": \"ConnectedValue\"}, \"input\": {\"__class__\": \"ConnectedValue\"}, \"training_model\": \"kaldi_synthesys\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "a20740d6-a238-4be7-9909-0ef7f9214187",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "47b756a8-3549-42e0-b703-e98d4352abc2"
+                }
+            ]
+        },
+        "9": {
+            "annotation": "",
+            "content_id": "sdr_teklia_worker_ner",
+            "errors": null,
+            "id": 9,
+            "input_connections": {
+                "input": {
+                    "id": 8,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "SDR Teklia worker-ner",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "json"
+                }
+            ],
+            "position": {
+                "bottom": 1064.046875,
+                "height": 133.953125,
+                "left": 2136.140625,
+                "right": 2336.140625,
+                "top": 930.09375,
+                "width": 200,
+                "x": 2136.140625,
+                "y": 930.09375
+            },
+            "post_job_actions": {},
+            "tool_id": "sdr_teklia_worker_ner",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"training_model\": \"pinned_insects\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "01e5ea50-bc50-44f1-99ed-2e53192413aa",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "e26863ca-9dbb-4b8f-aa09-d295b578d49c"
+                }
+            ]
+        },
+        "10": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/nml/bundle_collections/bundle_collection/1.3.0",
+            "errors": null,
+            "id": 10,
+            "input_connections": {
+                "singles_or_list|input": {
+                    "id": 9,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Bundle Collection",
+            "outputs": [
+                {
+                    "name": "html_file",
+                    "type": "html"
+                }
+            ],
+            "position": {
+                "bottom": 1096.5625,
+                "height": 93.171875,
+                "left": 2391.3125,
+                "right": 2591.3125,
+                "top": 1003.390625,
+                "width": 200,
+                "x": 2391.3125,
+                "y": 1003.390625
+            },
+            "post_job_actions": {
+                "RenameDatasetActionhtml_file": {
+                    "action_arguments": {
+                        "newname": "sdr_output"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "html_file"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/nml/bundle_collections/bundle_collection/1.3.0",
+            "tool_shed_repository": {
+                "changeset_revision": "705ebd286b57",
+                "name": "bundle_collections",
+                "owner": "nml",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"singles_or_list\": {\"type\": \"list\", \"__current_case__\": 1, \"input\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.3.0",
+            "type": "tool",
+            "uuid": "5d881216-16ba-48cb-ac66-675b86efba20",
+            "workflow_outputs": [
+                {
+                    "label": "SDR_output",
+                    "output_name": "html_file",
+                    "uuid": "46edd56c-de60-4c4f-b7b0-2923b5992eed"
+                }
+            ]
+        }
+    },
+    "tags": [
+        "default-sdr",
+        "multi-specimen-input",
+        "collections",
+        "validated-2022-06-29"
+    ],
+    "uuid": "2c148a71-25ed-4e66-abaa-3dd92f20f68a",
+    "version": 6
+}
