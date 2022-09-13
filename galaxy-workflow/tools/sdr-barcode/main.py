@@ -24,12 +24,17 @@ def __main__(opends_json, output_file, image):
     cdll.mtCreateBarcodeInstance.restype = ctypes.c_void_p
     bardecode = cdll.mtCreateBarcodeInstance()
 
+    # Enable Datamatrix detection
+    cdll.mtSetReadDataMatrix(c_void_p(bardecode), 1);
+
     bardecode_licence_key = os.getenv('BARDECODE_LICENCE_KEY')      
     if bardecode_licence_key:
         cdll.mtSetLicenseKey(bardecode, bardecode_licence_key.encode())
         
     # Read number of barcodes
     data = open(image, "rb").read()
+    
+    
     num_barcodes = cdll.mtScanBarCodeFromString(c_void_p(bardecode), data, data.__sizeof__())
 
     log.debug("Detected %s barcodes in image %s", num_barcodes, image)
