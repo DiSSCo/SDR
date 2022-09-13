@@ -18,10 +18,10 @@
   </inputs>
 
   <outputs>
-    <data name="Mothra image" abel="${tool.name} output image from ${on_string}" format="jpg">
+    <data name="Mothra image" label="${tool.name} output image from ${on_string}" format="jpg">
       <discover_datasets pattern=".*JPG" format="jpg" directory="outputs" visible="true" />
     </data>
-    <data name="Mothra report" abel="${tool.name} report from ${on_string}" format="tabular">
+    <data name="Mothra report" label="${tool.name} report from ${on_string}" format="tabular">
       <discover_datasets pattern=".*csv" format="tabular" directory="outputs" visible="true" />
     </data>
   </outputs>
