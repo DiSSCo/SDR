@@ -1,0 +1,59 @@
+<tool id="sdr_mothra" name="mothra" version="0.1.0+galaxy0" python_template_version="3.5" profile="21.05">
+  <description>Mothra analyzes images of lepidopterans — mainly butterflies and moths — and measures their wing lengths. Using binarization techniques and calculating the resolution of ruler ticks, we read in images of lepidopterans and output the millimeter lengths of their wings.</description>
+  
+  <requirements>
+    <container type="docker">oliverwoolland/mothra:latest</container>
+  </requirements>
+  
+  <command detect_errors="exit_code">
+    <![CDATA[
+      ln -fs '$input1' '$input1'.JPG &&
+      mkdir outputs &&
+      python /mothra-src/mothra/pipeline.py -pp -i '$input1'.JPG -o ./outputs -csv outputs/results.csv
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="input1" format="jpg" />
+  </inputs>
+
+  <outputs>
+    <data name="Mothra image" abel="${tool.name} output image from ${on_string}" format="jpg">
+      <discover_datasets pattern=".*JPG" format="jpg" directory="outputs" visible="true" />
+    </data>
+    <data name="Mothra report" abel="${tool.name} report from ${on_string}" format="tabular">
+      <discover_datasets pattern=".*csv" format="tabular" directory="outputs" visible="true" />
+    </data>
+  </outputs>
+
+  <help><![CDATA[
+  usage: pipeline.py [-h] [-p] [-pp] [-i INPUT] [-o OUTPUT_FOLDER] [-s STAGE]
+                     [-ar] [-dpi DPI] [-csv PATH_CSV] [--cache]
+
+This is mothra, a software to automate different measurements on images of
+Lepidopterae.
+
+options:
+  -h, --help            show this help message and exit
+  -p, --plot            If entered images are plotted to the output folder
+  -pp, --detailed_plot  If entered detailed images are plotted to the output
+                        folder
+  -i INPUT, --input INPUT
+                        Input path for single image, folder or text file
+                        (extension txt) containing paths
+  -o OUTPUT_FOLDER, --output_folder OUTPUT_FOLDER
+                        Output path for raw image
+  -s STAGE, --stage STAGE
+                        Stage name: 'binarization', 'ruler_detection',
+                        'measurements'
+  -ar, --auto_rotate    Enable automatic rotation of input images based on
+                        EXIF tag
+  -dpi DPI              Dots per inch of the saved figures
+  -csv PATH_CSV, --path_csv PATH_CSV
+  Path of the resulting csv file
+      --cache               Enable computation cache (useful when developing
+                        algorithms)
+
+                        ]]>
+  </help>
+</tool>
