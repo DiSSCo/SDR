@@ -9,7 +9,7 @@
     <![CDATA[
       ln -fs '$input1' '$input1'.JPG &&
       mkdir outputs &&
-      python /mothra-src/mothra/pipeline.py -pp -i '$input1'.JPG -o ./outputs -csv outputs/results.csv
+      python /mothra-src/mothra/pipeline.py -pp -i '$input1'.JPG -o ./outputs -csv outputs/results.csv --auto_rotate
     ]]>
   </command>
 
