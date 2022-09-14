@@ -7,13 +7,15 @@ def main(args):
     # -------------------------------------------------------------------------
     #  Parse input
 
-    opends_dataframe = pd.read_json(args.input,encoding='utf-8')
+    with open(args.input) as opends_file:
+        opends_json = json.load(opends_file)
+        opends_dataframe = pd.json_normalize(opends_json)
 
-    # -------------------------------------------------------------------------
-    #  Print
+        # -------------------------------------------------------------------------
+        #  Print
 
-    opends_csv = opends_dataframe.to_csv(index=False)
-    print(opends_csv)
+        opends_csv = opends_dataframe.to_csv(index=False)
+        print(opends_csv)
 
 
 def parse_args(raw_args):
