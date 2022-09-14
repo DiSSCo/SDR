@@ -1,6 +1,6 @@
 <tool id="sdr_opends_to_csv" name="Create CSV from specimen data object" version="0.1.0">
   <description>Create a csv from a specimen data object</description>
-  <command>python '$__tool_directory__/opends-to-csv.py'
+  <command>python3 '$__tool_directory__/opends-to-csv.py'
 		--input '$input'
 		> '$output'
   </command>
