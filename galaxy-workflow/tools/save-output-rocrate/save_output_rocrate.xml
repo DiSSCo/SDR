@@ -1,7 +1,10 @@
 <tool id="save_output_rocrate" name="Save as RO Crate" version="0.1.0">
   <description>Saves the output of a digitisation to disk as an RO Crate</description>
   <command>
-    rocrate init -c /srv/galaxy/server/results/'$batch_id' && zip -r sdr-output.zip /srv/galaxy/server/results/'$batch_id' > '$output'
+    <![CDATA[
+      rocrate init -c /srv/galaxy/server/results/'$batch_id' &&
+      zip -r sdr-output.zip /srv/galaxy/server/results/'$batch_id' > '$output'
+    ]]>
   </command>
   <inputs>
     <param format="text" name="batch_id" type="text" label="Batch ID"/>
