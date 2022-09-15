@@ -16,8 +16,7 @@
         #end if
       #end for
     #end if
-    && rocrate init -c rocrate
-    && cat rocrate/ro-crate-metadata.json
+    && rocrate init -c rocrate --gen-preview
     && zip -r sdr-output.zip rocrate
     ]]>
   </command>
@@ -38,7 +37,9 @@
     </conditional>
   </inputs>
   <outputs>
-    <data name="rocrate" file="sdr-output.zip"/>
+    <data name="ROCrate" label="ROCrate output" format="zip">
+      <discover_datasets pattern=".*zip" format="zip" directory="./" visible="true" />
+    </data>
   </outputs>
   <help>
     Saves the output of a digitisation to disk as an RO Crate
