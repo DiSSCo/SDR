@@ -2,12 +2,40 @@
   <description>Saves the output of a digitisation to disk as an RO Crate</description>
   <command>
     <![CDATA[
-      rocrate init -c /srv/galaxy/server/results/'$batch_id' &&
-      zip -r sdr-output.zip /srv/galaxy/server/results/'$batch_id' > '$output'
+      mkdir rocrate
+      #if $singles_or_list.type == "list":
+        #if $singles_or_list.input:
+          #for $f in $singles_or_list.input.keys
+            && ln -s "$singles_or_list.input[$f]" rocrate/"$f"
+        #end for
+      #end if
+    #elif $singles_or_list.type == "singles":
+      #for $dataset in $singles_or_list.single_files
+        #if $dataset.single_file:
+          && ln -s "$dataset.single_file" rocrate/"$dataset.single_file.name"
+        #end if
+      #end for
+    #end if
+    && rocrate init -c rocrate
+    && cat rocrate/ro-crate-metadata.json
+    && zip -r sdr-output.zip rocrate
     ]]>
   </command>
   <inputs>
-    <param format="text" name="batch_id" type="text" label="Batch ID"/>
+    <conditional name="singles_or_list">
+      <param name="type" type="select" label="Bundle type">
+        <option value="singles">Individual datasets</option>
+        <option value="list">List Collection </option>
+      </param>
+      <when value="singles">
+        <repeat name='single_files' title='Single dataset(s)'>
+          <param name="single_file" label="Dataset to add the bundle" type="data" format='data' optional='False'/>
+        </repeat>              
+      </when>
+      <when value="list">
+        <param name="input" type="data_collection" label="Data Collection" collection_type="list" optional='False'/>
+      </when>
+    </conditional>
   </inputs>
   <outputs>
     <data name="rocrate" file="sdr-output.zip"/>
