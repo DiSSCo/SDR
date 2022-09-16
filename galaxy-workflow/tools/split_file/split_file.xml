@@ -1,0 +1,21 @@
+<tool id="splie_file" name="Split file into collection" version="0.1.0">
+  <description>Splits a file line by line into seperate entries in a collection</description>
+  <command>
+    <![CDATA[
+      split -l1 -d split_ --additional-suffix=.csv -a5 '$input' 
+    ]]>
+  </command>
+  <inputs>
+    <inputs>
+      <param format="text" name="input" type="data" label="Input"/>
+    </inputs>
+  </inputs>
+  <outputs>
+    <data name="Split Files" label="Split files" format="txt">
+      <discover_datasets pattern=".*csv" format="txt" directory="./" visible="true" />
+    </data>
+  </outputs>
+  <help>
+    Splits a file line by line into seperate entries in a collection
+  </help>
+</tool>
