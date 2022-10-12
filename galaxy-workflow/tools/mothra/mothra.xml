@@ -7,14 +7,14 @@
   
   <command detect_errors="exit_code">
     <![CDATA[
-      ln -fs '$input1' '$input1'.JPG &&
+      ln -fs '$Image' '$Image'.JPG &&
       mkdir outputs &&
-      python /mothra-src/mothra/pipeline.py -pp -i '$input1'.JPG -o ./outputs -csv outputs/results.csv --auto_rotate
+      python /mothra-src/mothra/pipeline.py -pp -i '$Image'.JPG -o ./outputs -csv outputs/results.csv --auto_rotate
     ]]>
   </command>
 
   <inputs>
-    <param type="data" name="input1" format="jpg" />
+    <param type="data" name="Image" format="jpg" />
   </inputs>
 
   <outputs>
