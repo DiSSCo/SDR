@@ -26,7 +26,7 @@
 
     <tests>
         <test>
-            <param name="opends" value="open-ds.json" />
+            <param name="input" value="open-ds.json" />
             <output name="output" file="open-ds.json" ftype="json" lines_diff="2" />
         </test>      
     </tests>
