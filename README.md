@@ -1,4 +1,20 @@
 # Specimen Data Refinery (SDR)
+
+The Specimen Data Refinery (SDR) provides an easy to deploy, open source, web-based interface to multiple workflows that enable a user to create new or enhance existing natural history specimen records. The SDR uses the Galaxy workflow platform as the basis for managing data analysis, and where possible, using existing Galaxy community tools and approaches 
+
+We have developed a library of domain-specific tools including semantic segmentation, optical character recognition, hand-written text recognition, barcode reading and natural language processing. These tools have been designed to work on standardised images of specimens, specifically herbarium sheets, pinned insects and microscope slides.
+
+This README details some of the ways you can get started with the SDR, provides reference documentation and gives details of our open project management approach.
+
+### New digitiser ###
+
+If you are a new user and would like to use an already existing version of the SDR please visit our [reference instance](http://sdr.nhm.ac.uk/ "SDR"). Here you can apply for a login and start digitising images. We suggest you follow our [tutorial](docs/tutorial.md "SDR tutorial") to get started.
+
+### New admin ###
+
+If you wish to host your own instance of the SDR, we provide a detailed [how-to](docs/deployment.md "SDR deployment") guide on deploying the SDR.
+
+# Project management details
 We are using this repo for both SDR project management and technical development work.
 
 Ben and Laurence are transfering the next steps from the Minimum Viable Product (MVP) document into GitHub [issues](https://github.com/DiSSCo/SDR/issues). 
