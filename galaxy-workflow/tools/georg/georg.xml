@@ -2,9 +2,9 @@
 
     <description>GEORG Geospatial Search</description>
 
-    <requirements>
-        <requirement type="package" version="2.25.1">requests</requirement>  
-    </requirements> 
+    <!-- <requirements> -->
+    <!--     <requirement type="package" version="2.25.1">requests</requirement>   -->
+    <!-- </requirements>  -->
 
     <command>
         <![CDATA[
