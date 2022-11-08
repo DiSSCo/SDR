@@ -7,9 +7,9 @@
   
   <command detect_errors="exit_code">
     <![CDATA[
-      ln -fs '$Image' '$Image'.JPG &&
+      ln -fs '$Image' '$Image.element_identifier' &&
       mkdir outputs &&
-      python /mothra-src/mothra/pipeline.py $detailed_plot -i '$Image'.JPG -o ./outputs -csv outputs/results.csv --auto_rotate
+      python /mothra-src/mothra/pipeline.py $detailed_plot -i '$Image.element_identifier' -o ./outputs -csv outputs/results.csv --auto_rotate
     ]]>
   </command>
 
