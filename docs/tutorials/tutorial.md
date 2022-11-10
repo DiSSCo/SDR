@@ -13,7 +13,7 @@ Let's get ready to perform our first digitisation. To do this we need to perform
 
 For this tutorial, please download and use the following [reference file](reference-file.csv "SDR reference file").
 
-> If you have already following this tutorial and are interested in creating your own input files, please see this [guide](create-new-input-file.md "SDR new input file guide").
+> If you have already following this tutorial and are interested in creating your own input files, please see this [guide](../how-to/create-new-input-file.md "SDR new input file guide").
 
 ### Registering as a reference instance user ###
 
