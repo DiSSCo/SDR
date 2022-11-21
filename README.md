@@ -8,11 +8,11 @@ This README details some of the ways you can get started with the SDR, provides 
 
 ### New digitiser ###
 
-If you are a new user and would like to use an already existing version of the SDR please visit our [reference instance](http://sdr.nhm.ac.uk/ "SDR"). Here you can apply for a login and start digitising images. We suggest you follow our [tutorial](docs/tutorial.md "SDR tutorial") to get started.
+If you are a new user and would like to use an already existing version of the SDR please visit our [reference instance](http://sdr.nhm.ac.uk/ "SDR"). Here you can apply for a login and start digitising images. We suggest you follow our [tutorial](docs/tutorials/tutorial.md "SDR tutorial") to get started.
 
 ### New admin ###
 
-If you wish to host your own instance of the SDR, we provide a detailed [how-to](docs/deployment.md "SDR deployment") guide on deploying the SDR.
+If you wish to host your own instance of the SDR, we provide a detailed [how-to](docs/how-to/deployment.md "SDR deployment") guide on deploying the SDR.
 
 # Project management details
 We are using this repo for both SDR project management and technical development work.
