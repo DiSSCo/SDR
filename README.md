@@ -23,6 +23,7 @@ If you wish to host your own instance of the SDR, we provide a detailed [how-to]
   * [How to: deploy a new instance of the SDR](docs/how-to/deployment.md "how to deploy SDR")
   * [How to: invoke the SDR workflow using the Galaxy API](docs/how-to/invoke-workflow-using-api.md "how to invoke SDR using API")
   * [How to: configure the SDR job submission engine](docs/how-to/create-job-conf.md "how to create job conf")
+  * [How to: add new tools for the SDR](docs/how-to/add-new-tool.md "how to add new tool")
 #### Explanation ####
   * 
 #### Reference ####
