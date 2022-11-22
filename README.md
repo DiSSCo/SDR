@@ -14,6 +14,20 @@ If you are a new user and would like to use an already existing version of the S
 
 If you wish to host your own instance of the SDR, we provide a detailed [how-to](docs/how-to/deployment.md "SDR deployment") guide on deploying the SDR.
 
+### Documentation Contents ###
+
+#### Tutorial ####
+  * [SDR tutorial](docs/tutorials/tutorial.md "SDR tutorial")
+#### How-to ####
+  * [How to: create a new input file](docs/how-to/create-new-input-file.md "how to create input file")
+  * [How to: deploy a new instance of the SDR](docs/how-to/deployment.md "how to deploy SDR")
+  * [How to: invoke the SDR workflow using the Galaxy API](docs/how-to/invoke-workflow-using-api.md "how to invoke SDR using API")
+  * [How to: configure the SDR job submission engine](docs/how-to/create-job-conf.md "how to create job conf")
+#### Explanation ####
+  * 
+#### Reference ####
+  * 
+
 # Project management details
 We are using this repo for both SDR project management and technical development work.
 
