@@ -1,0 +1,13 @@
+---
+
+- name: reload systemd
+  systemd:
+    daemon_reload: true
+
+- name: restart modified tusd instances
+  service:
+    name: tusd-{{ item.item.name }}.service
+    state: restarted
+  loop: "{{ __tusd_modified_instances.results }}"
+  loop_control:
+    label: "{{ item.item }}"

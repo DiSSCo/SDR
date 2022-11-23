@@ -1,0 +1,25 @@
+galaxy_info:
+  namespace: galaxyproject
+  role_name: tusd
+  author: The Galaxy Project
+  description: Install and run instances of the tusd (tus.io) file upload service
+  company: The Galaxy Project
+  license: MIT
+  min_ansible_version: 2.11
+  platforms:
+    - name: GenericLinux
+      versions:
+        - all
+    - name: macOS
+      versions:
+        - all
+    - name: MacOSX
+      versions:
+        - all
+  galaxy_tags:
+    - system
+    - web
+    - tus
+    - upload
+    - http
+dependencies: []

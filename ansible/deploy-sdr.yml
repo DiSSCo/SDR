@@ -1,0 +1,302 @@
+- hosts: [galaxyservers, remoteservers]
+  become: true
+  become_user: root
+  vars_files:
+    - group_vars/galaxyservers.yml
+    - group_vars/secret.yml
+    - group_vars/sdr-secret.yml
+    - group_vars/locations.yml
+  tasks:
+
+    - include_vars: vars/layout-root-dir.yml
+
+    # --------------------------------------------------------------------------
+    # Obtain SDR codebase
+    
+    - name: Set local or remote SDR
+      set_fact:
+        use_local: no
+
+    - name: Checkout SDR
+      ansible.builtin.git:
+        repo: 'https://github.com/DiSSCo/SDR.git'
+        dest: '{{ sdr_root }}'
+        version: 'main'
+        force: yes
+      when: not use_local
+
+    - name: Local copy SDR 
+      copy:
+        src: '{{ local_sdr }}'
+        dest: '{{ galaxy_tools }}'
+        force: yes
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+      when: use_local
+
+    - name: Set copy only
+      set_fact:
+        copy_only: no
+
+    - name: Restart galaxy
+      ansible.builtin.systemd:
+        state: restarted
+        #daemon_reload: yes # unneeded unless config changes
+        name: galaxy
+      when: copy_only
+
+    - name: Stop if copy only
+      meta: end_play
+      when: copy_only
+
+    # --------------------------------------------------------------------------
+    # Obtain SDR dependancies
+
+    - name: Install SDR python dependencies
+      pip:
+        requirements: "{{ sdr_requirements_file }}"
+        extra_args: "--index-url https://wheels.galaxyproject.org/simple/ --extra-index-url https://pypi.python.org/simple {{ pip_extra_args | default('') }}"
+        virtualenv: "{{ galaxy_root }}/venv"
+        virtualenv_command: "{{ pip_virtualenv_command }}"
+      environment:
+        PYTHONPATH: null
+        VIRTUAL_ENV: "{{ galaxy_root }}/venv"
+
+    - name: Install SDR JS dependencies
+      npm:
+        executable: "{{ galaxy_root }}/venv/bin/npm"
+        name: ro-crate
+        global: yes
+      environment:
+        PATH: "{{ galaxy_root }}/venv/bin:{{ ansible_env.PATH }}"
+        VIRTUAL_ENV: "{{ galaxy_root }}/venv"              
+        
+    # --------------------------------------------------------------------------
+    # Locate SDR tools, perform syntax checks and automated tests
+
+    - name: Find all SDR tools
+      find:
+        paths: '{{ sdr_tools }}'
+        patterns: '*.xml'
+        excludes: ['sdr-*', 'macro*']
+        recurse: yes
+      register: glob_sdr_tools
+
+    # - name: Check syntax of SDR tools
+    #   command: planemo lint --fail_level error --report_level warn '{{ item }}'
+    #   loop: "{{ glob_sdr_tools.files | map(attribute='path') | list }}"
+    #   loop_control:
+    #     label: "Checking {{ item }}"
+    #   register: sdrlint
+    # - name: Print Syntax check output
+    #   debug:
+    #     msg: '{{ item.stdout_lines }}'
+    #   loop: '{{ sdrlint.results }}'
+    #   loop_control:
+    #     label: ""
+
+    # - name: Test SDR tools
+    #   command: planemo test '{{ item }}'
+    #   loop: "{{ glob_sdr_tools.files | map(attribute='path') | list }}"
+    #   loop_control:
+    #     label: "Testing {{ item }}"
+    #   register: sdrlint
+    # - name: Print test output
+    #   debug:
+    #     msg: '{{ item.stdout_lines }}'
+    #   loop: '{{ sdrlint.results }}'
+    #   loop_control:
+    #     label: ""
+
+    # --------------------------------------------------------------------------
+    # Install SDR files, creating dirs where needed
+
+    - name: Copy SDR tools to galaxy tools folder
+      copy:
+        src: '{{ sdr_tools }}'
+        dest: '{{ galaxy_tools }}'
+        remote_src: yes
+        force: yes
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+    - name: Copy static SDR config to galaxy 
+      copy:
+        src: '{{ item }}'
+        dest: '{{ galaxy_config }}'
+        remote_src: yes
+        force: yes
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+      loop:
+        # Tool panel config
+        #- '{{ sdr_config }}/integrated_tool_panel.xml'
+        # SDR config
+        - '{{ sdr_config }}/opends-schema.json'
+        # Data type config
+        - '{{ sdr_config }}/datatypes_conf.xml'
+
+    - name: Create directories
+      file:
+        path: '{{ item }}'
+        state: directory
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+      loop:
+        - '{{ galaxy_images }}'
+        - '{{ galaxy_vis }}'
+        - '{{ galaxy_results }}'
+    - name: Copy visualisations
+      copy:
+        src: '{{ sdr_vis }}' 
+        dest: '{{ galaxy_vis }}'
+        remote_src: yes
+        force: yes
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+    - name: Copy static
+      copy:
+        src: '{{ sdr_static }}'
+        dest: '{{ galaxy_static }}'
+        remote_src: yes
+        force: yes
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+    - name: Copy (rename) welcome page
+      copy:
+        src: '{{ sdr_static }}/welcome.html'
+        dest: '{{ galaxy_static }}/welcome.html.sdr'
+        remote_src: yes
+        force: yes
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'        
+
+    # --------------------------------------------------------------------------
+    # Copy API tools
+
+    - name: Copy API tools 
+      copy:
+        src: '{{ playbook_dir }}/galaxy-scripts/'
+        dest: '{{ sdr_install_scripts }}'
+        remote_src: no
+        force: yes
+        owner: '{{ owner }}'
+        group: '{{ group }}'
+        mode: '{{ mode }}'
+
+    # --------------------------------------------------------------------------
+    # Create bootstrap admin user
+    # and install galaxy workflows from repo as shared workflows
+
+    - name: Create bootstrap admin
+      shell: >
+        python3 '{{ sdr_install_scripts }}/add-bootstrap-admin.py'
+        --master-api-key '{{ master_api_key }}'
+        --admin-email '{{ bootstrap_admin_email }}'
+        --admin-user '{{ bootstrap_admin_user }}'
+        --server 'localhost'
+      register: admin_api_key
+    - name: Print bootstrap admin API key
+      debug:
+        msg: '{{ admin_api_key.stdout }}'
+    - name: Install shared workflows
+      shell: >
+        python3 '{{ sdr_install_scripts }}/add-shared-workflows.py'
+        --admin-api-key '{{ admin_api_key.stdout }}'
+        --server 'localhost'
+        --tool-path '{{ sdr_workflows }}'
+
+    # --------------------------------------------------------------------------
+    # Install Galaxy dependancies
+
+    - name: Install galaxy dependancies (JQ, Apt)
+      apt:
+        pkg:
+          - jq
+    - name: Install galaxy dependancies (JQ, Galaxy)
+      shell: >
+        python3 '{{ sdr_install_scripts }}/install-from-toolshed.py'
+        --api-key '{{ master_api_key }}'
+        --server 'localhost'
+        --toolshed-url https://toolshed.g2.bx.psu.edu
+        --tool-name jq
+        --tool-owner iuc
+        --tool-revision 5ff75eb1a893
+
+    - name: Install galaxy dependancies (Split collection, Galaxy)
+      shell: >
+        python3 '{{ sdr_install_scripts }}/install-from-toolshed.py'
+        --api-key '{{ master_api_key }}'
+        --server 'localhost'
+        --toolshed-url https://toolshed.g2.bx.psu.edu
+        --tool-name split_file_to_collection
+        --tool-owner bgruening
+        --tool-revision 6cbe2f30c2d7
+
+    - name: Install galaxy dependancies (Bundle collectio, Galaxy)
+      shell: >
+        python3 '{{ sdr_install_scripts }}/install-from-toolshed.py'
+        --api-key '{{ master_api_key }}'
+        --server 'localhost'
+        --toolshed-url https://toolshed.g2.bx.psu.edu
+        --tool-name bundle_collections
+        --tool-owner nml
+        --tool-revision 705ebd286b57
+        
+    # --------------------------------------------------------------------------
+    # Build Teklia tools Docker images
+
+    - name: Create docker group
+      group:
+        name: "{{ docker_group }}"
+        state: present
+
+    - name: Add galaxy user to docker group
+      user:
+        name: "{{ item }}"
+        groups: "{{ docker_group }}"
+        append: yes
+      loop:
+        - 'galaxy'
+        - 'root'
+        #sudo usermod -a -G docker galaxy
+
+    - name: Run hello world
+      docker_container:
+        name: hello
+        image: hello-world
+            
+    - name: Pull Teklia tools
+      community.docker.docker_image:
+        name: teklia/synthesis-worker-{{ item }}
+        source: pull
+        force_source: yes
+      loop:
+        - 'dla'
+        - 'htr'
+        - 'ner'
+
+    - name: Pull Oliver Woolland's tools
+      community.docker.docker_image:
+        name: oliverwoolland/{{ item }}
+        source: pull
+        force_source: yes
+      loop:
+        - 'mothra'
+
+    # - name: Install local_env.sh
+    #   template:
+    #     src: local_env.sh.j2
+    #     dest: "{{ galaxy_config }}/local_env.sh"
+
+    - name: Restart galaxy
+      ansible.builtin.systemd:
+        state: restarted
+        #daemon_reload: yes # unneeded unless config changes
+        name: galaxy

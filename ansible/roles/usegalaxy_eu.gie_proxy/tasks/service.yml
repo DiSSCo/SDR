@@ -1,0 +1,23 @@
+---
+
+- name: Systemd service task block
+  block:
+
+    - name: Install Systemd service unit
+      template:
+        src: gie-proxy.service.j2
+        dest: "/etc/systemd/system/{{ gie_proxy_service_name }}.service"
+      notify:
+        - Reload Systemd
+        - Restart GIE Proxy
+
+    - name: Flush handlers
+      meta: flush_handlers
+
+    - name: Ensure GIE Proxy service is enabled and running
+      service:
+        name: "{{ gie_proxy_service_name }}"
+        state: started
+        enabled: yes
+
+  when: gie_proxy_setup_service == "systemd"

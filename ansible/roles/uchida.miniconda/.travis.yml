@@ -1,0 +1,59 @@
+---
+language: python
+python: "2.7"
+env:
+  - IMAGE=ubuntu TAG=xenial
+  - IMAGE=ubuntu TAG=trusty
+  - IMAGE=ubuntu TAG=precise
+  - IMAGE=debian TAG=jessie
+  - IMAGE=debian TAG=wheezy
+  - IMAGE=centos TAG=7
+  - IMAGE=centos TAG=6
+  - IMAGE=fedora TAG=latest
+
+cache: pip
+
+dist: trusty
+sudo: required
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y python-pip
+  - sudo apt-get install -y apt-transport-https ca-certificates
+  - sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+  - echo 'deb https://apt.dockerproject.org/repo ubuntu-trusty main' | sudo tee /etc/apt/sources.list.d/docker.list
+  - sudo apt-get update
+  - sudo apt-get install -o Dpkg::Options::="--force-confdef" -y docker-engine
+  - docker version
+  - docker pull $IMAGE:$TAG
+  - docker run --name test -di $IMAGE:$TAG /bin/sh
+  - |
+    if [ ${IMAGE} = "ubuntu" ] || [ ${IMAGE} = "debian" ]; then
+      docker exec test apt-get update
+      docker exec test apt-get install -y python ca-certificates
+    fi
+  - |
+    if [ ${IMAGE} = "centos" ]; then
+      docker exec test yum makecache
+      docker exec test yum install -y python ca-certificates
+    fi
+  - |
+    if [ ${IMAGE} = "fedora" ]; then
+      docker exec test dnf makecache
+      docker exec test dnf install -y python ca-certificates python2-dnf
+    fi
+
+install:
+  - pip install ansible
+  - ansible --version
+  - printf '[defaults]\nroles_path=../\ncallback_whitelist=profile_tasks' > ansible.cfg
+  - pip install ansible-lint
+  - ansible-lint --version
+
+script:
+  - tests/run-all.sh
+
+notifications:
+  email: false
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+
