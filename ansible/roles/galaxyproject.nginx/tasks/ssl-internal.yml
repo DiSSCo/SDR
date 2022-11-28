@@ -1,0 +1,37 @@
+---
+
+- name: Make SSL certificate/key paths absolute
+  set_fact:
+    nginx_conf_ssl_certificate: "{{ nginx_ssl_conf_dir ~ '/' ~ nginx_conf_ssl_certificate if nginx_conf_ssl_certificate.0 != '/' else nginx_conf_ssl_certificate }}"
+    nginx_conf_ssl_certificate_key: "{{ nginx_ssl_conf_dir ~ '/' ~ nginx_conf_ssl_certificate_key if nginx_conf_ssl_certificate_key.0 != '/' else nginx_conf_ssl_certificate_key }}"
+
+- name: Create SSL directories
+  file:
+    path: "{{ item | dirname }}"
+    state: directory
+    mode: "0755"
+  with_items:
+    - "{{ nginx_conf_ssl_certificate }}"
+    - "{{ nginx_conf_ssl_certificate_key }}"
+
+- name: Install SSL certificate
+  copy:
+    src: "{{ nginx_ssl_src_dir }}/{{ nginx_conf_ssl_certificate | basename }}"
+    dest: "{{ nginx_conf_ssl_certificate }}"
+    mode: "0644"
+
+- name: Install SSL private key
+  copy:
+    content: "{{ sslkeys[nginx_conf_ssl_certificate_key | basename] }}"
+    dest: "{{ nginx_conf_ssl_certificate_key }}"
+    mode: "0400"
+
+- name: Install trusted certificates for OCSP with stapling
+  copy:
+    src: "{{ nginx_ssl_src_dir }}/{{ nginx_conf_ssl_trusted_certificate }}"
+    dest: "{{ nginx_ssl_conf_dir }}/{{ nginx_conf_ssl_trusted_certificate }}"
+    mode: "0644"
+  when: nginx_conf_ssl_trusted_certificate is defined
+
+- name: Include common SSL tasks
+  import_tasks: ssl-common.yml

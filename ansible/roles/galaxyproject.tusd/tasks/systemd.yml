@@ -1,0 +1,24 @@
+---
+
+# Using the systemd instance functionality doesn't work here beacuse the user/group cannot be an env var, but should not
+# necessarily be the same for all instances, so we resort to creating individual service units for each instance.
+- name: Install tusd service unit
+  template:
+    src: tusd.service.j2
+    dest: /etc/systemd/system/tusd-{{ item.name }}.service
+    mode: 0644
+  loop: "{{ tusd_instances }}"
+  register: __tusd_modified_instances
+  notify:
+    - reload systemd
+    - restart modified tusd instances
+
+- name: Flush handlers
+  meta: flush_handlers
+
+- name: Ensure configured tusd instances are enabled and running
+  service:
+    name: tusd-{{ item.name }}.service
+    state: started
+    enabled: true
+  loop: "{{ tusd_instances }}"
