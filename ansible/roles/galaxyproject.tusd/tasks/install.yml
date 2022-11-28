@@ -1,0 +1,79 @@
+---
+
+- name: tusd version block
+  block:
+
+    - name: Fetch latest tusd release information
+      uri:
+        url: https://api.github.com/repos/tus/tusd/releases/latest
+      register: __tusd_release_latest_response
+
+    - name: Set latest tusd release number
+      set_fact:
+        tusd_version: "{{ __tusd_release_latest_response.json.tag_name }}"
+
+  when: tusd_version == 'latest'
+
+- name: Check for tusd existence
+  stat:
+    path: "{{ tusd_path }}"
+  register: __tusd_exists
+
+- name: tusd current version block
+  block:
+
+    - name: Get current tusd version
+      command: "{{ tusd_path }} -version"
+      changed_when: false
+      register: __tusd_current_version_response
+
+    - name: Set current tusd version fact
+      set_fact:
+        __tusd_current_version: >-
+            {{ __tusd_current_version_response.stdout_lines
+              | select('search', '^Version: v.*')
+              | first
+              | regex_replace('^Version: (v.*)$', '\1') }}
+
+  when: __tusd_exists.stat.exists
+
+- name: tusd install block
+  block:
+
+    - name: Report why tusd is being installed
+      debug:
+        msg: >-
+          tusd requested/latest version '{{ tusd_version }}' != installed version
+          '{{ __tusd_current_version | default("not installed") }}'
+
+    - name: Create tempdir for unarchive
+      tempfile:
+        prefix: ansible.galaxyproject.tusd.
+        state: directory
+      register: __tusd_tempdir
+
+    - name: Extract tusd binary
+      unarchive:
+        remote_src: true
+        src: "{{ tusd_binary_archive_url }}"
+        dest: "{{ __tusd_tempdir.path }}/"
+        include: ["{{ tusd_binary_platform }}/tusd"]
+
+    - name: Install tusd binary
+      copy:
+        remote_src: true
+        src: "{{ __tusd_tempdir.path }}/{{ tusd_binary_platform }}/tusd"
+        dest: "{{ tusd_path }}"
+        owner: "{{ tusd_owner | default(omit) }}"
+        group: "{{ tusd_group | default(omit) }}"
+        mode: "{{ tusd_mode | default('0755') }}"
+
+  always:
+
+    - name: Clean tempdir
+      file:
+        path: "{{ __tusd_tempdir.path }}"
+        state: absent
+      when: __tusd_tempdir is defined
+
+  when: not __tusd_exists.stat.exists or __tusd_current_version != tusd_version

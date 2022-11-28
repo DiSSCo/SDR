@@ -1,0 +1,10 @@
+---
+
+- name: Reload Systemd
+  systemd:
+    daemon_reload: yes
+
+- name: Restart GIE Proxy
+  service:
+    name: "{{ gie_proxy_service_name }}"
+    state: restarted

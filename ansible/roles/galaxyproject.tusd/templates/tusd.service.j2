@@ -1,0 +1,20 @@
+### 
+### This file is maintained by Ansible - CHANGES WILL BE OVERWRITTEN
+###
+
+[Unit]
+Description=tusd server for {{ item.name }}
+After=network.target
+After=time-sync.target
+
+[Service]
+UMask=022
+Type=simple
+User={{ item.user }}
+Group={{ item.group }}
+TimeoutStartSec=10
+ExecStart={{ tusd_path }} {{ item.args | map('quote') | join(' ') }}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

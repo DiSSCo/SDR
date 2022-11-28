@@ -1,0 +1,40 @@
+---
+
+# required:
+#gie_proxy_dir:
+#gie_proxy_sessions_path:
+
+# optional:
+gie_proxy_git_repo: https://github.com/galaxyproject/gx-it-proxy
+#gie_proxy_git_version:
+#gie_proxy_npm_executable:
+#gie_proxy_nodejs_executable:
+gie_proxy_service_name: galaxy-gie-proxy
+gie_proxy_user: galaxy
+gie_proxy_group: galaxy
+
+gie_proxy_ip: 127.0.0.1
+gie_proxy_port: 8000
+gie_proxy_verbose: null
+
+gie_proxy_command_line: >-
+    {{ gie_proxy_nodejs_executable |default(gie_proxy_virtualenv ~ '/bin/node' if gie_proxy_virtualenv is defined else 'node') }}
+    {{ gie_proxy_dir }}/lib/main.js --ip {{ gie_proxy_ip }} --port {{ gie_proxy_port }} --sessions {{ gie_proxy_sessions_path }}
+    {{ '--verbose' if gie_proxy_verbose else '' }}
+
+# options: "package", "nodeenv"
+gie_proxy_setup_nodejs: null
+
+# options: "systemd"
+gie_proxy_setup_service: systemd
+
+# gie_proxy_setup_nodejs == "package" options:
+gie_proxy_nodejs_package: nodejs
+
+# gie_proxy_setup_nodejs == "nodeenv" options:
+# required:
+#gie_proxy_virtualenv:
+# optional:
+#gie_proxy_nodejs_version:
+#gie_proxy_virtualenv_command:
+#gie_proxy_virtualenv_python:

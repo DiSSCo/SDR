@@ -1,0 +1,8 @@
+---
+
+- name: Import install tasks
+  import_tasks: install.yml
+
+- name: Include systemd tasks
+  include_tasks: systemd.yml
+  when: tusd_systemd

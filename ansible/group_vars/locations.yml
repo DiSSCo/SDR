@@ -1,0 +1,22 @@
+galaxy_tools:   '{{ galaxy_root }}/server/tools/sdr'
+galaxy_config:  '{{ galaxy_root }}/server/config'
+galaxy_vis:     '{{ galaxy_root }}/server/config/plugins/visualizations'
+galaxy_static:  '{{ galaxy_root }}/server/static'
+galaxy_results: '{{ galaxy_root }}/server/results'
+
+sdr_root:   /srv/SDR
+sdr_tools:  /srv/SDR/galaxy-workflow/tools/  # copy inner contents
+sdr_config: /srv/SDR/galaxy-workflow/config
+sdr_vis:    /srv/SDR/galaxy-workflow/visualisations/roi
+sdr_static: /srv/SDR/galaxy-workflow/static/  # copy inner contents
+
+docker_group: docker
+owner: galaxy
+group: galaxy
+mode:  0755
+
+local_sdr: /home/owool/Projects/2022/BioExcel/Synthesis+/SDR/galaxy-workflow/tools
+
+sdr_requirements_file: /srv/SDR/galaxy-workflow/requirements.txt
+sdr_install_scripts: /srv/SDR/deployment/galaxy-scripts
+sdr_workflows:  /srv/SDR/galaxy-workflow/workflows

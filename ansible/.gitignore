@@ -1,0 +1,4 @@
+hosts
+*password*
+*.pyc
+secret.yml.template
