@@ -28,6 +28,7 @@ If you wish to host your own instance of the SDR, we provide a detailed [how-to]
   * 
 #### Reference ####
   * [Reference: SDR tools](docs/reference/sdr-tools.md "sdr tools")
+  * [Reference: Deployment Variables](docs/reference/deploy-vars.md "SDR deployment variables")
 
 # Project management details
 We are using this repo for both SDR project management and technical development work.
