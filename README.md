@@ -25,7 +25,7 @@ If you wish to host your own instance of the SDR, we provide a detailed [how-to]
   * [How to: configure the SDR job submission engine](docs/how-to/create-job-conf.md "how to create job conf")
   * [How to: add new tools for the SDR](docs/how-to/add-new-tool.md "how to add new tool")
 #### Explanation ####
-  * 
+  * [Explanation: SSL certificates](docs/explanation/ssl-certs.md "ssl certificates")
 #### Reference ####
   * [Reference: SDR tools](docs/reference/sdr-tools.md "sdr tools")
   * [Reference: Deployment Variables](docs/reference/deploy-vars.md "SDR deployment variables")
