@@ -31,8 +31,8 @@ miniconda_manage_dependencies: false
 galaxy_config:
   galaxy:
     master_api_key: "{{ master_api_key }}"
-    brand: "NHM SDR"
-    admin_users: galaxyadmin@nhm.ac.uk,oliver.woolland@manchester.ac.uk,l.livermore@nhm.ac.uk,ben@benscott.co.uk,soiland-reyes@manchester.ac.uk
+    brand: "{{ sdr_conf_brand }}"
+    admin_users: "{{ sdr_conf_admin_users }}"
     require_login: true
     allow_user_creation: true
     allow_user_deletion: false
