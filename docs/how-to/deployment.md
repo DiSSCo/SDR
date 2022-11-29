@@ -59,9 +59,9 @@ The process for specifying secret parameters is more complex, as passwords and s
 Ansible has functionality to prevent this. The process is below:
 
 ```console
-foo@bar $ nano group_vars/sdr-secret.yml
+foo@bar $ nano group_vars/sdr-secret.yml.template
 foo@bar $ ansible-vault encrypt group_vars/sdr-secret.yml.template --output group_vars/sdr-secret.yml
-foo@bar $ rm group_vars/sdr-secret.yml
+foo@bar $ rm group_vars/sdr-secret.yml.template
 ```
 
 These commands:
