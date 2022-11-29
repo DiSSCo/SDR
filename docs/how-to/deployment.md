@@ -48,9 +48,9 @@ The SDR requires some, minimal configuration before you begin deployment.
 
 #### Generic parameters ####
 
-Generic (non-secret) parameters are set in `group_vars/sdr-config.yml`. Edit the parameters here to suit your needs, e.g.:
+Generic (non-secret) parameters are set in `ansible/group_vars/sdr-config.yml`. Edit the parameters here to suit your needs, e.g.:
 ```console
-foo@bar $ nano group_vars/sdr-config.yml
+foo@bar $ nano ansible/group_vars/sdr-config.yml
 ```
 #### Secret parameters ####
 
@@ -59,9 +59,9 @@ The process for specifying secret parameters is more complex, as passwords and s
 Ansible has functionality to prevent this. The process is below:
 
 ```console
-foo@bar $ nano group_vars/sdr-secret.yml.template
-foo@bar $ ansible-vault encrypt group_vars/sdr-secret.yml.template --output group_vars/sdr-secret.yml
-foo@bar $ rm group_vars/sdr-secret.yml.template
+foo@bar $ nano ansible/group_vars/sdr-secret.yml.template
+foo@bar $ ansible-vault encrypt ansible/group_vars/sdr-secret.yml.template --output ansible/group_vars/sdr-secret.yml
+foo@bar $ rm ansible/group_vars/sdr-secret.yml.template
 ```
 
 These commands:
