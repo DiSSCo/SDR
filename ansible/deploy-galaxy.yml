@@ -3,7 +3,6 @@
   become_user: root
   vars_files:
     - group_vars/galaxyservers.yml
-    - group_vars/secret.yml
     - group_vars/sdr-secret.yml
   pre_tasks:
     - name: Install Dependencies
@@ -31,4 +30,3 @@
     - galaxyproject.nginx
     - geerlingguy.docker
     - galaxyproject.tusd
-    - usegalaxy_eu.gie_proxy 
