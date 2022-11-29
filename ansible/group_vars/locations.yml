@@ -15,8 +15,6 @@ owner: galaxy
 group: galaxy
 mode:  0755
 
-local_sdr: /home/owool/Projects/2022/BioExcel/Synthesis+/SDR/galaxy-workflow/tools
-
 sdr_requirements_file: /srv/SDR/galaxy-workflow/requirements.txt
 sdr_install_scripts: /srv/SDR/deployment/galaxy-scripts
 sdr_workflows:  /srv/SDR/galaxy-workflow/workflows
