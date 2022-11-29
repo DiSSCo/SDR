@@ -12,10 +12,6 @@
 
     # --------------------------------------------------------------------------
     # Obtain SDR codebase
-    
-    - name: Set local or remote SDR
-      set_fact:
-        use_local: no
 
     - name: Checkout SDR
       ansible.builtin.git:
@@ -23,32 +19,12 @@
         dest: '{{ sdr_root }}'
         version: 'main'
         force: yes
-      when: not use_local
-
-    - name: Local copy SDR 
-      copy:
-        src: '{{ local_sdr }}'
-        dest: '{{ galaxy_tools }}'
-        force: yes
-        owner: '{{ owner }}'
-        group: '{{ group }}'
-        mode: '{{ mode }}'
-      when: use_local
-
-    - name: Set copy only
-      set_fact:
-        copy_only: no
 
     - name: Restart galaxy
       ansible.builtin.systemd:
         state: restarted
         #daemon_reload: yes # unneeded unless config changes
         name: galaxy
-      when: copy_only
-
-    - name: Stop if copy only
-      meta: end_play
-      when: copy_only
 
     # --------------------------------------------------------------------------
     # Obtain SDR dependancies
