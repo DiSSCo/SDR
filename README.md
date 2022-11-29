@@ -24,6 +24,7 @@ If you wish to host your own instance of the SDR, we provide a detailed [how-to]
   * [How to: invoke the SDR workflow using the Galaxy API](docs/how-to/invoke-workflow-using-api.md "how to invoke SDR using API")
   * [How to: configure the SDR job submission engine](docs/how-to/create-job-conf.md "how to create job conf")
   * [How to: add new tools for the SDR](docs/how-to/add-new-tool.md "how to add new tool")
+  * [How to: customise landing page](docs/how-to/customise-landing.md "how to customise landing")
 #### Explanation ####
   * [Explanation: SSL certificates](docs/explanation/ssl-certs.md "ssl certificates")
 #### Reference ####
