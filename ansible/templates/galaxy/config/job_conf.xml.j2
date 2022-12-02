@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<job_conf>
+  <plugins>
+    <plugin id="local" type="runner" load="galaxy.jobs.runners.local:LocalJobRunner" workers="4"/>
+  </plugins>
+  <destinations default="docker_local">
+    <destination id="local" runner="local"/>
+    <destination id="docker_local" runner="local">
+      <param id="docker_enabled">true</param>
+      <param id="docker_volumes"> $defaults,{{ galaxy_images }}:/images:ro</param>
+      <param id="docker_run_extra_arguments">-\-entrypoint='' -\-env TEKLIA_MODEL_DECRYPTION_KEY=$TEKLIA_KEY</param>
+      <param id="docker_sudo">false</param>
+    </destination>
+    <destination id="interactive_local" runner="local">
+      <param id="docker_enabled">true</param>
+      <param id="docker_volumes">$defaults</param>
+      <param id="docker_sudo">false</param>
+      <param id="docker_net">bridge</param>
+      <param id="docker_auto_rm">true</param>
+      <param id="docker_set_user"></param>
+      <param id="require_container">true</param>
+    </destination>
+  </destinations>
+  <tools>
+    <tool destination="interactive_local" id="interactive_tool_jupyter_notebook" />
+  </tools>
+</job_conf>
+

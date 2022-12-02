@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<toolbox monitor="true">
+  <section id="getext" name="Get Data">
+    <tool file="data_source/upload.xml" />
+  </section>
+  <section id="collection_operations" name="Collection Operations">
+    <tool file="/srv/galaxy/server/lib/galaxy/tools/unzip_collection.xml" labels="new" />
+    <tool file="/srv/galaxy/server/lib/galaxy/tools/zip_collection.xml" labels="new" />
+    <tool file="/srv/galaxy/server/lib/galaxy/tools/filter_failed_collection.xml" labels="new" />
+    <tool file="/srv/galaxy/server/lib/galaxy/tools/flatten_collection.xml" labels="new" />
+    <tool file="/srv/galaxy/server/lib/galaxy/tools/merge_collection.xml" labels="new" />
+    <tool file="/srv/galaxy/server/lib/galaxy/tools/relabel_from_file.xml" />
+    <tool file="/srv/galaxy/server/lib/galaxy/tools/filter_from_file.xml" />
+    <tool file="/srv/galaxy/server/lib/galaxy/tools/sort_collection_list.xml" />
+    <tool file="/srv/galaxy/server/lib/galaxy/tools/apply_rules.xml" />
+  </section>
+  <section id="textutil" name="Text Manipulation">
+    <tool file="filters/fixedValueColumn.xml" />
+    <tool file="filters/catWrapper.xml" hidden="true" />
+    <tool file="filters/condense_characters.xml" />
+    <tool file="filters/convert_characters.xml" />
+    <tool file="filters/mergeCols.xml" />
+    <tool file="filters/CreateInterval.xml" />
+    <tool file="filters/cutWrapper.xml" hidden="true" />
+    <tool file="filters/changeCase.xml" />
+    <tool file="filters/pasteWrapper.xml" />
+    <tool file="filters/remove_beginning.xml" />
+    <tool file="filters/randomlines.xml" />
+    <tool file="filters/headWrapper.xml" />
+    <tool file="filters/tailWrapper.xml" />
+    <tool file="filters/trimmer.xml" />
+    <tool file="filters/wc_gnu.xml" />
+    <tool file="filters/secure_hash_message_digest.xml" />
+  </section>
+  <section name="SDR" id="sdr">
+    <tool file="sdr/create-opends/create_opends.xml" />
+    <tool file="sdr/validate-opends/validate_opends.xml" />
+    <tool file="sdr/save-output/save_output.xml" />
+    <tool file="sdr/download-image/download_image.xml" />
+    <tool file="sdr/opends-to-csv/opends-to-csv.xml" />
+    <tool file="sdr/split_file/split_file.xml" />
+
+    <tool file="sdr/teklia-dla/sdr.xml" />
+    <tool file="sdr/teklia-htr/sdr.xml" />
+    <tool file="sdr/teklia-ner/sdr.xml" />
+
+    <tool file="sdr/mothra/mothra.xml" />
+
+    <tool file="sdr/sdr-barcode/sdr-barcode.xml" />
+    <tool file="sdr/create-opends-from-csv/create_opends_from_csv.xml" />
+    <tool file="sdr/save-output-rocrate/save_output_rocrate.xml" />
+  </section>
+</toolbox>
