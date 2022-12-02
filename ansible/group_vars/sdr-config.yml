@@ -1,2 +1,3 @@
 sdr_conf_brand: "Your Brand"
 sdr_conf_admin_users: admin@example.ac.uk, anotheradmin@example.ac.uk
+cert_name: "foo"

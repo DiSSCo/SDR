@@ -114,8 +114,8 @@ nginx_enable_default_server: false
 nginx_conf_http:
   client_max_body_size: 1g
 
-ssl_certificate: &ssl_cert /etc/ssl/certs/wildcard.crt
-ssl_certificate_key: &ssl_key /etc/ssl/private/wildcard.key
+ssl_certificate: &ssl_cert "/etc/ssl/certs/{{ cert_name }}.crt"
+ssl_certificate_key: &ssl_key "/etc/ssl/private/{{ cert_name }}.key"
 
 # TUSD
 tusd_instances:
