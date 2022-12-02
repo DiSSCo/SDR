@@ -4,6 +4,7 @@
   vars_files:
     - group_vars/galaxyservers.yml
     - group_vars/sdr-secret.yml
+    - group_vars/sdr-config.yml
   pre_tasks:
     - name: Install Dependencies
       package:
