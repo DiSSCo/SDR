@@ -97,7 +97,13 @@ With a key pair of a certificate file `foo.crt` and private key `foo.key` you ar
 
 The files should be placed on the **target** machine:
   *  `foo.crt` in `/etc/ssl/certs`
-  *  `foo.key` in `/etc/ssl/priv`
+  *  `foo.key` in `/etc/ssl/private`
+  
+### Pull requirements ###
+
+```console
+ansible-galaxy install -p roles -r requirements.yml
+```
 
 ### Run deployment of base Galaxy instance ###
 
