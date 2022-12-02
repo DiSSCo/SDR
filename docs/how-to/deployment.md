@@ -39,18 +39,18 @@ To obtain the necessary files, clone the repository and then move into the relev
 
 ```console
 foo@bar $ git clone https://github.com/DiSSCo/SDR.git
-foo@bar $ cd SDR
+foo@bar $ cd SDR/ansible
 ```
 
 ### Customisation of SDR parameters ###
 
-The SDR requires some, minimal configuration before you begin deployment.
+The SDR requires some, minimal configuration before you begin deployment. 
 
 #### Generic parameters ####
 
-Generic (non-secret) parameters are set in `ansible/group_vars/sdr-config.yml`. Edit the parameters here to suit your needs, e.g.:
+Generic (non-secret) parameters are set in `group_vars/sdr-config.yml`. Edit the parameters here to suit your needs, e.g.:
 ```console
-foo@bar $ nano ansible/group_vars/sdr-config.yml
+foo@bar $ nano group_vars/sdr-config.yml
 ```
 #### Secret parameters ####
 
