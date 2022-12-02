@@ -14,7 +14,7 @@
       tags: packages
     - name: Install Dependencies
       package:
-        name: ['acl', 'bzip2', 'git', 'libbz2-dev', 'liblzma-dev', 'make', 'python3-psycopg2', 'tar', 'virtualenv', 'zip' ]
+        name: ['acl', 'bzip2', 'git', 'libbz2-dev', 'liblzma-dev', 'make', 'python3-pip', 'python3-psycopg2', 'tar', 'virtualenv', 'zip' ]
     - pip:
         name: pip
         state: latest
