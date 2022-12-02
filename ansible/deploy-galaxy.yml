@@ -6,6 +6,12 @@
     - group_vars/sdr-secret.yml
     - group_vars/sdr-config.yml
   pre_tasks:
+    - name: Update all packages to their latest version
+      ansible.builtin.apt:
+        update_cache: yes
+        name: "*"
+        state: latest
+      tags: packages
     - name: Install Dependencies
       package:
         name: ['acl', 'bzip2', 'git', 'libbz2-dev', 'liblzma-dev', 'make', 'python3-psycopg2', 'tar', 'virtualenv', 'zip' ]
