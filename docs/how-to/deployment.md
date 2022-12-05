@@ -59,9 +59,9 @@ The process for specifying secret parameters is more complex, as passwords and s
 Ansible has functionality to prevent this. The process is below:
 
 ```console
-foo@bar $ nano ansible/group_vars/sdr-secret.yml.template
-foo@bar $ ansible-vault encrypt ansible/group_vars/sdr-secret.yml.template --output ansible/group_vars/sdr-secret.yml
-foo@bar $ rm ansible/group_vars/sdr-secret.yml.template
+foo@bar $ nano group_vars/sdr-secret.yml.template
+foo@bar $ ansible-vault encrypt group_vars/sdr-secret.yml.template --output group_vars/sdr-secret.yml
+foo@bar $ rm group_vars/sdr-secret.yml.template
 ```
 
 These commands:
@@ -81,7 +81,7 @@ In this file you must insert the specification of your target machine. An exampl
 
 ```ini
 [remoteservers]
-sdr.target.ac.uk ansible_connection=ssh ansible_ssh_user=auser ansible_ssh_pass='{{ target_ssh_pass }}' ansible_become_pass='{{ target_su_pass }}'
+sdr.target.ac.uk ansible_connection=ssh ansible_ssh_user=auser ansible_ssh_pass ='{{ target_ssh_pass }}' ansible_become_pass='{{ target_su_pass }}'
 ```
   * `sdr.target.ac.uk` should be replaced with the address of the target machine you are using (an IP address is acceptable)
   * `ansible_connection=ssh` specifies that an ssh connection will be made and should **not** be changed
