@@ -103,7 +103,7 @@ In this file you must insert the specification of your target machine. An exampl
 
 ```ini
 [remoteservers]
-sdr.target.ac.uk ansible_connection=ssh ansible_ssh_user=auser ansible_ssh_pass ='{{ target_ssh_pass }}' ansible_become_pass='{{ target_su_pass }}'
+sdr.target.ac.uk ansible_connection=ssh ansible_ssh_user=auser ansible_ssh_pass='{{ target_ssh_pass }}' ansible_become_pass='{{ target_su_pass }}'
 ```
   * `sdr.target.ac.uk` should be replaced with the address of the target machine you are using (an IP address is acceptable)
   * `ansible_connection=ssh` specifies that an ssh connection will be made and should **not** be changed
@@ -121,12 +121,6 @@ The files should be placed on the **target** machine:
   *  `foo.crt` in `/etc/ssl/certs`
   *  `foo.key` in `/etc/ssl/private`
   
-### Pull requirements ###
-
-```console
-ansible-galaxy install -p roles -r requirements.yml
-```
-
 ### Run deployment of base Galaxy instance ###
 
 With the customised variables in place, the next stage of deployment is to launch the creation of a standard Galaxy instance. This can be achieved simply with the command:
