@@ -5,6 +5,7 @@
     - group_vars/galaxyservers.yml
     - group_vars/sdr-secret.yml
     - group_vars/sdr-config.yml
+    - group_vars/users.yml
   pre_tasks:
     - name: Update all packages to their latest version
       ansible.builtin.apt:

@@ -1,0 +1,4 @@
+docker_group: docker
+owner: galaxy
+group: galaxy
+mode:  0755

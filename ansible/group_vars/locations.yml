@@ -10,11 +10,6 @@ sdr_config: /srv/SDR/galaxy-workflow/config
 sdr_vis:    /srv/SDR/galaxy-workflow/visualisations/roi
 sdr_static: /srv/SDR/galaxy-workflow/static/  # copy inner contents
 
-docker_group: docker
-owner: galaxy
-group: galaxy
-mode:  0755
-
 sdr_requirements_file: /srv/SDR/galaxy-workflow/requirements.txt
 sdr_install_scripts: /srv/SDR/deployment/galaxy-scripts
 sdr_workflows:  /srv/SDR/galaxy-workflow/workflows

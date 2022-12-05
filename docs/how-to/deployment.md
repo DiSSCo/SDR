@@ -8,9 +8,9 @@ First, please ensure you meet the requirements for this guide.
 
 ### Technical Requirements ###
 
-  * Target machine running Ubuntu 18.04[^1]
-  * Host machine with Ansible installed
-  * Generated SSL certificates
+  * Target machine running Ubuntu 20.04[^1]
+  * Host machine with Ansible, sshpass, pip installed
+  * Generated SSL certificates and own a related domain (URL)
 
 ### Knowledge Requirements ###
 
@@ -52,6 +52,10 @@ Generic (non-secret) parameters are set in `group_vars/sdr-config.yml`. Edit the
 ```console
 foo@bar $ nano group_vars/sdr-config.yml
 ```
+
+  * sdr\_conf\_brand
+  * sdr\_conf\_admin_users
+  
 #### Secret parameters ####
 
 The process for specifying secret parameters is more complex, as passwords and similar details should not be left in plain text files, and must not be pushed to version control records!
@@ -59,16 +63,26 @@ The process for specifying secret parameters is more complex, as passwords and s
 Ansible has functionality to prevent this. The process is below:
 
 ```console
-foo@bar $ nano group_vars/sdr-secret.yml.template
-foo@bar $ ansible-vault encrypt group_vars/sdr-secret.yml.template --output group_vars/sdr-secret.yml
-foo@bar $ rm group_vars/sdr-secret.yml.template
+foo@bar $ openssl rand -base64 24 > .vault-password.txt
+foo@bar $ cp group_vars/sdr-secret.yml.template group_vars/sdr-secret.yml.working
+foo@bar $ nano group_vars/sdr-secret.yml.working
+foo@bar $ ansible-vault encrypt group_vars/sdr-secret.yml.working --output group_vars/sdr-secret.yml
+foo@bar $ rm group_vars/sdr-secret.yml.working
 ```
 
 These commands:
   * Allow you to populate the template
   * Perform the encryption of the populated template file
   * Remove the plaintext file with the sensitive content
-
+  
+  * master\_api\_key
+  * bootstrap\_admin\_email:
+  * bootstrap\_admin\_user:
+  * teklia\_decryption\_key
+  * bardecode\_licence\_key:
+  * SUGGESTED: your\_ssh\_password:
+  * vault_id_secret: openssl rand -base64 24
+  
 ### Creation of inventory file ###
 
 Ansible requires you to specify the details of the machine on which the SDR is to be deployed. This is specified using an inventory file, which must be named "hosts" for the SDR deployment. To edit the hosts file you can for example:

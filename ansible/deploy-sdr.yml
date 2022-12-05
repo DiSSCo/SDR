@@ -6,6 +6,7 @@
     - group_vars/sdr-config.yml
     - group_vars/sdr-secret.yml
     - group_vars/locations.yml
+    - group_vars/users.yml
   tasks:
 
     - include_vars: vars/layout-root-dir.yml
