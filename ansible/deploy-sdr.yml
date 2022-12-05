@@ -171,7 +171,7 @@
         --master-api-key '{{ master_api_key }}'
         --admin-email '{{ bootstrap_admin_email }}'
         --admin-user '{{ bootstrap_admin_user }}'
-        --server 'localhost'
+        --server 'http://localhost'
       register: admin_api_key
     - name: Print bootstrap admin API key
       debug:
@@ -180,7 +180,7 @@
       shell: >
         python3 '{{ sdr_install_scripts }}/add-shared-workflows.py'
         --admin-api-key '{{ admin_api_key.stdout }}'
-        --server 'localhost'
+        --server 'http://localhost'
         --tool-path '{{ sdr_workflows }}'
 
     # --------------------------------------------------------------------------
@@ -194,7 +194,7 @@
       shell: >
         python3 '{{ sdr_install_scripts }}/install-from-toolshed.py'
         --api-key '{{ master_api_key }}'
-        --server 'localhost'
+        --server 'http://localhost'
         --toolshed-url https://toolshed.g2.bx.psu.edu
         --tool-name jq
         --tool-owner iuc
@@ -204,7 +204,7 @@
       shell: >
         python3 '{{ sdr_install_scripts }}/install-from-toolshed.py'
         --api-key '{{ master_api_key }}'
-        --server 'localhost'
+        --server 'http://localhost'
         --toolshed-url https://toolshed.g2.bx.psu.edu
         --tool-name split_file_to_collection
         --tool-owner bgruening
@@ -214,7 +214,7 @@
       shell: >
         python3 '{{ sdr_install_scripts }}/install-from-toolshed.py'
         --api-key '{{ master_api_key }}'
-        --server 'localhost'
+        --server 'http://localhost'
         --toolshed-url https://toolshed.g2.bx.psu.edu
         --tool-name bundle_collections
         --tool-owner nml
