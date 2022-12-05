@@ -21,12 +21,6 @@
         version: 'main'
         force: yes
 
-    - name: Restart galaxy
-      ansible.builtin.systemd:
-        state: restarted
-        #daemon_reload: yes # unneeded unless config changes
-        name: galaxy
-
     # --------------------------------------------------------------------------
     # Obtain SDR dependancies
 
