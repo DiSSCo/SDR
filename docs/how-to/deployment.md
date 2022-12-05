@@ -9,7 +9,7 @@ First, please ensure you meet the requirements for this guide.
 ### Technical Requirements ###
 
   * Target machine running Ubuntu 20.04[^1]
-  * Host machine with Ansible, sshpass, pip installed
+  * Host machine with Ansible (>= 2.12), sshpass, pip installed
   * Generated SSL certificates and own a related domain (URL)
 
 ### Knowledge Requirements ###
@@ -31,6 +31,14 @@ To perform the deployment of the SDR, the following steps will be required:
   
 Please note, this how-to assume that you will run Ansible on your own "host" machine, to deploy the SDR on a "target" machine, assumed to be remote and on which you must have superuser rights. 
   
+### Check Ansible version ###
+
+This procedure requires an Ansible version later than 2.12, check you have a compatible version with:
+
+```console
+foo@bar $ ansible --version
+```
+
 ### Cloning the SDR repository ###
 
 Everything needed for setting up an instance of the SDR is present in our Github [repository](https://github.com/DiSSCo/SDR/ "SDR Repository").
