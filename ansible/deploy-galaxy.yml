@@ -19,6 +19,18 @@
         name: pip
         state: latest
   post_tasks:
+    # Perform modifications to fix broken 22.05 deployment
+    - name: change /srv/galaxy/var/tmp permissions
+      file:
+        path: '{{ item }}'
+        state: directory
+        owner: "{{ owner }}"
+        group: "{{ owner }}"
+        mode: "{{ mode }}"
+        recurse: yes
+      loop:
+        - "/srv/galaxy/var/tmp"
+        - "/srv/galaxy/var/gravity"
     - name: Restart galaxy
       ansible.builtin.systemd:
         state: restarted
