@@ -61,8 +61,9 @@ Generic (non-secret) parameters are set in `group_vars/sdr-config.yml`. Edit the
 foo@bar $ nano group_vars/sdr-config.yml
 ```
 
-  * sdr\_conf\_brand
-  * sdr\_conf\_admin_users
+A full [reference](https://github.com/DiSSCo/SDR/blob/main/docs/reference/deploy-vars.md#generic-parameters) for these variables is available. A short description is made here:
+  * `sdr\_conf\_brand`: Text branding that will appear on the Galaxy web interface 
+  * `sdr\_conf\_admin_users`: Email addresses of users who will be granted administrator access
   
 #### Secret parameters ####
 
@@ -82,14 +83,16 @@ These commands:
   * Allow you to populate the template
   * Perform the encryption of the populated template file
   * Remove the plaintext file with the sensitive content
-  
-  * master\_api\_key
-  * bootstrap\_admin\_email:
-  * bootstrap\_admin\_user:
-  * teklia\_decryption\_key
-  * bardecode\_licence\_key:
-  * SUGGESTED: your\_ssh\_password:
-  * vault_id_secret: openssl rand -base64 24
+ 
+The parameters in this config file are as follows, A full [reference](https://github.com/DiSSCo/SDR/blob/main/docs/reference/deploy-vars.md#generic-parameters) for these variables is available, a short description is made here:
+  * `master\_api\_key`: A hard coded API key for use during initial configuration. Suggested: random generated string
+  * `bootstrap\_admin\_email`: Email address used during startup and persisting as administrator, does not need to be functioning email address.
+  * `bootstrap\_admin\_user`: User name associated with bootstrap admin account. Suggested: random string
+  * `teklia\_decryption\_key`: Teklia provided licence key for decrypting their proprietary models
+  * `bardecode\_licence\_key`: [Bardecode](https://www.bardecode.com/en1/) provided licence key for using barcode reading tool
+  * `ansible_ssh_pass`: Remote machine ssh user password
+  * `ansible_become_pass`: Remote machine superuser password
+  * `vault_id_secret`: Suggested: random generated string
   
 ### Creation of inventory file ###
 
