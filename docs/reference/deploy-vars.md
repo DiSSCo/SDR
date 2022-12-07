@@ -47,6 +47,13 @@ The parameters are:
   * bardecode\_licence\_key:
     * Description: [Bardecode](https://www.bardecode.com/en1/ "Bardocode") provided licence key for using barcode reading tool
     * Type: [str]
-  * SUGGESTED: your\_ssh\_password:
-    * Description: Your ssh password for accessing the machine you wish to deploy the SDR on
+  * ansible\_ssh\_pass:
+    * Description: Remote machine ssh user password
     * Type: [str]
+  * ansible\_become\_pass
+    * Description: Remote machine superuser password
+    * Type: [str]
+  * vault\_id\_secret
+    * Description: Suggested: random generated string
+    * Type: [str]
+
