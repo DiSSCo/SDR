@@ -78,5 +78,25 @@ The file now appears in our history window, where workflow inputs are stored and
 
 ### Launch workflow ###
 
+#### Navigate to workflows list ####
+
+Navigate to the Workflows list by clicking the "Workflow" link at the top of the screen.
+![galaxy-main-workflow](galaxy-main-workflow.png "Workflow link in top Galaxy menu")
+
+#### Browse and select a workflow ####
+
+You will be presented with a list workflows. To start running a workflow click the "Run workflow" button for the "De novo-Collections test" workflow.
+![galaxy-workflows-list](galaxy-workflows-list.png "List of Galaxy workflows with run button highlighted")
+
+#### Select a dataset and run the workflow ####
+
+Select your previously uploaded dataset and click the run button.
+![galaxy-workflow-dataset-selection-run](galaxy-workflow-dataset-selection-run.png "Dropdown dataset selection box and workflow run button")
+
+#### Wait for the workflow to complete ####
+
+Your workflow will now be running. You will see Galaxy schedule the workflow steps and summarise overall job progress. You can view results for each step and its jobs as they are completed but we will explore the workflow output once all the jobs are complete.
+![galaxy-workflow-run-progress](galaxy-workflow-run-progress.png "Scheduled workflow steps and overall job progress")
+
 ### View workflow output ###
 
