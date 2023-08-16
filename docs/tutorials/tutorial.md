@@ -3,7 +3,7 @@
 Hello new SDR user! This tutorial will take you through the basic process of using the SDR to digitise a set of samples, following these key steps:
   * [Uploading](#upload-data "Upload data") an input file to the SDR
   * [Launching](#launch-workflow "Launch workflow") the workflow to perform the digitisation
-  * [Viewing](#view-workflow-output "View workflow output") and saving the digitisation output
+  * [Saving](#Saving-outputs "Saving outputs") the digitisation output
 
 ## Getting ready ##
 
@@ -95,8 +95,20 @@ Select your previously uploaded dataset and click the run button.
 
 #### Wait for the workflow to complete ####
 
-Your workflow will now be running. You will see Galaxy schedule the workflow steps and summarise overall job progress. You can view results for each step and its jobs as they are completed but we will explore the workflow output once all the jobs are complete.
+Your workflow will now be running. You will see Galaxy schedule the workflow steps and summarise overall job progress. You can view results for each step and its jobs as they are completed but we will explore the workflow output once all the jobs are complete. You can close your browser and come back to Galaxy while waiting for your workflow to finish.
 ![galaxy-workflow-run-progress](galaxy-workflow-run-progress.png "Scheduled workflow steps and overall job progress")
 
-### View workflow output ###
+### Saving outputs ###
 
+#### The History Panel
+
+On the right hand side of the screen you will see the Galaxy's History panel. Each step and all the associated jobs are summarised here.
+![Galaxy-History-Panel](Galaxy-History-Panel.png "The history panel showing the completed steps in a workflow")
+
+#### Downloading output
+
+To download the output of a workflow, click on the title of a step, in this case "422: sdr_output". This expands the step and provides additional buttons to interact with the outputs of the step.
+
+Click the floppy disk icon to download a zip file containing all the outputs. 
+
+![Galaxy-Download-Output](Galaxy-Download-Output.png "The history panel showing the completed steps in a workflow")
